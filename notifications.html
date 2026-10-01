@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications — JosDore Réseau</title>
+<meta name="description" content="Tes notifications JosDore Réseau : missions, messages, avis, système.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — NOTIFICATIONS
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.page-entete__texte { flex: 1; min-width: 200px; }
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+.page-entete__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   FILTRES
+   ============================================================ */
+.filtres {
+  display: flex; gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+  margin-bottom: 4px;
+  scrollbar-width: none;
+}
+.filtres::-webkit-scrollbar { display: none; }
+.filtre {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.filtre:hover { border-color: var(--or); color: var(--or-fonce); }
+.filtre.is-active {
+  background: var(--or);
+  color: var(--nuit);
+  border-color: var(--or);
+}
+.filtre i { font-size: 14px; }
+.filtre__count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 6px;
+  border-radius: var(--rayon-full);
+  font-size: 10px;
+  font-weight: 900;
+  background: rgba(0,0,0,0.08);
+}
+.filtre.is-active .filtre__count {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   NOTIFICATIONS — LISTE
+   ============================================================ */
+.notif-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Groupe par date */
+.notif-groupe {
+  margin-bottom: 12px;
+}
+.notif-groupe__titre {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 4px;
+  margin-bottom: 4px;
+}
+
+.notif {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  transition: var(--transition);
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.notif:hover {
+  border-color: var(--or);
+  box-shadow: var(--ombre-sm);
+  text-decoration: none;
+}
+
+/* Notification non lue */
+.notif.is-non-lu {
+  background: linear-gradient(180deg, rgba(245,158,11,0.04), #fff);
+  border-left: 3px solid var(--or);
+}
+.notif.is-non-lu::after {
+  content: '';
+  position: absolute;
+  top: 18px; right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.15);
+}
+
+.notif__icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.notif__icon--or { background: rgba(245,158,11,0.12); color: var(--or-fonce); }
+.notif__icon--bleu { background: rgba(37,99,235,0.10); color: var(--bleu); }
+.notif__icon--vert { background: rgba(22,163,74,0.10); color: var(--vert); }
+.notif__icon--rouge { background: rgba(220,38,38,0.10); color: var(--rouge); }
+.notif__icon--gris { background: var(--gris-100); color: var(--gris-500); }
+
+.notif__contenu {
+  flex: 1;
+  min-width: 0;
+  padding-right: 20px;
+}
+.notif__titre {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+  line-height: 1.35;
+}
+.notif__titre strong {
+  font-weight: 900;
+}
+.notif__desc {
+  font-size: 13.5px;
+  color: var(--gris-500);
+  line-height: 1.55;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.notif__meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--gris-500);
+  font-weight: 600;
+}
+.notif__meta span {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.notif__meta i { font-size: 11px; }
+.notif__meta .notif__type {
+  color: var(--or-fonce);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-size: 10px;
+}
+
+/* Action au survol */
+.notif__actions {
+  position: absolute;
+  top: 12px; right: 12px;
+  display: none;
+  gap: 4px;
+}
+.notif:hover .notif__actions { display: flex; }
+.notif__action-btn {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-700);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  transition: var(--transition);
+}
+.notif__action-btn:hover { background: var(--gris-200); color: var(--gris-900); }
+.notif__action-btn--or:hover { background: var(--or); color: var(--nuit); }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.vide__icone {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+}
+.vide__titre {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 8px;
+}
+.vide__texte {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 400px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================
+   BANDEAU INFO
+   ============================================================ */
+.bandeau-info {
+  padding: 14px 16px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--rayon-lg);
+  text-align: center;
+  margin-top: 20px;
+}
+.bandeau-info i {
+  color: var(--or-fonce);
+  font-size: 20px;
+  display: block;
+  margin-bottom: 8px;
+}
+.bandeau-info p {
+  font-size: 13px;
+  color: var(--gris-700);
+  line-height: 1.6;
+  margin: 0;
+}
+.bandeau-info strong { color: var(--gris-900); }
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-entete h1 { font-size: 1.4rem; }
+  .page-entete__actions { width: 100%; }
+  .page-entete__actions .btn { flex: 1; justify-content: center; }
+  .notif { padding: 14px; gap: 12px; }
+  .notif__icon { width: 40px; height: 40px; font-size: 18px; border-radius: 11px; }
+  .notif__titre { font-size: 14px; }
+  .notif__desc { font-size: 13px; }
+  .notif.is-non-lu::after { top: 16px; right: 14px; }
+  .notif__actions { display: none !important; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge" id="header-badge-notif">0</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-bell"></i> Notifications
+    <span class="app-sidebar__lien-badge" id="sidebar-badge-notif">0</span>
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete">
+    <div class="page-entete__texte">
+      <div class="page-entete__eyebrow">Notifications</div>
+      <h1>Ton <span>activité</span> en direct</h1>
+      <p class="page-entete__sous">Missions, messages, avis, système. Tout ce qui compte pour toi.</p>
+    </div>
+    <div class="page-entete__actions">
+      <button type="button" class="btn btn--ghost btn--sm" id="btn-tout-lire">
+        <i class="fi fi-rr-check"></i> Tout marquer comme lu
+      </button>
+    </div>
+  </div>
+
+  <!-- Filtres -->
+  <div class="filtres" id="filtres">
+    <button type="button" class="filtre is-active" data-filtre="toutes">
+      <i class="fi fi-rr-apps"></i> Toutes
+      <span class="filtre__count" id="count-toutes">0</span>
+    </button>
+    <button type="button" class="filtre" data-filtre="non-lues">
+      <i class="fi fi-rr-circle" style="color:var(--or);"></i> Non lues
+      <span class="filtre__count" id="count-non-lues">0</span>
+    </button>
+    <button type="button" class="filtre" data-filtre="mission">
+      <i class="fi fi-rr-target"></i> Missions
+      <span class="filtre__count" id="count-mission">0</span>
+    </button>
+    <button type="button" class="filtre" data-filtre="message">
+      <i class="fi fi-rr-comment"></i> Messages
+      <span class="filtre__count" id="count-message">0</span>
+    </button>
+    <button type="button" class="filtre" data-filtre="avis">
+      <i class="fi fi-rr-star"></i> Avis
+      <span class="filtre__count" id="count-avis">0</span>
+    </button>
+    <button type="button" class="filtre" data-filtre="systeme">
+      <i class="fi fi-rr-shield-check"></i> Système
+      <span class="filtre__count" id="count-systeme">0</span>
+    </button>
+  </div>
+
+  <!-- Liste -->
+  <div class="notif-liste" id="notif-liste"></div>
+
+  <!-- État vide -->
+  <div class="vide" id="vide" style="display:none;">
+    <div class="vide__icone"><i class="fi fi-rr-bell"></i></div>
+    <div class="vide__titre">Aucune notification</div>
+    <p class="vide__texte">
+      Tu es à jour ! Les nouvelles notifications apparaîtront ici.
+    </p>
+  </div>
+
+  <!-- Bandeau info -->
+  <div class="bandeau-info">
+    <i class="fi fi-rr-info"></i>
+    <p>
+      <strong>Les notifications ci-dessus sont des exemples de démo.</strong><br>
+      Elles seront générées automatiquement par l'app dès l'ouverture publique.
+    </p>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     DONNÉES — NOTIFICATIONS DÉMO
+     ------------------------------------------------------------
+     Chaque notif a :
+       id, type (mission|message|avis|systeme),
+       titre, desc, temps, jour, nonLu, lien (optionnel)
+     ============================================================ */
+  const NOTIFICATIONS = [
+    // AUJOURD'HUI
+    {
+      id: 'n-001',
+      type: 'message',
+      titre: 'Nouveau message de <strong>Aïcha Dossou</strong>',
+      desc: 'Bonjour Koffi, j\'ai vu ta candidature pour la mission réseau à l\'école…',
+      temps: 'il y a 5 min',
+      jour: 'Aujourd\'hui',
+      nonLu: true,
+      lien: 'app/messages.html?to=aicha'
+    },
+    {
+      id: 'n-002',
+      type: 'mission',
+      titre: 'Nouvelle mission correspondant à ton profil',
+      desc: 'Récupération de données disque dur · Abomey-Calavi · Urgente',
+      temps: 'il y a 30 min',
+      jour: 'Aujourd\'hui',
+      nonLu: true,
+      lien: 'app/mission-detail.html?id=m-1027'
+    },
+    {
+      id: 'n-003',
+      type: 'avis',
+      titre: 'Nouvel avis client <strong>5 étoiles</strong>',
+      desc: 'Marie L. · "Merci beaucoup pour l\'intervention !"',
+      temps: 'il y a 2h',
+      jour: 'Aujourd\'hui',
+      nonLu: true,
+      lien: 'app/profil.html#tab=avis'
+    },
+    {
+      id: 'n-004',
+      type: 'systeme',
+      titre: 'Ton compte est <strong>vérifié</strong>',
+      desc: 'Félicitations ! Ton badge Vérifié est maintenant actif sur ton profil public.',
+      temps: 'il y a 4h',
+      jour: 'Aujourd\'hui',
+      nonLu: false,
+      lien: 'app/profil.html'
+    },
+    {
+      id: 'n-005',
+      type: 'mission',
+      titre: 'Ta candidature a été <strong>vue</strong>',
+      desc: 'TechSolutions SARL a consulté ta candidature pour la mission "Maintenance parc informatique".',
+      temps: 'il y a 6h',
+      jour: 'Aujourd\'hui',
+      nonLu: false,
+      lien: 'app/mission-detail.html?id=m-1025'
+    },
+
+    // HIER
+    {
+      id: 'n-006',
+      type: 'message',
+      titre: 'Nouveau message de <strong>Jean Kouassi</strong>',
+      desc: 'Tu es dispo demain ?',
+      temps: 'hier à 09:32',
+      jour: 'Hier',
+      nonLu: true,
+      lien: 'app/messages.html?to=jean'
+    },
+    {
+      id: 'n-007',
+      type: 'avis',
+      titre: 'Nouvel avis client',
+      desc: 'Jean K. · "Bon travail, rapide et propre."',
+      temps: 'hier à 15:20',
+      jour: 'Hier',
+      nonLu: false,
+      lien: 'app/profil.html#tab=avis'
+    },
+    {
+      id: 'n-008',
+      type: 'systeme',
+      titre: 'Nouvelle connexion à ton compte',
+      desc: 'Un appareil Windows à Abomey-Calavi s\'est connecté à ton compte. C\'est bien toi ?',
+      temps: 'hier à 20:45',
+      jour: 'Hier',
+      nonLu: false,
+      lien: 'app/parametres.html'
+    },
+
+    // IL Y A 2 JOURS
+    {
+      id: 'n-009',
+      type: 'mission',
+      titre: 'Nouvelle mission publiée',
+      desc: 'Installation réseau bureau médical · Cotonou · Normal',
+      temps: 'il y a 2 jours',
+      jour: 'Il y a 2 jours',
+      nonLu: false,
+      lien: 'app/mission-detail.html?id=m-1026'
+    },
+    {
+      id: 'n-010',
+      type: 'systeme',
+      titre: 'Nouveau badge débloqué',
+      desc: 'Tu as débloqué le badge "Série — 7 jours consécutifs actif". Bravo !',
+      temps: 'il y a 2 jours',
+      jour: 'Il y a 2 jours',
+      nonLu: false,
+      lien: 'app/profil.html#tab=stats'
+    },
+
+    // IL Y A 3 JOURS
+    {
+      id: 'n-011',
+      type: 'message',
+      titre: 'Nouveau message de <strong>Karim Bio</strong>',
+      desc: 'On se voit lundi pour la mission ensemble ?',
+      temps: 'il y a 3 jours',
+      jour: 'Il y a 3 jours',
+      nonLu: false,
+      lien: 'app/messages.html?to=karim'
+    },
+    {
+      id: 'n-012',
+      type: 'avis',
+      titre: 'Nouvel avis client <strong>4 étoiles</strong>',
+      desc: 'Client anonyme · "Très professionnel, je recommande."',
+      temps: 'il y a 3 jours',
+      jour: 'Il y a 3 jours',
+      nonLu: false,
+      lien: 'app/profil.html#tab=avis'
+    }
+  ];
+
+  /* ============================================================
+     PERSISTANCE — État "lu / non lu"
+     ============================================================ */
+  const CLE_LUS = 'josdore_notifs_lues';
+
+  const chargerLus = () => {
+    try {
+      return JSON.parse(localStorage.getItem(CLE_LUS) || '{}');
+    } catch (e) { return {}; }
+  };
+  const sauvegarderLus = (data) => {
+    try { localStorage.setItem(CLE_LUS, JSON.stringify(data)); } catch (e) {}
+  };
+
+  const lusPerso = chargerLus();
+
+  // Fusion : si une notif a été marquée lue localement, on l'applique
+  NOTIFICATIONS.forEach(n => {
+    if (lusPerso[n.id]) n.nonLu = false;
+  });
+
+  /* ============================================================
+     ÉLÉMENTS
+     ============================================================ */
+  const listeEl = document.getElementById('notif-liste');
+  const videEl = document.getElementById('vide');
+  const filtres = document.querySelectorAll('.filtre');
+  const btnToutLire = document.getElementById('btn-tout-lire');
+
+  const headerBadge = document.getElementById('header-badge-notif');
+  const sidebarBadge = document.getElementById('sidebar-badge-notif');
+
+  /* ============================================================
+     ÉTAT
+     ============================================================ */
+  let filtreActif = 'toutes';
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const escapeHtml = (txt) => {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  // Le titre contient déjà du HTML (<strong>), on ne l'échappe pas
+  const iconeParType = (type) => {
+    switch (type) {
+      case 'mission': return { classe: 'notif__icon--or', icone: 'fi fi-rr-target' };
+      case 'message': return { classe: 'notif__icon--bleu', icone: 'fi fi-rr-comment' };
+      case 'avis': return { classe: 'notif__icon--vert', icone: 'fi fi-rr-star' };
+      case 'systeme': return { classe: 'notif__icon--rouge', icone: 'fi fi-rr-shield-check' };
+      default: return { classe: 'notif__icon--gris', icone: 'fi fi-rr-bell' };
+    }
+  };
+
+  const libelleParType = (type) => {
+    switch (type) {
+      case 'mission': return 'Mission';
+      case 'message': return 'Message';
+      case 'avis': return 'Avis';
+      case 'systeme': return 'Système';
+      default: return 'Info';
+    }
+  };
+
+  /* ============================================================
+     COMPTAGE
+     ============================================================ */
+  const compterNonLus = () => {
+    return NOTIFICATIONS.filter(n => n.nonLu).length;
+  };
+
+  const compterParType = (type) => {
+    if (type === 'toutes') return NOTIFICATIONS.length;
+    if (type === 'non-lues') return NOTIFICATIONS.filter(n => n.nonLu).length;
+    return NOTIFICATIONS.filter(n => n.type === type).length;
+  };
+
+  const majCompteurs = () => {
+    const total = compterNonLus();
+
+    // Badges header + sidebar
+    if (headerBadge) {
+      headerBadge.textContent = total;
+      headerBadge.style.display = total > 0 ? 'flex' : 'none';
+    }
+    if (sidebarBadge) {
+      sidebarBadge.textContent = total;
+      sidebarBadge.style.display = total > 0 ? 'inline-flex' : 'none';
+    }
+
+    // Compteurs filtres
+    document.getElementById('count-toutes').textContent = compterParType('toutes');
+    document.getElementById('count-non-lues').textContent = compterParType('non-lues');
+    document.getElementById('count-mission').textContent = compterParType('mission');
+    document.getElementById('count-message').textContent = compterParType('message');
+    document.getElementById('count-avis').textContent = compterParType('avis');
+    document.getElementById('count-systeme').textContent = compterParType('systeme');
+  };
+
+  /* ============================================================
+     FILTRAGE
+     ============================================================ */
+  const filtrer = () => {
+    if (filtreActif === 'toutes') return NOTIFICATIONS;
+    if (filtreActif === 'non-lues') return NOTIFICATIONS.filter(n => n.nonLu);
+    return NOTIFICATIONS.filter(n => n.type === filtreActif);
+  };
+
+  /* ============================================================
+     AFFICHAGE
+     ============================================================ */
+  const afficher = () => {
+    const resultats = filtrer();
+
+    if (resultats.length === 0) {
+      listeEl.innerHTML = '';
+      listeEl.style.display = 'none';
+      videEl.style.display = 'block';
+      majCompteurs();
+      return;
+    }
+
+    videEl.style.display = 'none';
+    listeEl.style.display = 'flex';
+
+    // Grouper par jour
+    const groupes = {};
+    resultats.forEach(n => {
+      if (!groupes[n.jour]) groupes[n.jour] = [];
+      groupes[n.jour].push(n);
+    });
+
+    let html = '';
+    Object.entries(groupes).forEach(([jour, notifs]) => {
+      html += `<div class="notif-groupe">`;
+      html += `<div class="notif-groupe__titre">${escapeHtml(jour)}</div>`;
+
+      notifs.forEach(n => {
+        const { classe, icone } = iconeParType(n.type);
+        const typeLibelle = libelleParType(n.type);
+
+        html += `
+          <div class="notif ${n.nonLu ? 'is-non-lu' : ''}" data-id="${n.id}" data-lien="${n.lien || ''}">
+            <div class="notif__icon ${classe}">
+              <i class="${icone}"></i>
+            </div>
+            <div class="notif__contenu">
+              <div class="notif__titre">${n.titre}</div>
+              <div class="notif__desc">${escapeHtml(n.desc)}</div>
+              <div class="notif__meta">
+                <span class="notif__type">${typeLibelle}</span>
+                <span><i class="fi fi-rr-time-past"></i> ${escapeHtml(n.temps)}</span>
+              </div>
+            </div>
+            <div class="notif__actions">
+              <button type="button" class="notif__action-btn notif__action-btn--or" data-action="toggle-lu" data-id="${n.id}" title="${n.nonLu ? 'Marquer comme lu' : 'Marquer comme non lu'}">
+                <i class="fi ${n.nonLu ? 'fi-rr-check' : 'fi-rr-circle'}"></i>
+              </button>
+              <button type="button" class="notif__action-btn" data-action="supprimer" data-id="${n.id}" title="Supprimer">
+                <i class="fi fi-rr-cross-small"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+    });
+
+    listeEl.innerHTML = html;
+
+    // Attacher les événements
+    listeEl.querySelectorAll('.notif').forEach(el => {
+      el.addEventListener('click', (e) => {
+        // Si on clique sur un bouton d'action, on ne suit pas le lien
+        if (e.target.closest('.notif__action-btn')) return;
+
+        const id = el.dataset.id;
+        const lien = el.dataset.lien;
+
+        // Marquer comme lu
+        marquerLu(id);
+
+        // Naviguer si lien
+        if (lien) {
+          window.location.href = lien;
+        }
+      });
+    });
+
+    // Boutons d'action
+    listeEl.querySelectorAll('[data-action="toggle-lu"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const notif = NOTIFICATIONS.find(n => n.id === id);
+        if (notif) {
+          if (notif.nonLu) {
+            marquerLu(id);
+          } else {
+            marquerNonLu(id);
+          }
+        }
+      });
+    });
+
+    listeEl.querySelectorAll('[data-action="supprimer"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        supprimer(id);
+      });
+    });
+
+    majCompteurs();
+  };
+
+  /* ============================================================
+     ACTIONS
+     ============================================================ */
+  const marquerLu = (id) => {
+    const notif = NOTIFICATIONS.find(n => n.id === id);
+    if (!notif || !notif.nonLu) return;
+
+    notif.nonLu = false;
+    lusPerso[id] = true;
+    sauvegarderLus(lusPerso);
+    afficher();
+  };
+
+  const marquerNonLu = (id) => {
+    const notif = NOTIFICATIONS.find(n => n.id === id);
+    if (!notif) return;
+
+    notif.nonLu = true;
+    delete lusPerso[id];
+    sauvegarderLus(lusPerso);
+    afficher();
+  };
+
+  const supprimer = (id) => {
+    const idx = NOTIFICATIONS.findIndex(n => n.id === id);
+    if (idx > -1) {
+      if (confirm('Supprimer cette notification ?')) {
+        NOTIFICATIONS.splice(idx, 1);
+        delete lusPerso[id];
+        sauvegarderLus(lusPerso);
+        afficher();
+      }
+    }
+  };
+
+  const toutMarquerLu = () => {
+    const total = compterNonLus();
+    if (total === 0) return;
+
+    NOTIFICATIONS.forEach(n => {
+      if (n.nonLu) {
+        n.nonLu = false;
+        lusPerso[n.id] = true;
+      }
+    });
+    sauvegarderLus(lusPerso);
+    afficher();
+  };
+
+  /* ============================================================
+     ÉCOUTEURS
+     ============================================================ */
+
+  // Bouton "Tout marquer comme lu"
+  if (btnToutLire) {
+    btnToutLire.addEventListener('click', () => {
+      if (compterNonLus() === 0) {
+        btnToutLire.innerHTML = '<i class="fi fi-rr-check"></i> Déjà à jour';
+        setTimeout(() => {
+          btnToutLire.innerHTML = '<i class="fi fi-rr-check"></i> Tout marquer comme lu';
+        }, 1800);
+        return;
+      }
+      toutMarquerLu();
+      btnToutLire.innerHTML = '<i class="fi fi-rr-check"></i> Tout lu !';
+      setTimeout(() => {
+        btnToutLire.innerHTML = '<i class="fi fi-rr-check"></i> Tout marquer comme lu';
+      }, 1800);
+    });
+  }
+
+  // Filtres
+  filtres.forEach(f => {
+    f.addEventListener('click', () => {
+      filtres.forEach(x => x.classList.remove('is-active'));
+      f.classList.add('is-active');
+      filtreActif = f.dataset.filtre;
+      afficher();
+    });
+  });
+
+  /* ============================================================
+     DÉMARRAGE
+     ============================================================ */
+
+  // Si un #filtre=... dans l'URL
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('filtre')) {
+    const f = document.querySelector('.filtre[data-filtre="' + params.get('filtre') + '"]');
+    if (f) {
+      filtres.forEach(x => x.classList.remove('is-active'));
+      f.classList.add('is-active');
+      filtreActif = params.get('filtre');
+    }
+  }
+
+  afficher();
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Notifications', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log(NOTIFICATIONS.length + ' notification(s) en démo.');
+});
+</script>
+
+</body>
+</html>

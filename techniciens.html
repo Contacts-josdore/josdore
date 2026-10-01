@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annuaire des techniciens — JosDore Réseau</title>
+<meta name="description" content="Trouve un technicien de confiance près de chez toi. Filtre par ville, spécialité et disponibilité.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — ANNUAIRE TECHNICIENS
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.page-entete__texte { flex: 1; min-width: 200px; }
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+.page-entete__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+
+/* ============================================================
+   BARRE DE RECHERCHE
+   ============================================================ */
+.barre-recherche {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  transition: var(--transition);
+}
+.barre-recherche:focus-within {
+  border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.10);
+}
+.barre-recherche i {
+  color: var(--gris-500);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.barre-recherche input {
+  flex: 1;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+.barre-recherche input::placeholder { color: var(--gris-500); }
+.barre-recherche__clear {
+  display: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-700);
+  align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.barre-recherche__clear:hover { background: var(--gris-200); }
+.barre-recherche__clear.is-visible { display: inline-flex; }
+
+/* ============================================================
+   FILTRES
+   ============================================================ */
+.filtres {
+  display: flex; gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 14px;
+  margin-bottom: 8px;
+  scrollbar-width: none;
+}
+.filtres::-webkit-scrollbar { display: none; }
+
+.filtre-groupe {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.filtre-groupe__label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 6px;
+}
+.filtre-select {
+  padding: 9px 32px 9px 14px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  min-width: 140px;
+}
+.filtre-select:hover { border-color: var(--or); color: var(--or-fonce); }
+.filtre-select:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(245,158,11,0.12); }
+.filtre-select.is-actif {
+  background-color: rgba(245,158,11,0.06);
+  border-color: var(--or);
+  color: var(--or-fonce);
+}
+
+.filtre-toggle {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 16px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+  margin-top: 18px;
+}
+.filtre-toggle:hover { border-color: var(--or); color: var(--or-fonce); }
+.filtre-toggle i { font-size: 14px; }
+.filtre-toggle.is-actif {
+  background: var(--or);
+  color: var(--nuit);
+  border-color: var(--or);
+}
+
+/* Bouton reset */
+.filtres__reset {
+  display: none;
+  align-items: center; gap: 6px;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1.5px solid var(--rouge);
+  border-radius: var(--rayon-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rouge);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+  margin-top: 18px;
+  margin-left: auto;
+}
+.filtres__reset:hover { background: rgba(220,38,38,0.06); }
+.filtres__reset.is-visible { display: inline-flex; }
+
+/* ============================================================
+   INFO RÉSULTATS
+   ============================================================ */
+.resultats-info {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+.resultats-info__compteur {
+  font-size: 14px;
+  color: var(--gris-500);
+}
+.resultats-info__compteur strong {
+  color: var(--gris-900);
+  font-weight: 800;
+}
+.resultats-info__tri {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+  color: var(--gris-500);
+}
+
+/* ============================================================
+   GRILLE TECHNICIENS
+   ============================================================ */
+.techniciens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tech-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+.tech-carte:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ombre-lg);
+  border-color: transparent;
+  text-decoration: none;
+}
+
+.tech-carte__badge-demo {
+  position: absolute;
+  top: 10px; right: 10px;
+  padding: 3px 9px;
+  background: rgba(245,158,11,0.95);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: var(--police-titre);
+  z-index: 3;
+}
+
+.tech-carte__head {
+  padding: 20px 18px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tech-carte__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.tech-carte__avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 22px;
+  color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(10,37,64,0.10);
+}
+.tech-carte__avatar--1 { background: linear-gradient(135deg, var(--or), var(--or-fonce)); color: var(--nuit); }
+.tech-carte__avatar--2 { background: linear-gradient(135deg, var(--bleu), #7C3AED); }
+.tech-carte__avatar--3 { background: linear-gradient(135deg, var(--vert), #059669); }
+.tech-carte__avatar--4 { background: linear-gradient(135deg, #EC4899, #BE185D); }
+
+.tech-carte__statut {
+  position: absolute;
+  bottom: 2px; right: 2px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: var(--vert);
+}
+.tech-carte__statut--occupe { background: var(--or); }
+.tech-carte__statut--absent { background: var(--gris-300); }
+
+.tech-carte__infos { flex: 1; min-width: 0; }
+.tech-carte__nom {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+.tech-carte__nom i {
+  color: var(--bleu);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.tech-carte__specialite {
+  font-size: 13px;
+  color: var(--gris-500);
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tech-carte__ville {
+  font-size: 12px;
+  color: var(--gris-500);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.tech-carte__ville i { color: var(--or-fonce); font-size: 12px; }
+
+.tech-carte__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--gris-100);
+  border-bottom: 1px solid var(--gris-100);
+  background: var(--gris-50);
+}
+.tech-carte__stat {
+  text-align: center;
+}
+.tech-carte__stat-v {
+  font-family: var(--police-titre);
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--or-fonce);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.tech-carte__stat-l {
+  font-size: 10px;
+  color: var(--gris-500);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tech-carte__footer {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tech-carte__badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.tech-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--rayon-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.tech-badge--verifie { background: rgba(37,99,235,0.10); color: var(--bleu); }
+.tech-badge--top { background: rgba(245,158,11,0.14); color: var(--or-fonce); }
+.tech-badge--nouveau { background: var(--gris-100); color: var(--gris-500); }
+
+.tech-carte__lien {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--or-fonce);
+  white-space: nowrap;
+}
+.tech-carte__lien i { transition: transform 0.25s; }
+.tech-carte:hover .tech-carte__lien i { transform: translateX(3px); }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.vide__icone {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 18px;
+}
+.vide__titre {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 8px;
+}
+.vide__texte {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 400px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-entete h1 { font-size: 1.4rem; }
+  .page-entete__actions { width: 100%; }
+  .page-entete__actions .btn { flex: 1; justify-content: center; }
+  .filtres { gap: 6px; }
+  .filtre-select { min-width: 120px; padding: 8px 26px 8px 12px; font-size: 12px; }
+  .techniciens-grid { grid-template-columns: 1fr; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher un technicien…" aria-label="Recherche" id="recherche-header">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">4</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete">
+    <div class="page-entete__texte">
+      <div class="page-entete__eyebrow">Annuaire</div>
+      <h1>Trouve un <span>technicien de confiance</span></h1>
+      <p class="page-entete__sous">Filtre par ville, spécialité et disponibilité pour trouver le bon pro.</p>
+    </div>
+  </div>
+
+  <!-- Barre de recherche -->
+  <div class="barre-recherche">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input
+      type="search"
+      id="recherche"
+      placeholder="Rechercher par nom, spécialité ou ville…"
+      aria-label="Rechercher un technicien"
+      autocomplete="off"
+    >
+    <button type="button" class="barre-recherche__clear" id="recherche-clear" aria-label="Effacer">
+      <i class="fi fi-rr-cross-small"></i>
+    </button>
+  </div>
+
+  <!-- Filtres -->
+  <div class="filtres" id="filtres">
+
+    <div class="filtre-groupe">
+      <span class="filtre-groupe__label">Ville</span>
+      <select class="filtre-select" id="filtre-ville">
+        <option value="">Toutes</option>
+        <option value="Abomey-Calavi">Abomey-Calavi</option>
+        <option value="Cotonou">Cotonou</option>
+        <option value="Porto-Novo">Porto-Novo</option>
+        <option value="Parakou">Parakou</option>
+      </select>
+    </div>
+
+    <div class="filtre-groupe">
+      <span class="filtre-groupe__label">Spécialité</span>
+      <select class="filtre-select" id="filtre-specialite">
+        <option value="">Toutes</option>
+        <option value="Réseaux">Réseaux</option>
+        <option value="Informatique">Informatique</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Développement web">Développement web</option>
+        <option value="Design">Design</option>
+        <option value="Électricité">Électricité</option>
+        <option value="Maintenance">Maintenance</option>
+      </select>
+    </div>
+
+    <div class="filtre-groupe">
+      <span class="filtre-groupe__label">Disponibilité</span>
+      <select class="filtre-select" id="filtre-statut">
+        <option value="">Tous</option>
+        <option value="disponible">Disponible</option>
+        <option value="occupe">Occupé</option>
+      </select>
+    </div>
+
+    <button type="button" class="filtre-toggle" id="filtre-verifie">
+      <i class="fi fi-rr-shield-check"></i>
+      Vérifiés
+    </button>
+
+    <button type="button" class="filtre-toggle" id="filtre-top">
+      <i class="fi fi-rr-trophy"></i>
+      Top techniciens
+    </button>
+
+    <button type="button" class="filtres__reset" id="filtres-reset">
+      <i class="fi fi-rr-refresh"></i> Réinitialiser
+    </button>
+
+  </div>
+
+  <!-- Info résultats -->
+  <div class="resultats-info">
+    <div class="resultats-info__compteur" id="resultats-compteur">
+      <strong>0</strong> technicien(s)
+    </div>
+    <div class="resultats-info__tri">
+      <label for="tri">Trier :</label>
+      <select class="filtre-select" id="tri" style="min-width:150px;margin-top:0;">
+        <option value="pertinence">Pertinence</option>
+        <option value="nom-az">Nom (A → Z)</option>
+        <option value="nom-za">Nom (Z → A)</option>
+        <option value="ville">Ville</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grille -->
+  <div class="techniciens-grid" id="grille"></div>
+
+  <!-- État vide -->
+  <div class="vide" id="vide" style="display:none;">
+    <div class="vide__icone"><i class="fi fi-rr-user-slash"></i></div>
+    <div class="vide__titre">Aucun technicien ne correspond</div>
+    <p class="vide__texte">
+      Essaie de modifier tes filtres ou d'élargir ta recherche.
+    </p>
+    <button type="button" class="btn btn--or btn--sm" id="vide-reset">
+      <i class="fi fi-rr-refresh"></i> Réinitialiser les filtres
+    </button>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     DONNÉES DÉMO — 4 techniciens (mêmes que profil-public)
+     ------------------------------------------------------------
+     En production : fetch('/assets/data/techniciens.json')
+     ============================================================ */
+  const TECHNICIENS = [
+    {
+      id: 'aicha-dossou',
+      nom: 'Aïcha Dossou',
+      initiales: 'AD',
+      specialite: 'Réseaux',
+      specialiteLongue: 'Réseaux & Cybersécurité',
+      ville: 'Cotonou',
+      statut: 'disponible',
+      verifie: true,
+      top: true,
+      interventions: 0,
+      note: null,
+      avis: 0,
+      avatarClasse: 'tech-carte__avatar--2'
+    },
+    {
+      id: 'koffi-adande',
+      nom: 'Koffi Adande',
+      initiales: 'KA',
+      specialite: 'Informatique',
+      specialiteLongue: 'Technicien informatique',
+      ville: 'Abomey-Calavi',
+      statut: 'disponible',
+      verifie: true,
+      top: false,
+      interventions: 0,
+      note: null,
+      avis: 0,
+      avatarClasse: 'tech-carte__avatar--1'
+    },
+    {
+      id: 'moussa-bio',
+      nom: 'Moussa Bio',
+      initiales: 'MB',
+      specialite: 'Hardware',
+      specialiteLongue: 'Technicien Hardware',
+      ville: 'Abomey-Calavi',
+      statut: 'occupe',
+      verifie: false,
+      top: false,
+      interventions: 0,
+      note: null,
+      avis: 0,
+      avatarClasse: 'tech-carte__avatar--3'
+    },
+    {
+      id: 'fatou-soglo',
+      nom: 'Fatou Soglo',
+      initiales: 'FS',
+      specialite: 'Développement web',
+      specialiteLongue: 'Développeuse web & Design',
+      ville: 'Cotonou',
+      statut: 'disponible',
+      verifie: true,
+      top: false,
+      interventions: 0,
+      note: null,
+      avis: 0,
+      avatarClasse: 'tech-carte__avatar--4'
+    }
+  ];
+
+  /* ============================================================
+     ÉLÉMENTS
+     ============================================================ */
+  const recherche = document.getElementById('recherche');
+  const rechercheHeader = document.getElementById('recherche-header');
+  const rechercheClear = document.getElementById('recherche-clear');
+
+  const filtreVille = document.getElementById('filtre-ville');
+  const filtreSpecialite = document.getElementById('filtre-specialite');
+  const filtreStatut = document.getElementById('filtre-statut');
+  const filtreVerifie = document.getElementById('filtre-verifie');
+  const filtreTop = document.getElementById('filtre-top');
+  const filtresReset = document.getElementById('filtres-reset');
+  const videReset = document.getElementById('vide-reset');
+
+  const triSelect = document.getElementById('tri');
+
+  const grille = document.getElementById('grille');
+  const vide = document.getElementById('vide');
+  const compteur = document.getElementById('resultats-compteur');
+
+  /* ============================================================
+     ÉTAT
+     ============================================================ */
+  let termeRecherche = '';
+  let filtreVerifieActif = false;
+  let filtreTopActif = false;
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const normaliser = (txt) => {
+    return String(txt || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  };
+
+  const escapeHtml = (txt) => {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  /* ============================================================
+     FILTRAGE
+     ============================================================ */
+  const filtrer = () => {
+    const terme = normaliser(termeRecherche.trim());
+    const ville = filtreVille.value;
+    const specialite = filtreSpecialite.value;
+    const statut = filtreStatut.value;
+
+    let resultats = TECHNICIENS.filter(t => {
+      // Recherche
+      if (terme) {
+        const texte = normaliser(
+          t.nom + ' ' + t.specialite + ' ' + t.specialiteLongue + ' ' + t.ville
+        );
+        if (!texte.includes(terme)) return false;
+      }
+
+      // Ville
+      if (ville && t.ville !== ville) return false;
+
+      // Spécialité
+      if (specialite && t.specialite !== specialite) return false;
+
+      // Statut
+      if (statut && t.statut !== statut) return false;
+
+      // Vérifiés
+      if (filtreVerifieActif && !t.verifie) return false;
+
+      // Top
+      if (filtreTopActif && !t.top) return false;
+
+      return true;
+    });
+
+    // Tri
+    const tri = triSelect.value;
+    if (tri === 'nom-az') {
+      resultats.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+    } else if (tri === 'nom-za') {
+      resultats.sort((a, b) => b.nom.localeCompare(a.nom, 'fr'));
+    } else if (tri === 'ville') {
+      resultats.sort((a, b) => a.ville.localeCompare(b.ville, 'fr'));
+    } else {
+      // Pertinence : top d'abord, puis vérifiés, puis alphabétique
+      resultats.sort((a, b) => {
+        if (a.top !== b.top) return a.top ? -1 : 1;
+        if (a.verifie !== b.verifie) return a.verifie ? -1 : 1;
+        return a.nom.localeCompare(b.nom, 'fr');
+      });
+    }
+
+    return resultats;
+  };
+
+  /* ============================================================
+     AFFICHAGE
+     ============================================================ */
+  const afficherTech = (t) => {
+    const statutClasse = t.statut === 'disponible'
+      ? ''
+      : (t.statut === 'occupe' ? 'tech-carte__statut--occupe' : 'tech-carte__statut--absent');
+
+    let badgesHtml = '';
+    if (t.verifie) {
+      badgesHtml += '<span class="tech-badge tech-badge--verifie"><i class="fi fi-rr-shield-check"></i> Vérifié</span>';
+    }
+    if (t.top) {
+      badgesHtml += '<span class="tech-badge tech-badge--top"><i class="fi fi-rr-trophy"></i> Top</span>';
+    }
+    if (!t.verifie && !t.top) {
+      badgesHtml += '<span class="tech-badge tech-badge--nouveau">Nouveau</span>';
+    }
+
+    const noteAffichee = t.note !== null ? t.note : '—';
+
+    return `
+      <a href="app/profil-public.html?id=${encodeURIComponent(t.id)}" class="tech-carte">
+        <span class="tech-carte__badge-demo">Démo</span>
+
+        <div class="tech-carte__head">
+          <div class="tech-carte__avatar-wrap">
+            <div class="tech-carte__avatar ${t.avatarClasse}">${escapeHtml(t.initiales)}</div>
+            <span class="tech-carte__statut ${statutClasse}" title="${t.statut === 'disponible' ? 'Disponible' : 'Occupé'}"></span>
+          </div>
+
+          <div class="tech-carte__infos">
+            <div class="tech-carte__nom">
+              ${escapeHtml(t.nom)}
+              ${t.verifie ? '<i class="fi fi-sr-badge-check" title="Vérifié"></i>' : ''}
+            </div>
+            <div class="tech-carte__specialite">${escapeHtml(t.specialiteLongue)}</div>
+            <div class="tech-carte__ville">
+              <i class="fi fi-rr-marker"></i> ${escapeHtml(t.ville)}
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-carte__stats">
+          <div class="tech-carte__stat">
+            <div class="tech-carte__stat-v">${t.interventions}</div>
+            <div class="tech-carte__stat-l">Interv.</div>
+          </div>
+          <div class="tech-carte__stat">
+            <div class="tech-carte__stat-v">${noteAffichee}</div>
+            <div class="tech-carte__stat-l">Note</div>
+          </div>
+          <div class="tech-carte__stat">
+            <div class="tech-carte__stat-v">${t.avis}</div>
+            <div class="tech-carte__stat-l">Avis</div>
+          </div>
+        </div>
+
+        <div class="tech-carte__footer">
+          <div class="tech-carte__badges">
+            ${badgesHtml}
+          </div>
+          <span class="tech-carte__lien">
+            Voir profil <i class="fi fi-rr-arrow-right"></i>
+          </span>
+        </div>
+      </a>
+    `;
+  };
+
+  const rendre = () => {
+    const resultats = filtrer();
+
+    // Compteur
+    compteur.innerHTML = '<strong>' + resultats.length + '</strong> technicien' + (resultats.length > 1 ? 's' : '');
+
+    // État vide
+    if (resultats.length === 0) {
+      grille.innerHTML = '';
+      grille.style.display = 'none';
+      vide.style.display = 'block';
+      return;
+    }
+
+    vide.style.display = 'none';
+    grille.style.display = 'grid';
+    grille.innerHTML = resultats.map(afficherTech).join('');
+  };
+
+  /* ============================================================
+     ÉCOUTEURS
+     ============================================================ */
+
+  // Recherche principale
+  let timeoutRecherche = null;
+  const lancerRecherche = (valeur) => {
+    termeRecherche = valeur;
+    rechercheClear.classList.toggle('is-visible', valeur.length > 0);
+    clearTimeout(timeoutRecherche);
+    timeoutRecherche = setTimeout(rendre, 120);
+  };
+
+  recherche.addEventListener('input', (e) => {
+    lancerRecherche(e.target.value);
+    if (rechercheHeader) rechercheHeader.value = e.target.value;
+  });
+
+  if (rechercheHeader) {
+    rechercheHeader.addEventListener('input', (e) => {
+      recherche.value = e.target.value;
+      lancerRecherche(e.target.value);
+    });
+  }
+
+  rechercheClear.addEventListener('click', () => {
+    recherche.value = '';
+    if (rechercheHeader) rechercheHeader.value = '';
+    lancerRecherche('');
+    recherche.focus();
+  });
+
+  // Filtres
+  filtreVille.addEventListener('change', rendre);
+  filtreSpecialite.addEventListener('change', rendre);
+  filtreStatut.addEventListener('change', rendre);
+  triSelect.addEventListener('change', rendre);
+
+  // Toggle Vérifiés
+  filtreVerifie.addEventListener('click', () => {
+    filtreVerifieActif = !filtreVerifieActif;
+    filtreVerifie.classList.toggle('is-actif', filtreVerifieActif);
+    majResetVisible();
+    rendre();
+  });
+
+  // Toggle Top
+  filtreTop.addEventListener('click', () => {
+    filtreTopActif = !filtreTopActif;
+    filtreTop.classList.toggle('is-actif', filtreTopActif);
+    majResetVisible();
+    rendre();
+  });
+
+  // Reset filtres
+  const resetFiltres = () => {
+    recherche.value = '';
+    if (rechercheHeader) rechercheHeader.value = '';
+    termeRecherche = '';
+    rechercheClear.classList.remove('is-visible');
+
+    filtreVille.value = '';
+    filtreSpecialite.value = '';
+    filtreStatut.value = '';
+    triSelect.value = 'pertinence';
+
+    filtreVerifieActif = false;
+    filtreTopActif = false;
+    filtreVerifie.classList.remove('is-actif');
+    filtreTop.classList.remove('is-actif');
+
+    majResetVisible();
+    rendre();
+  };
+
+  filtresReset.addEventListener('click', resetFiltres);
+  videReset.addEventListener('click', resetFiltres);
+
+  // Affiche/masque le bouton reset si des filtres sont actifs
+  const majResetVisible = () => {
+    const actif = termeRecherche.length > 0
+      || filtreVille.value
+      || filtreSpecialite.value
+      || filtreStatut.value
+      || filtreVerifieActif
+      || filtreTopActif;
+    filtresReset.classList.toggle('is-visible', actif);
+  };
+
+  // Met à jour le bouton reset aussi quand les selects changent
+  [filtreVille, filtreSpecialite, filtreStatut].forEach(sel => {
+    sel.addEventListener('change', majResetVisible);
+  });
+
+  /* ============================================================
+     DÉMARRAGE — Lecture d'éventuels paramètres d'URL
+     ============================================================ */
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('ville')) {
+    filtreVille.value = params.get('ville');
+  }
+  if (params.get('specialite')) {
+    filtreSpecialite.value = params.get('specialite');
+  }
+  if (params.get('q')) {
+    recherche.value = params.get('q');
+    termeRecherche = params.get('q');
+    rechercheClear.classList.add('is-visible');
+  }
+
+  majResetVisible();
+  rendre();
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Annuaire', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log(TECHNICIENS.length + ' technicien(s) en démo.');
+});
+</script>
+
+</body>
+</html>

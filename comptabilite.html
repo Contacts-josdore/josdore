@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comptabilité — JosDore Réseau</title>
+<meta name="description" content="Suis tes revenus, tes factures et tes paiements JosDore Réseau.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — COMPTABILITÉ
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.page-entete__texte { flex: 1; min-width: 200px; }
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+.page-entete__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 20px;
+  transition: var(--transition);
+}
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-md);
+}
+.stat-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.stat-card__icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.stat-card__icon--or { background: rgba(245,158,11,0.12); color: var(--or-fonce); }
+.stat-card__icon--bleu { background: rgba(37,99,235,0.10); color: var(--bleu); }
+.stat-card__icon--vert { background: rgba(22,163,74,0.10); color: var(--vert); }
+.stat-card__icon--rouge { background: rgba(220,38,38,0.10); color: var(--rouge); }
+
+.stat-card__tendance {
+  font-size: 11px; font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--rayon-full);
+  display: inline-flex; align-items: center; gap: 3px;
+}
+.stat-card__tendance--neutre { background: var(--gris-100); color: var(--gris-500); }
+
+.stat-card__valeur {
+  font-family: var(--police-titre);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--gris-900);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-card__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.stat-card__sous {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gris-100);
+}
+
+/* ============================================================
+   FILTRES PÉRIODE
+   ============================================================ */
+.filtres-periode {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+  margin-bottom: 4px;
+  scrollbar-width: none;
+}
+.filtres-periode::-webkit-scrollbar { display: none; }
+.filtre-periode {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.filtre-periode:hover { border-color: var(--or); color: var(--or-fonce); }
+.filtre-periode.is-active {
+  background: var(--or);
+  color: var(--nuit);
+  border-color: var(--or);
+}
+.filtre-periode i { font-size: 14px; }
+
+/* ============================================================
+   GRAPHIQUE
+   ============================================================ */
+.graph-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.graph-carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.graph-carte__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.graph-carte__titre i { color: var(--or-fonce); font-size: 18px; }
+.graph-carte__total {
+  font-family: var(--police-titre);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--or-fonce);
+}
+
+.graph {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 180px;
+  padding: 20px 0 32px;
+  position: relative;
+  border-bottom: 1px solid var(--gris-200);
+}
+.graph__bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--or), var(--or-fonce));
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+.graph__bar:hover {
+  opacity: 0.85;
+  transform: scaleY(1.02);
+  transform-origin: bottom;
+}
+.graph__bar--vide {
+  background: var(--gris-200);
+}
+.graph__bar-label {
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--gris-500);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.graph__bar-valeur {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--gris-900);
+  font-weight: 900;
+  white-space: nowrap;
+  opacity: 0;
+  transition: var(--transition);
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: var(--rayon-sm);
+  border: 1px solid var(--gris-200);
+  font-family: var(--police-titre);
+}
+.graph__bar:hover .graph__bar-valeur { opacity: 1; }
+
+/* ============================================================
+   LISTE TRANSACTIONS
+   ============================================================ */
+.transactions-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 22px;
+}
+.transactions-carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.transactions-carte__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.transactions-carte__titre i { color: var(--or-fonce); font-size: 18px; }
+.transactions-carte__compteur {
+  font-size: 12px;
+  color: var(--gris-500);
+  font-weight: 700;
+}
+
+.transaction {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gris-100);
+  transition: var(--transition);
+}
+.transaction:last-child { border-bottom: none; padding-bottom: 0; }
+.transaction:first-child { padding-top: 0; }
+.transaction:hover { background: rgba(245,158,11,0.03); padding-left: 8px; padding-right: 8px; margin-left: -8px; margin-right: -8px; border-radius: var(--rayon-sm); }
+
+.transaction__icone {
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.transaction__icone--vert { background: #DCFCE7; color: var(--vert); }
+.transaction__icone--or { background: #FEF3C7; color: var(--or-fonce); }
+.transaction__icone--rouge { background: #FEE2E2; color: var(--rouge); }
+.transaction__icone--bleu { background: #DBEAFE; color: var(--bleu); }
+.transaction__icone--gris { background: var(--gris-100); color: var(--gris-500); }
+
+.transaction__contenu { flex: 1; min-width: 0; }
+.transaction__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.transaction__client {
+  font-size: 12.5px;
+  color: var(--gris-500);
+  margin-bottom: 5px;
+}
+.transaction__meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--gris-500);
+  flex-wrap: wrap;
+}
+.transaction__meta span {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.transaction__meta i { font-size: 11px; }
+
+.transaction__droite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.transaction__montant {
+  font-family: var(--police-titre);
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--vert);
+  white-space: nowrap;
+}
+.transaction__montant--negatif { color: var(--rouge); }
+.transaction__montant--attente { color: var(--or-fonce); }
+
+.transaction__statut {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--rayon-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.transaction__statut--paye { background: #DCFCE7; color: #15803D; }
+.transaction__statut--attente { background: #FEF3C7; color: #92400E; }
+.transaction__statut--annule { background: #FEE2E2; color: #B91C1C; }
+.transaction__statut--devis { background: var(--gris-100); color: var(--gris-700); }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 40px 20px;
+}
+.vide__icone {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 14px;
+}
+.vide__titre {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 6px;
+}
+.vide__texte {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-entete h1 { font-size: 1.4rem; }
+  .page-entete__actions { width: 100%; }
+  .page-entete__actions .btn { flex: 1; justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-card { padding: 16px; }
+  .stat-card__valeur { font-size: 20px; }
+  .graph-carte, .transactions-carte { padding: 18px; }
+  .graph { height: 140px; }
+  .graph__bar-label { font-size: 10px; }
+  .transaction { padding: 12px 0; }
+  .transaction__icone { width: 38px; height: 38px; font-size: 16px; }
+  .transaction__titre { font-size: 13px; }
+  .transaction__montant { font-size: 14px; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/index.html" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete">
+    <div class="page-entete__texte">
+      <div class="page-entete__eyebrow">Comptabilité</div>
+      <h1>Mes <span>revenus</span></h1>
+      <p class="page-entete__sous">Suis tes gains, tes factures et tes paiements en un coup d'œil.</p>
+    </div>
+    <div class="page-entete__actions">
+      <button type="button" class="btn btn--ghost btn--sm" id="btn-export">
+        <i class="fi fi-rr-download"></i> Exporter
+      </button>
+      <button type="button" class="btn btn--or btn--sm" id="btn-nouvelle-facture">
+        <i class="fi fi-rr-plus"></i> Nouvelle facture
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ STATS ============ -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-card__head">
+        <div class="stat-card__icon stat-card__icon--or">
+          <i class="fi fi-rr-coins"></i>
+        </div>
+        <span class="stat-card__tendance stat-card__tendance--neutre">
+          <i class="fi fi-rr-calendar"></i> Ce mois
+        </span>
+      </div>
+      <div class="stat-card__valeur">0 F</div>
+      <div class="stat-card__label">Revenus ce mois</div>
+      <div class="stat-card__sous">Aucun revenu enregistré ce mois-ci</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-card__head">
+        <div class="stat-card__icon stat-card__icon--vert">
+          <i class="fi fi-rr-chart-line-up"></i>
+        </div>
+        <span class="stat-card__tendance stat-card__tendance--neutre">
+          <i class="fi fi-rr-calendar"></i> Cette année
+        </span>
+      </div>
+      <div class="stat-card__valeur">0 F</div>
+      <div class="stat-card__label">Revenus annuels</div>
+      <div class="stat-card__sous">Aucune transaction en 2026</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-card__head">
+        <div class="stat-card__icon stat-card__icon--bleu">
+          <i class="fi fi-rr-hourglass-end"></i>
+        </div>
+        <span class="stat-card__tendance stat-card__tendance--neutre">
+          <i class="fi fi-rr-time-past"></i> En attente
+        </span>
+      </div>
+      <div class="stat-card__valeur">0 F</div>
+      <div class="stat-card__label">Paiements en attente</div>
+      <div class="stat-card__sous">Aucune facture impayée</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-card__head">
+        <div class="stat-card__icon stat-card__icon--rouge">
+          <i class="fi fi-rr-file-invoice"></i>
+        </div>
+        <span class="stat-card__tendance stat-card__tendance--neutre">
+          <i class="fi fi-rr-calendar"></i> Total
+        </span>
+      </div>
+      <div class="stat-card__valeur">0</div>
+      <div class="stat-card__label">Factures émises</div>
+      <div class="stat-card__sous">Aucune facture pour le moment</div>
+    </div>
+
+  </div>
+
+  <!-- ============ FILTRES PÉRIODE ============ -->
+  <div class="filtres-periode" id="filtres-periode">
+    <button type="button" class="filtre-periode is-active" data-periode="mois">
+      <i class="fi fi-rr-calendar"></i> Ce mois
+    </button>
+    <button type="button" class="filtre-periode" data-periode="trimestre">
+      <i class="fi fi-rr-calendar"></i> Ce trimestre
+    </button>
+    <button type="button" class="filtre-periode" data-periode="annee">
+      <i class="fi fi-rr-calendar"></i> Cette année
+    </button>
+    <button type="button" class="filtre-periode" data-periode="tout">
+      <i class="fi fi-rr-apps"></i> Tout
+    </button>
+  </div>
+
+  <!-- ============ GRAPHIQUE ============ -->
+  <div class="graph-carte">
+    <div class="graph-carte__head">
+      <div class="graph-carte__titre">
+        <i class="fi fi-rr-chart-histogram"></i> Revenus par mois
+      </div>
+      <div class="graph-carte__total" id="graph-total">0 FCFA</div>
+    </div>
+
+    <div class="graph" id="graph"></div>
+  </div>
+
+  <!-- ============ LISTE TRANSACTIONS ============ -->
+  <div class="transactions-carte">
+    <div class="transactions-carte__head">
+      <h2 class="transactions-carte__titre">
+        <i class="fi fi-rr-file-invoice"></i> Transactions
+      </h2>
+      <span class="transactions-carte__compteur" id="transactions-compteur">0 transaction</span>
+    </div>
+
+    <div id="transactions-liste"></div>
+
+    <div class="vide" id="transactions-vide">
+      <div class="vide__icone"><i class="fi fi-rr-file-invoice"></i></div>
+      <div class="vide__titre">Aucune transaction</div>
+      <p class="vide__texte">
+        Tes factures et paiements apparaîtront ici dès que tu auras
+        terminé ta première mission payante.
+      </p>
+      <a href="app/missions.html" class="btn btn--or btn--sm">
+        <i class="fi fi-rr-target"></i> Voir les missions
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="index.html">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/index.html">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     DONNÉES — TRANSACTIONS (DÉMO)
+     ------------------------------------------------------------
+     En production : fetch('assets/data/transactions.json')
+     Chaque transaction a : id, date (ISO), titre, client,
+       montant, type (revenu|depense|devis), statut
+     ============================================================ */
+  const TRANSACTIONS = [];
+
+  /* ============================================================
+     ÉLÉMENTS
+     ============================================================ */
+  const graph = document.getElementById('graph');
+  const graphTotal = document.getElementById('graph-total');
+  const transactionsListe = document.getElementById('transactions-liste');
+  const transactionsVide = document.getElementById('transactions-vide');
+  const transactionsCompteur = document.getElementById('transactions-compteur');
+  const filtresPeriode = document.querySelectorAll('.filtre-periode');
+  const btnExport = document.getElementById('btn-export');
+  const btnNouvelleFacture = document.getElementById('btn-nouvelle-facture');
+
+  /* ============================================================
+     ÉTAT
+     ============================================================ */
+  let periodeActive = 'mois';
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const escapeHtml = (txt) => {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  const formaterMontant = (n) => {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA';
+  };
+
+  const formaterDate = (iso) => {
+    const [y, m, d] = iso.split('-').map(Number);
+    const mois = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
+                  'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+    return d + ' ' + mois[m - 1] + ' ' + y;
+  };
+
+  const MOIS_COURTS = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
+                       'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
+
+  /* ============================================================
+     GRAPHIQUE — REVENUS PAR MOIS
+     ============================================================ */
+  const genererGraphique = () => {
+    // Calcule les revenus par mois de l'année courante
+    const anneeCourante = new Date().getFullYear();
+    const revenusParMois = new Array(12).fill(0);
+
+    TRANSACTIONS.forEach(t => {
+      const [y, m] = t.date.split('-').map(Number);
+      if (y === anneeCourante && t.type === 'revenu' && t.statut === 'paye') {
+        revenusParMois[m - 1] += t.montant;
+      }
+    });
+
+    const max = Math.max(...revenusParMois, 1);
+    const total = revenusParMois.reduce((a, b) => a + b, 0);
+
+    if (graphTotal) {
+      graphTotal.textContent = formaterMontant(total);
+    }
+
+    if (!graph) return;
+
+    graph.innerHTML = revenusParMois.map((valeur, i) => {
+      const hauteur = valeur === 0 ? 4 : Math.round((valeur / max) * 100);
+      const classe = valeur === 0 ? 'graph__bar graph__bar--vide' : 'graph__bar';
+
+      return '<div class="' + classe + '" style="height: ' + hauteur + '%;" data-mois="' + i + '">' +
+        (valeur > 0 ? '<span class="graph__bar-valeur">' + formaterMontant(valeur) + '</span>' : '') +
+        '<span class="graph__bar-label">' + MOIS_COURTS[i] + '</span>' +
+        '</div>';
+    }).join('');
+  };
+
+  /* ============================================================
+     FILTRAGE PAR PÉRIODE
+     ============================================================ */
+  const filtrerParPeriode = () => {
+    const maintenant = new Date();
+    const annee = maintenant.getFullYear();
+    const mois = maintenant.getMonth();
+
+    return TRANSACTIONS.filter(t => {
+      const [y, m] = t.date.split('-').map(Number);
+
+      if (periodeActive === 'mois') {
+        return y === annee && m - 1 === mois;
+      }
+      if (periodeActive === 'trimestre') {
+        const trimestreActuel = Math.floor(mois / 3);
+        const trimestreTransaction = Math.floor((m - 1) / 3);
+        return y === annee && trimestreTransaction === trimestreActuel;
+      }
+      if (periodeActive === 'annee') {
+        return y === annee;
+      }
+      return true;
+    });
+  };
+
+  /* ============================================================
+     AFFICHAGE — LISTE DES TRANSACTIONS
+     ============================================================ */
+  const iconeParType = (type, statut) => {
+    if (statut === 'attente') return { classe: 'transaction__icone--or', icone: 'fi fi-rr-hourglass-end' };
+    if (statut === 'annule') return { classe: 'transaction__icone--rouge', icone: 'fi fi-rr-cross-circle' };
+    if (statut === 'devis') return { classe: 'transaction__icone--bleu', icone: 'fi fi-rr-document-signed' };
+    if (type === 'revenu') return { classe: 'transaction__icone--vert', icone: 'fi fi-rr-arrow-down' };
+    if (type === 'depense') return { classe: 'transaction__icone--rouge', icone: 'fi fi-rr-arrow-up' };
+    return { classe: 'transaction__icone--gris', icone: 'fi fi-rr-file' };
+  };
+
+  const libelleStatut = (statut) => {
+    if (statut === 'paye') return { libelle: 'Payé', classe: 'transaction__statut--paye' };
+    if (statut === 'attente') return { libelle: 'En attente', classe: 'transaction__statut--attente' };
+    if (statut === 'annule') return { libelle: 'Annulé', classe: 'transaction__statut--annule' };
+    if (statut === 'devis') return { libelle: 'Devis', classe: 'transaction__statut--devis' };
+    return { libelle: statut, classe: '' };
+  };
+
+  const afficherTransactions = () => {
+    const transactions = filtrerParPeriode()
+      .sort((a, b) => b.date.localeCompare(a.date));
+
+    if (transactionsCompteur) {
+      transactionsCompteur.textContent = transactions.length + ' transaction' + (transactions.length > 1 ? 's' : '');
+    }
+
+    if (transactions.length === 0) {
+      if (transactionsListe) transactionsListe.innerHTML = '';
+      if (transactionsVide) transactionsVide.style.display = 'block';
+      return;
+    }
+
+    if (transactionsVide) transactionsVide.style.display = 'none';
+
+    if (transactionsListe) {
+      transactionsListe.innerHTML = transactions.map(t => {
+        const { classe, icone } = iconeParType(t.type, t.statut);
+        const { libelle, classe: classeStatut } = libelleStatut(t.statut);
+
+        const montantClasse = t.type === 'revenu' ? '' : 'transaction__montant--negatif';
+        const signe = t.type === 'revenu' ? '+' : '-';
+
+        return '<div class="transaction">' +
+          '<div class="transaction__icone ' + classe + '"><i class="' + icone + '"></i></div>' +
+          '<div class="transaction__contenu">' +
+            '<div class="transaction__titre">' + escapeHtml(t.titre) + '</div>' +
+            '<div class="transaction__client">' + escapeHtml(t.client || '—') + '</div>' +
+            '<div class="transaction__meta">' +
+              '<span><i class="fi fi-rr-calendar"></i> ' + formaterDate(t.date) + '</span>' +
+              '<span><i class="fi fi-rr-hashtag"></i> ' + escapeHtml(t.id) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="transaction__droite">' +
+            '<div class="transaction__montant ' + montantClasse + '">' + signe + formaterMontant(t.montant) + '</div>' +
+            '<span class="transaction__statut ' + classeStatut + '">' + libelle + '</span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+  };
+
+  /* ============================================================
+     ÉCOUTEURS
+     ============================================================ */
+
+  // Filtres période
+  filtresPeriode.forEach(f => {
+    f.addEventListener('click', () => {
+      filtresPeriode.forEach(x => x.classList.remove('is-active'));
+      f.classList.add('is-active');
+      periodeActive = f.dataset.periode;
+      afficherTransactions();
+    });
+  });
+
+  // Bouton export
+  if (btnExport) {
+    btnExport.addEventListener('click', () => {
+      alert('Export des revenus : fonctionnalité à venir.\n\nTu pourras exporter tes transactions en CSV ou PDF.');
+    });
+  }
+
+  // Bouton nouvelle facture
+  if (btnNouvelleFacture) {
+    btnNouvelleFacture.addEventListener('click', () => {
+      alert('Création de facture : fonctionnalité à venir.\n\nTu pourras générer une facture directement depuis une mission terminée.');
+    });
+  }
+
+  /* ============================================================
+     DÉMARRAGE
+     ============================================================ */
+  genererGraphique();
+  afficherTransactions();
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Comptabilité', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log(TRANSACTIONS.length + ' transaction(s) en démo.');
+});
+</script>
+
+</body>
+</html>

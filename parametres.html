@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paramètres — JosDore Réseau</title>
+<meta name="description" content="Gère ton compte JosDore Réseau : profil, sécurité, notifications, confidentialité.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — PARAMÈTRES
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  margin-bottom: 24px;
+}
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--rouge { background: var(--rouge); color: #fff; }
+.btn--rouge:hover { background: #B91C1C; box-shadow: 0 8px 20px rgba(220,38,38,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   ONGLETS NAVIGATION
+   ============================================================ */
+.tabs-param {
+  display: flex;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 4px;
+  gap: 2px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: calc(var(--header-h) + 8px);
+  z-index: 40;
+}
+.tabs-param::-webkit-scrollbar { display: none; }
+.tab-param {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: var(--rayon-md);
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: inherit;
+}
+.tab-param i { font-size: 15px; }
+.tab-param:hover { background: var(--gris-50); color: var(--gris-900); }
+.tab-param.is-active {
+  background: var(--or);
+  color: var(--nuit);
+}
+
+/* ============================================================
+   PANNEAUX
+   ============================================================ */
+.panneau { display: none; }
+.panneau.is-actif { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   CARTE
+   ============================================================ */
+.carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.carte__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.carte__titre i { color: var(--or-fonce); font-size: 18px; }
+.carte__desc {
+  font-size: 13px;
+  color: var(--gris-500);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   AVATAR UPLOADER
+   ============================================================ */
+.avatar-bloc {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.avatar-apercu {
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 32px;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+.avatar-apercu img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.avatar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+.avatar-actions__ligne {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.avatar-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-md);
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.avatar-label:hover { background: var(--or-fonce); transform: translateY(-1px); }
+.avatar-label input { display: none; }
+.avatar-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  gap: 8px;
+}
+.form-label .requis { color: var(--rouge); margin-left: 2px; }
+.form-label .optionnel {
+  font-size: 10px; font-weight: 700;
+  color: var(--gris-500); text-transform: none;
+  letter-spacing: 0; padding: 2px 8px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  padding-left: 16px;
+  line-height: 1.6;
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.form-input.is-invalide,
+.form-textarea.is-invalide { border-color: var(--rouge); background: #FFFBFB; }
+
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid var(--gris-100);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   COMPÉTENCES
+   ============================================================ */
+.competences-zone {
+  display: flex; flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  min-height: 52px;
+  transition: var(--transition);
+}
+.competences-zone:focus-within {
+  border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.competence-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px 5px 12px;
+  background: rgba(245,158,11,0.14);
+  color: var(--or-fonce);
+  border-radius: var(--rayon-full);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.competence-chip button {
+  display: flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(245,158,11,0.25);
+  color: var(--or-fonce);
+  font-size: 11px;
+  transition: var(--transition);
+}
+.competence-chip button:hover { background: var(--or-fonce); color: #fff; }
+.competences-champ {
+  flex: 1;
+  min-width: 120px;
+  padding: 4px 6px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  background: transparent;
+  color: var(--gris-900);
+}
+.competences-champ::placeholder { color: var(--gris-500); }
+
+/* ============================================================
+   TOGGLE / SWITCH
+   ============================================================ */
+.pref-liste { display: flex; flex-direction: column; }
+.pref-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.pref-item:last-child { border-bottom: none; }
+.pref-item__info { flex: 1; min-width: 0; }
+.pref-item__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+}
+.pref-item__desc {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+}
+
+.switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: var(--gris-300);
+  border-radius: var(--rayon-full);
+  transition: var(--transition);
+}
+.switch__slider::before {
+  content: '';
+  position: absolute;
+  height: 20px; width: 20px;
+  left: 3px; bottom: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.switch input:checked + .switch__slider {
+  background-color: var(--or);
+}
+.switch input:checked + .switch__slider::before {
+  transform: translateX(22px);
+}
+.switch input:focus + .switch__slider {
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.20);
+}
+
+/* ============================================================
+   SESSIONS
+   ============================================================ */
+.session-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.session-item:last-child { border-bottom: none; padding-bottom: 0; }
+.session-item__icon {
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  background: var(--gris-100);
+  color: var(--gris-700);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.session-item__info { flex: 1; min-width: 0; }
+.session-item__appareil {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 2px;
+  display: flex; align-items: center; gap: 6px;
+  flex-wrap: wrap;
+}
+.session-item__badge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 8px;
+  background: #DCFCE7;
+  color: #15803D;
+  border-radius: var(--rayon-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.session-item__meta {
+  font-size: 12px;
+  color: var(--gris-500);
+}
+
+/* ============================================================
+   ZONE DANGER
+   ============================================================ */
+.zone-danger {
+  background: rgba(220,38,38,0.04);
+  border: 1.5px solid rgba(220,38,38,0.25);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+}
+.zone-danger__head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(220,38,38,0.15);
+}
+.zone-danger__icon {
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  background: rgba(220,38,38,0.12);
+  color: var(--rouge);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.zone-danger__titre {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--rouge);
+  margin: 0;
+}
+.zone-danger__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(220,38,38,0.10);
+  flex-wrap: wrap;
+}
+.zone-danger__item:last-child { border-bottom: none; padding-bottom: 0; }
+.zone-danger__item-info { flex: 1; min-width: 200px; }
+.zone-danger__item-titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+}
+.zone-danger__item-desc {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   ALERT
+   ============================================================ */
+.alerte {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.alerte.is-visible { display: flex; }
+.alerte i { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.alerte--succes {
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  color: #14532D;
+}
+.alerte--succes i { color: var(--vert); }
+.alerte--erreur {
+  background: #FEF2F2;
+  border: 1px solid rgba(220,38,38,0.2);
+  color: #991B1B;
+}
+.alerte--erreur i { color: var(--rouge); }
+.alerte strong { color: var(--gris-900); font-weight: 800; }
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-entete h1 { font-size: 1.4rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .carte { padding: 18px; }
+  .tab-param { padding: 10px 10px; font-size: 12px; }
+  .tab-param span { display: none; }
+  .avatar-bloc { flex-direction: column; align-items: flex-start; }
+  .avatar-actions { width: 100%; }
+  .zone-danger { padding: 18px; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete">
+    <div class="page-entete__eyebrow">Paramètres</div>
+    <h1>Mon <span>compte</span></h1>
+    <p class="page-entete__sous">Gère tes informations, ta sécurité et tes préférences.</p>
+  </div>
+
+  <!-- Alertes globales -->
+  <div class="alerte alerte--succes" id="alerte-succes" role="status">
+    <i class="fi fi-rr-check-circle"></i>
+    <span id="alerte-succes-texte"><strong>Modifications enregistrées.</strong></span>
+  </div>
+
+  <div class="alerte alerte--erreur" id="alerte-erreur" role="alert">
+    <i class="fi fi-rr-cross-circle"></i>
+    <span id="alerte-erreur-texte">Merci de vérifier tes informations.</span>
+  </div>
+
+  <!-- Onglets navigation -->
+  <div class="tabs-param">
+    <button class="tab-param is-active" data-tab="profil" type="button">
+      <i class="fi fi-rr-user"></i> <span>Profil</span>
+    </button>
+    <button class="tab-param" data-tab="securite" type="button">
+      <i class="fi fi-rr-shield-check"></i> <span>Sécurité</span>
+    </button>
+    <button class="tab-param" data-tab="notifications" type="button">
+      <i class="fi fi-rr-bell"></i> <span>Notifications</span>
+    </button>
+    <button class="tab-param" data-tab="confidentialite" type="button">
+      <i class="fi fi-rr-eye"></i> <span>Confidentialité</span>
+    </button>
+    <button class="tab-param" data-tab="danger" type="button">
+      <i class="fi fi-rr-warning"></i> <span>Danger</span>
+    </button>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANNEAU PROFIL                               -->
+  <!-- ============================================ -->
+  <div class="panneau is-actif" id="panneau-profil">
+
+    <!-- Photo -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-picture"></i> Photo de profil
+        </h2>
+      </div>
+
+      <div class="avatar-bloc">
+        <div class="avatar-apercu" id="avatar-apercu">KA</div>
+
+        <div class="avatar-actions">
+          <div class="avatar-actions__ligne">
+            <label class="avatar-label">
+              <i class="fi fi-rr-camera"></i> Changer la photo
+              <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp">
+            </label>
+            <button type="button" class="btn btn--ghost btn--sm" id="avatar-supprimer">
+              <i class="fi fi-rr-trash"></i> Supprimer
+            </button>
+          </div>
+          <p class="avatar-help">
+            JPG, PNG ou WebP. 2 Mo maximum. Format carré recommandé.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infos personnelles -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-id-badge"></i> Informations personnelles
+        </h2>
+      </div>
+
+      <form id="form-profil" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="pr-nom">
+              Nom complet <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-user" aria-hidden="true"></i>
+              <input class="form-input" type="text" id="pr-nom" value="Koffi Adande" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pr-tel">
+              Téléphone / WhatsApp
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-brands-whatsapp" aria-hidden="true"></i>
+              <input class="form-input" type="tel" id="pr-tel" value="+229 01 28 62 14 07">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pr-email">
+            Email <span class="requis">*</span>
+          </label>
+          <div class="form-input-wrap">
+            <i class="fi fi-rr-envelope" aria-hidden="true"></i>
+            <input class="form-input" type="email" id="pr-email" value="koffi@example.com" required>
+          </div>
+          <p class="form-help">
+            <i class="fi fi-rr-info"></i>
+            Utilisé pour te connecter et recevoir tes notifications.
+          </p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="pr-ville">Ville</label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-marker" aria-hidden="true"></i>
+              <input class="form-input" type="text" id="pr-ville" value="Abomey-Calavi">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pr-specialite">Spécialité</label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-briefcase" aria-hidden="true"></i>
+              <input class="form-input" type="text" id="pr-specialite" value="Technicien informatique">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pr-bio">
+            Bio
+            <span class="optionnel">Optionnel · 200 caractères</span>
+          </label>
+          <textarea class="form-textarea" id="pr-bio" maxlength="200" placeholder="Présente-toi en quelques lignes…"></textarea>
+          <p class="form-help">
+            <i class="fi fi-rr-info"></i>
+            Cette bio apparaîtra sur ton profil public.
+          </p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--or">
+            <i class="fi fi-rr-check"></i> Enregistrer
+          </button>
+          <button type="button" class="btn btn--ghost" id="pr-annuler">
+            Annuler
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Compétences -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-tools"></i> Compétences
+        </h2>
+      </div>
+
+      <p class="carte__desc">
+        Ajoute tes compétences pour apparaître dans les recherches des clients.
+        Appuie sur Entrée ou virgule pour ajouter.
+      </p>
+
+      <div class="competences-zone" id="competences-zone">
+        <input
+          class="competences-champ"
+          type="text"
+          id="competences-champ"
+          placeholder="Ex : Réseaux, WiFi, Câblage…"
+        >
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn--or" id="comp-enregistrer">
+          <i class="fi fi-rr-check"></i> Enregistrer mes compétences
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANNEAU SÉCURITÉ                             -->
+  <!-- ============================================ -->
+  <div class="panneau" id="panneau-securite">
+
+    <!-- Mot de passe -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-lock"></i> Changer de mot de passe
+        </h2>
+      </div>
+
+      <form id="form-mdp" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="mdp-actuel">
+            Mot de passe actuel <span class="requis">*</span>
+          </label>
+          <div class="form-input-wrap">
+            <i class="fi fi-rr-lock" aria-hidden="true"></i>
+            <input class="form-input" type="password" id="mdp-actuel" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="mdp-nouveau">
+              Nouveau mot de passe <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-key" aria-hidden="true"></i>
+              <input class="form-input" type="password" id="mdp-nouveau" minlength="8" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mdp-confirm">
+              Confirmer <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-key" aria-hidden="true"></i>
+              <input class="form-input" type="password" id="mdp-confirm" minlength="8" required>
+            </div>
+          </div>
+        </div>
+
+        <p class="form-help">
+          <i class="fi fi-rr-info"></i>
+          8 caractères minimum. Mélange majuscules, chiffres et symboles.
+        </p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--or">
+            <i class="fi fi-rr-check"></i> Modifier le mot de passe
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- 2FA -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-shield-check"></i> Double authentification (2FA)
+        </h2>
+      </div>
+
+      <p class="carte__desc">
+        Ajoute une seconde vérification lors de la connexion. Même si quelqu'un
+        connaît ton mot de passe, il ne pourra pas accéder à ton compte sans le
+        code envoyé sur ton téléphone.
+      </p>
+
+      <button type="button" class="btn btn--primary" id="btn-2fa">
+        <i class="fi fi-rr-shield-check"></i> Activer la 2FA
+      </button>
+    </div>
+
+    <!-- Sessions -->
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-computer"></i> Sessions actives
+        </h2>
+      </div>
+
+      <div class="session-item">
+        <div class="session-item__icon">
+          <i class="fi fi-rr-computer"></i>
+        </div>
+        <div class="session-item__info">
+          <div class="session-item__appareil">
+            Chrome · Windows
+            <span class="session-item__badge">Session actuelle</span>
+          </div>
+          <div class="session-item__meta">
+            Cotonou, Bénin · à l'instant
+          </div>
+        </div>
+      </div>
+
+      <div class="session-item">
+        <div class="session-item__icon">
+          <i class="fi fi-rr-mobile-notch"></i>
+        </div>
+        <div class="session-item__info">
+          <div class="session-item__appareil">
+            Safari · iPhone
+          </div>
+          <div class="session-item__meta">
+            Cotonou, Bénin · il y a 3 jours
+          </div>
+        </div>
+        <button type="button" class="btn btn--ghost btn--sm" onclick="if(confirm('Déconnecter cette session ?')) alert('Session déconnectée.');">
+          <i class="fi fi-rr-exit"></i> Déconnecter
+        </button>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn--rouge btn--sm" onclick="if(confirm('Déconnecter toutes les autres sessions ?')) alert('Sessions fermées.');">
+          <i class="fi fi-rr-power"></i> Déconnecter les autres sessions
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANNEAU NOTIFICATIONS                        -->
+  <!-- ============================================ -->
+  <div class="panneau" id="panneau-notifications">
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-bell"></i> Préférences de notifications
+        </h2>
+      </div>
+
+      <p class="carte__desc">
+        Choisis les notifications que tu veux recevoir et sur quel canal.
+      </p>
+
+      <div class="pref-liste">
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Nouvelles missions</div>
+            <div class="pref-item__desc">Sois alerté dès qu'une mission correspond à ton profil.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-missions" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Messages</div>
+            <div class="pref-item__desc">Reçois une notification à chaque nouveau message.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-messages" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Avis clients</div>
+            <div class="pref-item__desc">Sois alerté quand un client laisse un avis sur ton profil.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-avis" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Notifications par email</div>
+            <div class="pref-item__desc">Reçois aussi tes notifications par email.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-email" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Notifications WhatsApp</div>
+            <div class="pref-item__desc">Sois alerté sur WhatsApp pour les missions urgentes.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-wa" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Newsletter JosDore</div>
+            <div class="pref-item__desc">Nouveautés, promos, articles. Envoyée 1 fois par mois.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="pref-newsletter">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn--or" id="pref-enregistrer">
+          <i class="fi fi-rr-check"></i> Enregistrer mes préférences
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANNEAU CONFIDENTIALITÉ                      -->
+  <!-- ============================================ -->
+  <div class="panneau" id="panneau-confidentialite">
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-eye"></i> Visibilité de mon profil
+        </h2>
+      </div>
+
+      <div class="pref-liste">
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Profil public</div>
+            <div class="pref-item__desc">Ton profil est visible par tout le monde dans l'annuaire.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="vis-public" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Afficher mon téléphone</div>
+            <div class="pref-item__desc">Les clients pourront voir ton numéro directement.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="vis-tel">
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Afficher ma disponibilité</div>
+            <div class="pref-item__desc">Un indicateur vert / orange sur ton profil.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="vis-statut" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Autoriser les messages</div>
+            <div class="pref-item__desc">N'importe qui peut t'envoyer un message.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="vis-messages" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+        <div class="pref-item">
+          <div class="pref-item__info">
+            <div class="pref-item__titre">Analyses d'audience</div>
+            <div class="pref-item__desc">Aide JosDore à améliorer le service (cookies anonymes).</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="vis-analytics" checked>
+            <span class="switch__slider"></span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn--or" id="conf-enregistrer">
+          <i class="fi fi-rr-check"></i> Enregistrer
+        </button>
+        <a href="legal/confidentialite.html" class="btn btn--ghost">
+          <i class="fi fi-rr-info"></i> Politique de confidentialité
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANNEAU DANGER                               -->
+  <!-- ============================================ -->
+  <div class="panneau" id="panneau-danger">
+
+    <div class="zone-danger">
+      <div class="zone-danger__head">
+        <div class="zone-danger__icon">
+          <i class="fi fi-rr-warning"></i>
+        </div>
+        <h2 class="zone-danger__titre">Zone dangereuse</h2>
+      </div>
+
+      <div class="zone-danger__item">
+        <div class="zone-danger__item-info">
+          <div class="zone-danger__item-titre">Mettre mon compte en pause</div>
+          <div class="zone-danger__item-desc">
+            Ton profil sera masqué de l'annuaire. Tu pourras le réactiver à tout moment.
+          </div>
+        </div>
+        <button type="button" class="btn btn--ghost btn--sm" id="btn-pause">
+          <i class="fi fi-rr-pause"></i> Mettre en pause
+        </button>
+      </div>
+
+      <div class="zone-danger__item">
+        <div class="zone-danger__item-info">
+          <div class="zone-danger__item-titre">Télécharger mes données</div>
+          <div class="zone-danger__item-desc">
+            Reçois une copie de toutes tes infos (profil, posts, messages).
+          </div>
+        </div>
+        <a href="mailto:contact@josdore.app?subject=Demande%20de%20mes%20donn%C3%A9es%20JosDore" class="btn btn--ghost btn--sm">
+          <i class="fi fi-rr-download"></i> Demander
+        </a>
+      </div>
+
+      <div class="zone-danger__item">
+        <div class="zone-danger__item-info">
+          <div class="zone-danger__item-titre">Supprimer mon compte</div>
+          <div class="zone-danger__item-desc">
+            Cette action est <strong>définitive</strong>. Ton profil, ton portfolio,
+            tes messages seront effacés.
+          </div>
+        </div>
+        <button type="button" class="btn btn--rouge btn--sm" id="btn-supprimer">
+          <i class="fi fi-rr-trash"></i> Supprimer
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrirCookies = () => cookies && cookies.classList.add('is-open');
+  const fermerCookies = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarderChoix = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermerCookies();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrirCookies, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarderChoix('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarderChoix('refuse'));
+
+  /* ============================================================
+     ONGLETS
+     ============================================================ */
+  const tabs = document.querySelectorAll('.tab-param');
+  const panneaux = document.querySelectorAll('.panneau');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cible = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      panneaux.forEach(p => p.classList.remove('is-actif'));
+      const panneau = document.getElementById('panneau-' + cible);
+      if (panneau) panneau.classList.add('is-actif');
+
+      history.replaceState(null, '', '#tab=' + cible);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Deep link
+  const hashParams = new URLSearchParams((window.location.hash || '').replace('#', '?'));
+  const tabInitial = hashParams.get('tab');
+  if (tabInitial) {
+    const tabCible = document.querySelector('.tab-param[data-tab="' + tabInitial + '"]');
+    if (tabCible) tabCible.click();
+  }
+
+  /* ============================================================
+     ALERTES
+     ============================================================ */
+  const alerteSucces = document.getElementById('alerte-succes');
+  const alerteSuccesTexte = document.getElementById('alerte-succes-texte');
+  const alerteErreur = document.getElementById('alerte-erreur');
+  const alerteErreurTexte = document.getElementById('alerte-erreur-texte');
+
+  const afficherSucces = (msg) => {
+    alerteSuccesTexte.innerHTML = '<strong>' + msg + '</strong>';
+    alerteSucces.classList.add('is-visible');
+    alerteErreur.classList.remove('is-visible');
+    setTimeout(() => alerteSucces.classList.remove('is-visible'), 3500);
+  };
+  const afficherErreur = (msg) => {
+    alerteErreurTexte.textContent = msg;
+    alerteErreur.classList.add('is-visible');
+    alerteSucces.classList.remove('is-visible');
+  };
+  const cacherAlertes = () => {
+    alerteSucces.classList.remove('is-visible');
+    alerteErreur.classList.remove('is-visible');
+  };
+
+  /* ============================================================
+     PERSISTANCE — PROFIL
+     ============================================================ */
+  const CLE_PROFIL = 'josdore_profil_perso';
+
+  const chargerProfil = () => {
+    try { return JSON.parse(localStorage.getItem(CLE_PROFIL) || '{}'); }
+    catch (e) { return {}; }
+  };
+  const sauvegarderProfil = (data) => {
+    try { localStorage.setItem(CLE_PROFIL, JSON.stringify(data)); } catch (e) {}
+  };
+
+  const profil = chargerProfil();
+
+  /* ============================================================
+     AVATAR
+     ============================================================ */
+  const avatarApercu = document.getElementById('avatar-apercu');
+  const avatarInput = document.getElementById('avatar-input');
+  const avatarSuppr = document.getElementById('avatar-supprimer');
+
+  // Charge un avatar existant
+  if (profil.avatar) {
+    avatarApercu.innerHTML = '<img src="' + profil.avatar + '" alt="Photo de profil">';
+  } else {
+    // Initiale du nom
+    const initiales = 'KA';
+    avatarApercu.textContent = initiales;
+  }
+
+  if (avatarInput) {
+    avatarInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      if (file.size > 2 * 1024 * 1024) {
+        afficherErreur('La photo est trop lourde (2 Mo maximum).');
+        avatarInput.value = '';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const dataUrl = ev.target.result;
+        avatarApercu.innerHTML = '<img src="' + dataUrl + '" alt="Photo de profil">';
+
+        // Sauvegarde
+        profil.avatar = dataUrl;
+        sauvegarderProfil(profil);
+
+        afficherSucces('Photo de profil mise à jour.');
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  if (avatarSuppr) {
+    avatarSuppr.addEventListener('click', () => {
+      if (!profil.avatar) {
+        afficherErreur('Aucune photo à supprimer.');
+        return;
+      }
+      if (confirm('Supprimer ta photo de profil ?')) {
+        delete profil.avatar;
+        sauvegarderProfil(profil);
+        avatarApercu.innerHTML = 'KA';
+        afficherSucces('Photo supprimée.');
+      }
+    });
+  }
+
+  /* ============================================================
+     FORMULAIRE PROFIL
+     ============================================================ */
+  const formProfil = document.getElementById('form-profil');
+  const prNom = document.getElementById('pr-nom');
+  const prTel = document.getElementById('pr-tel');
+  const prEmail = document.getElementById('pr-email');
+  const prVille = document.getElementById('pr-ville');
+  const prSpecialite = document.getElementById('pr-specialite');
+  const prBio = document.getElementById('pr-bio');
+  const prAnnuler = document.getElementById('pr-annuler');
+
+  // Pré-remplir avec les données sauvegardées
+  if (profil.nom) prNom.value = profil.nom;
+  if (profil.tel) prTel.value = profil.tel;
+  if (profil.email) prEmail.value = profil.email;
+  if (profil.ville) prVille.value = profil.ville;
+  if (profil.specialite) prSpecialite.value = profil.specialite;
+  if (profil.bio) prBio.value = profil.bio;
+
+  if (formProfil) {
+    formProfil.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nom = prNom.value.trim();
+      const email = prEmail.value.trim();
+      const tel = prTel.value.trim();
+
+      if (nom.length < 2) {
+        prNom.classList.add('is-invalide');
+        prNom.focus();
+        return afficherErreur('Le nom doit contenir au moins 2 caractères.');
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        prEmail.classList.add('is-invalide');
+        prEmail.focus();
+        return afficherErreur('Adresse email invalide.');
+      }
+      if (tel && !/^[+\d][\d\s().-]{6,}$/.test(tel)) {
+        prTel.classList.add('is-invalide');
+        prTel.focus();
+        return afficherErreur('Numéro de téléphone invalide.');
+      }
+
+      // Sauvegarde
+      profil.nom = nom;
+      profil.email = email;
+      profil.tel = tel;
+      profil.ville = prVille.value.trim();
+      profil.specialite = prSpecialite.value.trim();
+      profil.bio = prBio.value.trim();
+      sauvegarderProfil(profil);
+
+      afficherSucces('Profil enregistré.');
+
+      // Nettoyer les erreurs
+      [prNom, prEmail, prTel].forEach(el => el.classList.remove('is-invalide'));
+    });
+  }
+
+  if (prAnnuler) {
+    prAnnuler.addEventListener('click', () => {
+      if (confirm('Annuler les modifications non enregistrées ?')) {
+        // Recharger depuis la sauvegarde
+        const p = chargerProfil();
+        if (p.nom) prNom.value = p.nom;
+        if (p.tel) prTel.value = p.tel;
+        if (p.email) prEmail.value = p.email;
+        if (p.ville) prVille.value = p.ville;
+        if (p.specialite) prSpecialite.value = p.specialite;
+        if (p.bio) prBio.value = p.bio;
+        cacherAlertes();
+      }
+    });
+  }
+
+  // Nettoyer les erreurs à la saisie
+  [prNom, prTel, prEmail].forEach(el => {
+    el.addEventListener('input', () => el.classList.remove('is-invalide'));
+  });
+
+  /* ============================================================
+     COMPÉTENCES
+     ============================================================ */
+  const compZone = document.getElementById('competences-zone');
+  const compChamp = document.getElementById('competences-champ');
+  const compEnregistrer = document.getElementById('comp-enregistrer');
+
+  const MAX_COMP = 12;
+  let competences = Array.isArray(profil.competences) ? profil.competences.slice() : [];
+
+  const rendreCompetences = () => {
+    // Supprime tous les chips existants
+    compZone.querySelectorAll('.competence-chip').forEach(c => c.remove());
+
+    // Les recrée
+    competences.forEach(comp => {
+      const chip = document.createElement('span');
+      chip.className = 'competence-chip';
+      chip.dataset.comp = comp;
+      chip.innerHTML = comp + ' <button type="button" aria-label="Supprimer"><i class="fi fi-rr-cross-small"></i></button>';
+
+      chip.querySelector('button').addEventListener('click', () => {
+        competences = competences.filter(c => c !== comp);
+        rendreCompetences();
+      });
+
+      compZone.insertBefore(chip, compChamp);
+    });
+  };
+
+  const ajouterCompetence = (valeur) => {
+    const v = valeur.trim();
+    if (!v) return;
+    if (competences.length >= MAX_COMP) {
+      afficherErreur('Maximum ' + MAX_COMP + ' compétences.');
+      return;
+    }
+    if (competences.map(c => c.toLowerCase()).includes(v.toLowerCase())) {
+      return;
+    }
+    competences.push(v);
+    rendreCompetences();
+  };
+
+  if (compChamp) {
+    compChamp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        ajouterCompetence(compChamp.value);
+        compChamp.value = '';
+      } else if (e.key === 'Backspace' && compChamp.value === '') {
+        if (competences.length > 0) {
+          competences.pop();
+          rendreCompetences();
+        }
+      }
+    });
+
+    compChamp.addEventListener('blur', () => {
+      if (compChamp.value.trim()) {
+        ajouterCompetence(compChamp.value);
+        compChamp.value = '';
+      }
+    });
+  }
+
+  if (compZone) {
+    compZone.addEventListener('click', () => compChamp.focus());
+  }
+
+  if (compEnregistrer) {
+    compEnregistrer.addEventListener('click', () => {
+      profil.competences = competences.slice();
+      sauvegarderProfil(profil);
+      afficherSucces('Compétences enregistrées (' + competences.length + ').');
+    });
+  }
+
+  rendreCompetences();
+
+  /* ============================================================
+     FORMULAIRE MOT DE PASSE
+     ============================================================ */
+  const formMdp = document.getElementById('form-mdp');
+  const mdpActuel = document.getElementById('mdp-actuel');
+  const mdpNouveau = document.getElementById('mdp-nouveau');
+  const mdpConfirm = document.getElementById('mdp-confirm');
+
+  if (formMdp) {
+    formMdp.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const a = mdpActuel.value;
+      const n = mdpNouveau.value;
+      const c = mdpConfirm.value;
+
+      if (!a) {
+        mdpActuel.classList.add('is-invalide');
+        mdpActuel.focus();
+        return afficherErreur('Merci de saisir ton mot de passe actuel.');
+      }
+      if (n.length < 8) {
+        mdpNouveau.classList.add('is-invalide');
+        mdpNouveau.focus();
+        return afficherErreur('Le nouveau mot de passe doit contenir au moins 8 caractères.');
+      }
+      if (n !== c) {
+        mdpConfirm.classList.add('is-invalide');
+        mdpConfirm.focus();
+        return afficherErreur('Les deux mots de passe ne correspondent pas.');
+      }
+
+      // Simulation
+      setTimeout(() => {
+        afficherSucces('Mot de passe modifié.');
+        formMdp.reset();
+        [mdpActuel, mdpNouveau, mdpConfirm].forEach(el => el.classList.remove('is-invalide'));
+      }, 500);
+    });
+  }
+
+  [mdpActuel, mdpNouveau, mdpConfirm].forEach(el => {
+    if (el) el.addEventListener('input', () => el.classList.remove('is-invalide'));
+  });
+
+  /* ============================================================
+     ACTIVER 2FA
+     ============================================================ */
+  const btn2FA = document.getElementById('btn-2fa');
+  if (btn2FA) {
+    btn2FA.addEventListener('click', () => {
+      alert('Double authentification : fonctionnalité à venir.\n\nElle sera bientôt disponible pour sécuriser encore plus ton compte.');
+    });
+  }
+
+  /* ============================================================
+     PRÉFÉRENCES NOTIFICATIONS
+     ============================================================ */
+  const CLE_PREFS = 'josdore_prefs_notifs';
+
+  const chargerPrefs = () => {
+    try { return JSON.parse(localStorage.getItem(CLE_PREFS) || '{}'); }
+    catch (e) { return {}; }
+  };
+  const sauvegarderPrefs = (data) => {
+    try { localStorage.setItem(CLE_PREFS, JSON.stringify(data)); } catch (e) {}
+  };
+
+  const prefs = chargerPrefs();
+  const prefsMap = {
+    'pref-missions': 'missions',
+    'pref-messages': 'messages',
+    'pref-avis': 'avis',
+    'pref-email': 'email',
+    'pref-wa': 'whatsapp',
+    'pref-newsletter': 'newsletter'
+  };
+
+  Object.entries(prefsMap).forEach(([id, key]) => {
+    const el = document.getElementById(id);
+    if (el && prefs[key] !== undefined) el.checked = prefs[key];
+  });
+
+  const prefEnregistrer = document.getElementById('pref-enregistrer');
+  if (prefEnregistrer) {
+    prefEnregistrer.addEventListener('click', () => {
+      const data = {};
+      Object.entries(prefsMap).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el) data[key] = el.checked;
+      });
+      sauvegarderPrefs(data);
+      afficherSucces('Préférences de notifications enregistrées.');
+    });
+  }
+
+  /* ============================================================
+     CONFIDENTIALITÉ
+     ============================================================ */
+  const CLE_CONF = 'josdore_prefs_conf';
+
+  const chargerConf = () => {
+    try { return JSON.parse(localStorage.getItem(CLE_CONF) || '{}'); }
+    catch (e) { return {}; }
+  };
+  const sauvegarderConf = (data) => {
+    try { localStorage.setItem(CLE_CONF, JSON.stringify(data)); } catch (e) {}
+  };
+
+  const conf = chargerConf();
+  const confMap = {
+    'vis-public': 'public',
+    'vis-tel': 'tel',
+    'vis-statut': 'statut',
+    'vis-messages': 'messages',
+    'vis-analytics': 'analytics'
+  };
+
+  Object.entries(confMap).forEach(([id, key]) => {
+    const el = document.getElementById(id);
+    if (el && conf[key] !== undefined) el.checked = conf[key];
+  });
+
+  const confEnregistrer = document.getElementById('conf-enregistrer');
+  if (confEnregistrer) {
+    confEnregistrer.addEventListener('click', () => {
+      const data = {};
+      Object.entries(confMap).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (el) data[key] = el.checked;
+      });
+      sauvegarderConf(data);
+      afficherSucces('Préférences de confidentialité enregistrées.');
+    });
+  }
+
+  /* ============================================================
+     ZONE DANGER
+     ============================================================ */
+  const btnPause = document.getElementById('btn-pause');
+  const btnSupprimer = document.getElementById('btn-supprimer');
+
+  if (btnPause) {
+    btnPause.addEventListener('click', () => {
+      if (confirm('Mettre ton compte en pause ?\n\nTon profil sera masqué de l\'annuaire. Tu pourras le réactiver à tout moment.')) {
+        afficherSucces('Compte mis en pause. Tu peux le réactiver depuis cette page.');
+        btnPause.innerHTML = '<i class="fi fi-rr-play"></i> Réactiver';
+        btnPause.classList.remove('btn--ghost');
+        btnPause.classList.add('btn--or');
+      }
+    });
+  }
+
+  if (btnSupprimer) {
+    btnSupprimer.addEventListener('click', () => {
+      const saisie = prompt('Pour confirmer la suppression définitive, écris SUPPRIMER en majuscules :');
+      if (saisie === 'SUPPRIMER') {
+        alert('Demande de suppression envoyée. Tu recevras un email de confirmation.');
+      } else if (saisie !== null) {
+        afficherErreur('Confirmation incorrecte. Aucune suppression effectuée.');
+      }
+    });
+  }
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Paramètres', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

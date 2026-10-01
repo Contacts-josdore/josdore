@@ -1,0 +1,76 @@
+{
+  "name": "JosDore — Écosystème technologique et éducatif africain",
+  "short_name": "JosDore",
+  "description": "Apprendre. Travailler. Évoluer. JosDore réunit 4 pôles et 10 activités pour outiller l'Afrique numérique.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0A2540",
+  "background_color": "#FFFFFF",
+  "categories": ["business", "education", "productivity"],
+  "icons": [
+    {
+      "src": "assets/images/logo/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/logo/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Voir le Store",
+      "short_name": "Store",
+      "description": "Matériel informatique au bon prix",
+      "url": "pages/commerce/store/",
+      "icons": [{ "src": "assets/images/logo/favicon-180.png", "sizes": "180x180" }]
+    },
+    {
+      "name": "JosDore Réseau",
+      "short_name": "Réseau",
+      "description": "Le réseau social des techniciens",
+      "url": "/app/",
+      "icons": [{ "src": "assets/images/logo/favicon-180.png", "sizes": "180x180" }]
+    },
+    {
+      "name": "Formations",
+      "short_name": "Academy",
+      "description": "Formations certifiantes",
+      "url": "pages/education/academy/",
+      "icons": [{ "src": "assets/images/logo/favicon-180.png", "sizes": "180x180" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Nous contacter",
+      "url": "contact.html",
+      "icons": [{ "src": "assets/images/logo/favicon-180.png", "sizes": "180x180" }]
+    }
+  ]
+}

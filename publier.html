@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publier une intervention — JosDore Réseau</title>
+<meta name="description" content="Publie une intervention sur JosDore Réseau. Chaque publication construit ton portfolio et ta réputation.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — PUBLIER
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge);
+  color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.page-entete__texte { flex: 1; min-width: 200px; }
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+.page-entete__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Layout 2 colonnes */
+.publier-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   CARTES
+   ============================================================ */
+.carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.carte__titre {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.carte__titre i { color: var(--or-fonce); font-size: 18px; }
+.carte__titre-compteur {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.form-label .requis { color: var(--rouge); margin-left: 2px; }
+.form-label .optionnel {
+  font-size: 10px; font-weight: 700;
+  color: var(--gris-500); text-transform: none;
+  letter-spacing: 0; padding: 2px 8px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+  padding-left: 16px;
+  line-height: 1.6;
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none; border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.form-input.is-invalide,
+.form-textarea.is-invalide,
+.form-select.is-invalide {
+  border-color: var(--rouge);
+  background: #FFFBFB;
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.form-help .form-help__texte {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.form-help__compteur {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.form-help__compteur.is-warn { color: var(--or-fonce); }
+.form-help__compteur.is-danger { color: var(--rouge); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ============================================================
+   PHOTO UPLOADER
+   ============================================================ */
+.photo-zone {
+  border: 2px dashed var(--gris-300);
+  border-radius: var(--rayon-md);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--gris-50);
+  position: relative;
+}
+.photo-zone:hover {
+  border-color: var(--or);
+  background: rgba(245,158,11,0.03);
+}
+.photo-zone.is-dragover {
+  border-color: var(--or);
+  background: rgba(245,158,11,0.08);
+}
+.photo-zone input { display: none; }
+.photo-zone__icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 12px;
+}
+.photo-zone__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 4px;
+}
+.photo-zone__desc {
+  font-size: 12px;
+  color: var(--gris-500);
+}
+
+/* Grille des photos */
+.photo-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.photo-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--rayon-sm);
+  overflow: hidden;
+  background: var(--gris-100);
+  box-shadow: var(--ombre-sm);
+}
+.photo-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.photo-item__suppr {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(220,38,38,0.9);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid #fff;
+}
+.photo-item__suppr:hover { background: var(--rouge); transform: scale(1.08); }
+.photo-item__badge {
+  position: absolute;
+  bottom: 4px; left: 4px;
+  padding: 2px 7px;
+  background: rgba(10,37,64,0.85);
+  color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   TAGS INPUT
+   ============================================================ */
+.tags-input {
+  display: flex; flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  min-height: 48px;
+  transition: var(--transition);
+}
+.tags-input:focus-within {
+  border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.tag-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  background: rgba(37,99,235,0.10);
+  color: var(--bleu);
+  border-radius: var(--rayon-full);
+  font-size: 12px;
+  font-weight: 700;
+}
+.tag-chip button {
+  display: flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(37,99,235,0.15);
+  color: var(--bleu);
+  font-size: 11px;
+  transition: var(--transition);
+}
+.tag-chip button:hover { background: var(--bleu); color: #fff; }
+.tags-input__champ {
+  flex: 1;
+  min-width: 100px;
+  padding: 4px 6px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  background: transparent;
+  color: var(--gris-900);
+}
+.tags-input__champ::placeholder { color: var(--gris-500); }
+
+/* ============================================================
+   APERÇU LIVE
+   ============================================================ */
+.apercu {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+}
+.apercu__etiquette {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  border-radius: var(--rayon-full);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.apercu__carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  overflow: hidden;
+  box-shadow: var(--ombre-sm);
+}
+
+/* Post preview (mirror du feed) */
+.post {
+  background: #fff;
+  overflow: hidden;
+}
+.post__head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 16px 12px;
+}
+.post__avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.post__user { flex: 1; min-width: 0; }
+.post__nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 2px;
+}
+.post__nom i { color: var(--bleu); font-size: 13px; }
+.post__meta {
+  font-size: 12px; color: var(--gris-500);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.post__meta i { font-size: 11px; }
+.post__body {
+  padding: 0 16px 12px;
+}
+.post__titre {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 6px;
+  line-height: 1.35;
+  min-height: 20px;
+}
+.post__titre .placeholder {
+  color: var(--gris-300);
+  font-style: italic;
+  font-weight: 600;
+}
+.post__desc {
+  font-size: 14px;
+  color: var(--gris-700);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.post__desc .placeholder {
+  color: var(--gris-300);
+  font-style: italic;
+}
+.post__image {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #1E293B, #334155);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 64px;
+  margin: 0 16px 12px;
+  border-radius: var(--rayon-md);
+  position: relative;
+  overflow: hidden;
+}
+.post__image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+}
+.post__image-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.3);
+}
+.post__image-placeholder i { font-size: 40px; }
+.post__image-placeholder span {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.post__tags {
+  padding: 0 16px 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  min-height: 24px;
+}
+.post__tags .placeholder {
+  font-size: 12px;
+  color: var(--gris-300);
+  font-style: italic;
+}
+.post__tag {
+  font-size: 12px; font-weight: 700;
+  color: var(--bleu);
+  background: rgba(37,99,235,0.08);
+  padding: 3px 10px;
+  border-radius: var(--rayon-full);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.post__tag:hover { background: rgba(37,99,235,0.16); }
+.post__stats {
+  padding: 0 16px 10px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 12px; color: var(--gris-500);
+}
+.post__stats i { color: var(--rouge); font-size: 13px; }
+.post__stats-sep { flex: 1; }
+.post__actions {
+  display: flex;
+  padding: 8px 8px;
+  border-top: 1px solid var(--gris-100);
+  gap: 2px;
+}
+.post__action {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 8px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-500);
+  pointer-events: none;
+}
+.post__action i { font-size: 16px; }
+
+/* ============================================================
+   ALERTES
+   ============================================================ */
+.alerte {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.alerte.is-visible { display: flex; }
+.alerte i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.alerte--erreur {
+  background: #FEF2F2;
+  border: 1px solid rgba(220,38,38,0.2);
+  color: #991B1B;
+}
+.alerte--erreur i { color: var(--rouge); }
+.alerte--succes {
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  color: #14532D;
+}
+.alerte--succes i { color: var(--vert); }
+
+/* ============================================================
+   ÉTAPE FINALE (Succès)
+   ============================================================ */
+.succes-bloc {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.succes-bloc.is-visible { display: block; }
+.succes-bloc__icon {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+  margin: 0 auto 24px;
+  box-shadow: 0 16px 40px rgba(245,158,11,0.35);
+  animation: pop 0.5s ease;
+}
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.succes-bloc h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: 12px;
+}
+.succes-bloc p {
+  font-size: 14.5px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 auto 28px;
+}
+.succes-bloc__actions {
+  display: flex; gap: 10px;
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .publier-layout {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+  .carte { padding: 18px; }
+  .page-entete__actions { width: 100%; }
+  .page-entete__actions .btn { flex: 1; justify-content: center; }
+  .photo-grille { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">4</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete" id="page-entete">
+    <div class="page-entete__texte">
+      <div class="page-entete__eyebrow">Publier</div>
+      <h1>Publie ton <span>intervention</span></h1>
+      <p class="page-entete__sous">Chaque publication construit ton portfolio et ta réputation.</p>
+    </div>
+    <div class="page-entete__actions">
+      <a href="app/feed.html" class="btn btn--ghost btn--sm">
+        <i class="fi fi-rr-arrow-left"></i> Annuler
+      </a>
+    </div>
+  </div>
+
+  <!-- Alerte -->
+  <div class="alerte alerte--erreur" id="alerte-erreur" role="alert">
+    <i class="fi fi-rr-cross-circle"></i>
+    <span id="alerte-erreur-texte">Merci de vérifier tes informations.</span>
+  </div>
+
+  <!-- Layout principal -->
+  <div class="publier-layout" id="publier-layout">
+
+    <!-- ============================================ -->
+    <!-- COLONNE GAUCHE — FORMULAIRE                  -->
+    <!-- ============================================ -->
+    <div>
+
+      <form id="form-publier" novalidate>
+
+        <!-- Section : Contenu -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-edit"></i> Contenu de l'intervention
+            </h2>
+            <span class="carte__titre-compteur">Obligatoire</span>
+          </div>
+
+          <!-- Titre -->
+          <div class="form-group">
+            <label class="form-label" for="pub-titre">
+              Titre <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-heading" aria-hidden="true"></i>
+              <input
+                class="form-input"
+                type="text"
+                id="pub-titre"
+                placeholder="Ex : Câblage salle serveur PME"
+                maxlength="100"
+                required
+              >
+            </div>
+            <p class="form-help">
+              <span class="form-help__texte"><i class="fi fi-rr-info"></i> Un titre court et descriptif</span>
+              <span class="form-help__compteur" id="compteur-titre">0 / 100</span>
+            </p>
+          </div>
+
+          <!-- Description -->
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="pub-desc">
+              Description <span class="requis">*</span>
+            </label>
+            <textarea
+              class="form-textarea"
+              id="pub-desc"
+              placeholder="Décris ce que tu as fait. Le matériel utilisé, le temps passé, le résultat. Plus tu es précis, mieux c'est."
+              maxlength="800"
+              required
+            ></textarea>
+            <p class="form-help">
+              <span class="form-help__texte"><i class="fi fi-rr-info"></i> 20 caractères minimum</span>
+              <span class="form-help__compteur" id="compteur-desc">0 / 800</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Section : Photos -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-picture"></i> Photos
+            </h2>
+            <span class="carte__titre-compteur" id="compteur-photos">0 / 6</span>
+          </div>
+
+          <div class="photo-zone" id="photo-zone">
+            <input type="file" id="photo-input" accept="image/png,image/jpeg,image/webp" multiple>
+            <div class="photo-zone__icon">
+              <i class="fi fi-rr-cloud-upload"></i>
+            </div>
+            <div class="photo-zone__titre">Ajouter des photos</div>
+            <div class="photo-zone__desc">Clique ou glisse-dépose. JPG, PNG, WebP. 5 Mo max par photo.</div>
+          </div>
+
+          <div class="photo-grille" id="photo-grille"></div>
+        </div>
+
+        <!-- Section : Localisation -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-marker"></i> Localisation
+            </h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="pub-ville">
+                Ville <span class="requis">*</span>
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-marker" aria-hidden="true"></i>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="pub-ville"
+                  placeholder="Abomey-Calavi"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="pub-quartier">
+                Quartier
+                <span class="optionnel">Optionnel</span>
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-map" aria-hidden="true"></i>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="pub-quartier"
+                  placeholder="Sainte Rita"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section : Catégorie -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-tag"></i> Catégorie & Tags
+            </h2>
+          </div>
+
+          <!-- Spécialité -->
+          <div class="form-group">
+            <label class="form-label" for="pub-specialite">
+              Spécialité <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-briefcase" aria-hidden="true"></i>
+              <select class="form-select" id="pub-specialite" required>
+                <option value="">-- Choisis une spécialité --</option>
+                <option value="Réseaux">Réseaux</option>
+                <option value="Informatique">Informatique</option>
+                <option value="Hardware">Hardware</option>
+                <option value="Électricité">Électricité</option>
+                <option value="Développement web">Développement web</option>
+                <option value="Design">Design</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Formation">Formation</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="tags-champ">
+              Tags
+              <span class="optionnel">Optionnel · max 8</span>
+            </label>
+            <div class="tags-input" id="tags-input">
+              <input
+                class="tags-input__champ"
+                type="text"
+                id="tags-champ"
+                placeholder="Tape un mot et appuie sur Entrée (ex : câblage, serveur, RJ45)"
+              >
+            </div>
+            <p class="form-help">
+              <span class="form-help__texte"><i class="fi fi-rr-info"></i> Utilise des mots simples pour être trouvé</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Section : Détails -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-settings"></i> Détails
+              <span style="font-size:11px;font-weight:600;color:var(--gris-500);text-transform:uppercase;letter-spacing:0.5px;margin-left:4px;">Optionnel</span>
+            </h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="pub-duree">
+                Durée
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-time-quarter-to" aria-hidden="true"></i>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="pub-duree"
+                  placeholder="Ex : 3 jours"
+                >
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="pub-cout">
+                Coût (facultatif)
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-coins" aria-hidden="true"></i>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="pub-cout"
+                  placeholder="Ex : 150 000 F"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="carte" style="display:flex;gap:10px;flex-wrap:wrap;padding:16px;">
+          <button type="submit" class="btn btn--or btn--lg" id="btn-publier" style="flex:1;">
+            <i class="fi fi-rr-send"></i>
+            Publier maintenant
+          </button>
+          <button type="button" class="btn btn--ghost btn--lg" id="btn-brouillon">
+            <i class="fi fi-rr-bookmark"></i>
+            Brouillon
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- COLONNE DROITE — APERÇU LIVE                 -->
+    <!-- ============================================ -->
+    <aside>
+      <div class="apercu">
+        <div class="apercu__etiquette">
+          <i class="fi fi-rr-eye"></i>
+          Aperçu en direct
+        </div>
+
+        <div class="apercu__carte">
+          <article class="post">
+
+            <div class="post__head">
+              <div class="post__avatar">KA</div>
+              <div class="post__user">
+                <div class="post__nom">
+                  Koffi Adande
+                  <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+                </div>
+                <div class="post__meta" id="apercu-meta">
+                  <i class="fi fi-rr-marker"></i> <span id="apercu-lieu">Ta ville</span>
+                  <span>·</span>
+                  <i class="fi fi-rr-time-past"></i> À l'instant
+                </div>
+              </div>
+            </div>
+
+            <div class="post__body">
+              <div class="post__titre" id="apercu-titre">
+                <span class="placeholder">Titre de ton intervention</span>
+              </div>
+              <p class="post__desc" id="apercu-desc">
+                <span class="placeholder">La description apparaîtra ici au fur et à mesure que tu tapes…</span>
+              </p>
+            </div>
+
+            <div class="post__image" id="apercu-image">
+              <div class="post__image-placeholder">
+                <i class="fi fi-rr-picture"></i>
+                <span>Photo principale</span>
+              </div>
+            </div>
+
+            <div class="post__tags" id="apercu-tags">
+              <span class="placeholder">Les tags apparaîtront ici…</span>
+            </div>
+
+            <div class="post__stats">
+              <span><i class="fi fi-sr-heart"></i> 0</span>
+              <span class="post__stats-sep"></span>
+              <span>0 commentaire</span>
+            </div>
+
+            <div class="post__actions">
+              <div class="post__action">
+                <i class="fi fi-rr-heart"></i> J'aime
+              </div>
+              <div class="post__action">
+                <i class="fi fi-rr-comment"></i> Commenter
+              </div>
+              <div class="post__action">
+                <i class="fi fi-rr-share"></i> Partager
+              </div>
+            </div>
+
+          </article>
+        </div>
+
+        <!-- Astuce -->
+        <div class="carte" style="margin-top:16px;padding:18px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <i class="fi fi-rr-bulb" style="color:var(--or-fonce);font-size:20px;flex-shrink:0;margin-top:2px;"></i>
+            <div>
+              <div style="font-size:13.5px;font-weight:800;color:var(--gris-900);margin-bottom:4px;">Astuce pour plus de vues</div>
+              <p style="font-size:13px;color:var(--gris-500);line-height:1.55;margin:0;">
+                Une <strong>photo + un titre clair</strong> = jusqu'à 3× plus de contacts clients.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SUCCÈS                                       -->
+  <!-- ============================================ -->
+  <div class="succes-bloc" id="succes-bloc">
+    <div class="succes-bloc__icon">
+      <i class="fi fi-rr-check"></i>
+    </div>
+    <h2>Intervention publiée !</h2>
+    <p>
+      Ta publication est maintenant visible dans ton portfolio et dans le feed
+      de la communauté. Elle apparaîtra aussi sur ton profil public.
+    </p>
+    <div class="succes-bloc__actions">
+      <a href="app/feed.html" class="btn btn--or btn--lg">
+        <i class="fi fi-rr-home"></i> Voir dans le feed
+      </a>
+      <a href="app/profil.html" class="btn btn--ghost btn--lg">
+        <i class="fi fi-rr-user"></i> Voir mon profil
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     FORMULAIRE — ÉLÉMENTS
+     ============================================================ */
+  const form           = document.getElementById('form-publier');
+  const titre          = document.getElementById('pub-titre');
+  const desc           = document.getElementById('pub-desc');
+  const ville          = document.getElementById('pub-ville');
+  const quartier       = document.getElementById('pub-quartier');
+  const specialite     = document.getElementById('pub-specialite');
+  const duree          = document.getElementById('pub-duree');
+  const cout           = document.getElementById('pub-cout');
+  const photoInput     = document.getElementById('photo-input');
+  const photoZone      = document.getElementById('photo-zone');
+  const photoGrille    = document.getElementById('photo-grille');
+  const compteurPhotos = document.getElementById('compteur-photos');
+  const btnPublier     = document.getElementById('btn-publier');
+  const btnBrouillon   = document.getElementById('btn-brouillon');
+
+  const compteurTitre  = document.getElementById('compteur-titre');
+  const compteurDesc   = document.getElementById('compteur-desc');
+
+  const alerte         = document.getElementById('alerte-erreur');
+  const alerteTexte    = document.getElementById('alerte-erreur-texte');
+
+  const tagsInput      = document.getElementById('tags-input');
+  const tagsChamp      = document.getElementById('tags-champ');
+
+  const layout         = document.getElementById('publier-layout');
+  const pageEntete     = document.getElementById('page-entete');
+  const succesBloc     = document.getElementById('succes-bloc');
+
+  /* ============================================================
+     APERÇU — RÉFÉRENCES
+     ============================================================ */
+  const apercuTitre    = document.getElementById('apercu-titre');
+  const apercuDesc     = document.getElementById('apercu-desc');
+  const apercuLieu     = document.getElementById('apercu-lieu');
+  const apercuImage    = document.getElementById('apercu-image');
+  const apercuTags     = document.getElementById('apercu-tags');
+
+  /* ============================================================
+     ALERTES
+     ============================================================ */
+  const afficherErreur = (msg) => {
+    alerteTexte.textContent = msg;
+    alerte.classList.add('is-visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  const cacherErreur = () => {
+    alerte.classList.remove('is-visible');
+  };
+
+  /* ============================================================
+     COMPTEUR TITRE
+     ============================================================ */
+  const majCompteur = (input, compteurEl, max) => {
+    const n = input.value.length;
+    compteurEl.textContent = n + ' / ' + max;
+    compteurEl.classList.remove('is-warn', 'is-danger');
+    if (n >= max * 0.9) compteurEl.classList.add('is-danger');
+    else if (n >= max * 0.7) compteurEl.classList.add('is-warn');
+  };
+
+  /* ============================================================
+     APERÇU LIVE
+     ============================================================ */
+  const majApercu = () => {
+    // Titre
+    const t = titre.value.trim();
+    if (t) {
+      apercuTitre.textContent = t;
+    } else {
+      apercuTitre.innerHTML = '<span class="placeholder">Titre de ton intervention</span>';
+    }
+
+    // Description
+    const d = desc.value.trim();
+    if (d) {
+      apercuDesc.textContent = d;
+    } else {
+      apercuDesc.innerHTML = '<span class="placeholder">La description apparaîtra ici au fur et à mesure que tu tapes…</span>';
+    }
+
+    // Lieu
+    const v = ville.value.trim();
+    const q = quartier.value.trim();
+    if (v) {
+      apercuLieu.textContent = q ? (v + ' · ' + q) : v;
+    } else {
+      apercuLieu.textContent = 'Ta ville';
+    }
+
+    // Tags
+    const chips = tagsInput.querySelectorAll('.tag-chip');
+    if (chips.length > 0) {
+      apercuTags.innerHTML = Array.from(chips).map(chip => {
+        const texte = chip.dataset.tag;
+        return '<span class="post__tag">#' + escapeHtml(texte) + '</span>';
+      }).join('');
+    } else {
+      // Ajouter aussi la spécialité si présente
+      const sp = specialite.value;
+      if (sp) {
+        apercuTags.innerHTML = '<span class="post__tag">#' + escapeHtml(sp) + '</span>';
+      } else {
+        apercuTags.innerHTML = '<span class="placeholder">Les tags apparaîtront ici…</span>';
+      }
+    }
+  };
+
+  const escapeHtml = (txt) => {
+    return String(txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  /* Écouteurs live */
+  titre.addEventListener('input', () => {
+    majCompteur(titre, compteurTitre, 100);
+    majApercu();
+    titre.classList.remove('is-invalide');
+    cacherErreur();
+  });
+
+  desc.addEventListener('input', () => {
+    majCompteur(desc, compteurDesc, 800);
+    majApercu();
+    desc.classList.remove('is-invalide');
+    cacherErreur();
+  });
+
+  ville.addEventListener('input', () => {
+    ville.classList.remove('is-invalide');
+    majApercu();
+  });
+  quartier.addEventListener('input', majApercu);
+  specialite.addEventListener('change', majApercu);
+
+  /* Initialiser les compteurs */
+  majCompteur(titre, compteurTitre, 100);
+  majCompteur(desc, compteurDesc, 800);
+
+  /* ============================================================
+     PHOTOS
+     ============================================================ */
+  const MAX_PHOTOS = 6;
+  const MAX_SIZE = 5 * 1024 * 1024; // 5 Mo
+  let photos = []; // { id, dataUrl, name }
+
+  const rendrePhotos = () => {
+    photoGrille.innerHTML = '';
+    photos.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.className = 'photo-item';
+      div.innerHTML = `
+        <img src="${p.dataUrl}" alt="${escapeHtml(p.name)}">
+        ${i === 0 ? '<span class="photo-item__badge">Principale</span>' : ''}
+        <button type="button" class="photo-item__suppr" data-id="${p.id}" aria-label="Supprimer">
+          <i class="fi fi-rr-cross-small"></i>
+        </button>
+      `;
+      photoGrille.appendChild(div);
+    });
+
+    // Compteur
+    compteurPhotos.textContent = photos.length + ' / ' + MAX_PHOTOS;
+
+    // Aperçu — photo principale
+    if (photos.length > 0) {
+      apercuImage.innerHTML = `<img src="${photos[0].dataUrl}" alt="Aperçu">`;
+    } else {
+      apercuImage.innerHTML = `
+        <div class="post__image-placeholder">
+          <i class="fi fi-rr-picture"></i>
+          <span>Photo principale</span>
+        </div>
+      `;
+    }
+
+    // Suppression
+    photoGrille.querySelectorAll('.photo-item__suppr').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        photos = photos.filter(p => p.id !== id);
+        rendrePhotos();
+      });
+    });
+  };
+
+  const ajouterPhotos = (files) => {
+    const slotsRestants = MAX_PHOTOS - photos.length;
+    if (slotsRestants <= 0) {
+      afficherErreur('Tu as atteint la limite de ' + MAX_PHOTOS + ' photos.');
+      return;
+    }
+
+    const aTraiter = Array.from(files).slice(0, slotsRestants);
+    let erreurs = [];
+
+    aTraiter.forEach(file => {
+      if (!file.type.startsWith('image/')) {
+        erreurs.push(file.name + ' n\'est pas une image.');
+        return;
+      }
+      if (file.size > MAX_SIZE) {
+        erreurs.push(file.name + ' dépasse 5 Mo.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        photos.push({
+          id: 'p-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+          dataUrl: ev.target.result,
+          name: file.name
+        });
+        rendrePhotos();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    if (erreurs.length > 0) {
+      afficherErreur(erreurs.join(' '));
+    }
+  };
+
+  photoZone.addEventListener('click', () => photoInput.click());
+
+  photoInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      ajouterPhotos(e.target.files);
+      photoInput.value = '';
+    }
+  });
+
+  // Drag & drop
+  ['dragenter', 'dragover'].forEach(evt => {
+    photoZone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      photoZone.classList.add('is-dragover');
+    });
+  });
+  ['dragleave', 'drop'].forEach(evt => {
+    photoZone.addEventListener(evt, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      photoZone.classList.remove('is-dragover');
+    });
+  });
+  photoZone.addEventListener('drop', (e) => {
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) ajouterPhotos(files);
+  });
+
+  /* ============================================================
+     TAGS
+     ============================================================ */
+  const MAX_TAGS = 8;
+
+  const ajouterTag = (valeur) => {
+    const tag = valeur.trim().replace(/^#+/, '').replace(/\s+/g, '-');
+    if (!tag) return;
+
+    const existants = tagsInput.querySelectorAll('.tag-chip');
+    if (existants.length >= MAX_TAGS) {
+      afficherErreur('Maximum ' + MAX_TAGS + ' tags.');
+      return;
+    }
+    if (Array.from(existants).some(c => c.dataset.tag.toLowerCase() === tag.toLowerCase())) {
+      return;
+    }
+
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip';
+    chip.dataset.tag = tag;
+    chip.innerHTML = '#' + escapeHtml(tag) + ' <button type="button" aria-label="Supprimer"><i class="fi fi-rr-cross-small"></i></button>';
+
+    tagsInput.insertBefore(chip, tagsChamp);
+
+    chip.querySelector('button').addEventListener('click', () => {
+      chip.remove();
+      majApercu();
+    });
+
+    majApercu();
+  };
+
+  tagsChamp.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      ajouterTag(tagsChamp.value);
+      tagsChamp.value = '';
+    } else if (e.key === 'Backspace' && tagsChamp.value === '') {
+      const chips = tagsInput.querySelectorAll('.tag-chip');
+      if (chips.length > 0) {
+        chips[chips.length - 1].remove();
+        majApercu();
+      }
+    }
+  });
+
+  tagsChamp.addEventListener('blur', () => {
+    if (tagsChamp.value.trim()) {
+      ajouterTag(tagsChamp.value);
+      tagsChamp.value = '';
+    }
+  });
+
+  tagsInput.addEventListener('click', () => tagsChamp.focus());
+
+  /* ============================================================
+     SOUMISSION
+     ============================================================ */
+  const valider = () => {
+    if (titre.value.trim().length < 5) {
+      titre.classList.add('is-invalide');
+      titre.focus();
+      afficherErreur('Le titre doit contenir au moins 5 caractères.');
+      return false;
+    }
+    if (desc.value.trim().length < 20) {
+      desc.classList.add('is-invalide');
+      desc.focus();
+      afficherErreur('La description doit contenir au moins 20 caractères.');
+      return false;
+    }
+    if (ville.value.trim().length < 2) {
+      ville.classList.add('is-invalide');
+      ville.focus();
+      afficherErreur('Merci d\'indiquer ta ville.');
+      return false;
+    }
+    if (!specialite.value) {
+      specialite.classList.add('is-invalide');
+      specialite.focus();
+      afficherErreur('Choisis une spécialité.');
+      return false;
+    }
+    return true;
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    cacherErreur();
+
+    if (!valider()) return;
+
+    // Simulation : en production, POST /api/posts + upload photos
+    btnPublier.disabled = true;
+    btnPublier.innerHTML = '<i class="fi fi-rr-time-quarter-to"></i> Publication...';
+
+    setTimeout(() => {
+      console.log('[JosDore] Publication simulée :', {
+        titre: titre.value.trim(),
+        description: desc.value.trim(),
+        ville: ville.value.trim(),
+        quartier: quartier.value.trim(),
+        specialite: specialite.value,
+        duree: duree.value.trim(),
+        cout: cout.value.trim(),
+        tags: Array.from(tagsInput.querySelectorAll('.tag-chip')).map(c => c.dataset.tag),
+        nbPhotos: photos.length
+      });
+
+      // Affiche le succès
+      layout.style.display = 'none';
+      pageEntete.style.display = 'none';
+      alerte.classList.remove('is-visible');
+      succesBloc.classList.add('is-visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 900);
+  });
+
+  /* Brouillon */
+  btnBrouillon.addEventListener('click', () => {
+    try {
+      localStorage.setItem('josdore_brouillon_post', JSON.stringify({
+        titre: titre.value.trim(),
+        description: desc.value.trim(),
+        ville: ville.value.trim(),
+        quartier: quartier.value.trim(),
+        specialite: specialite.value,
+        duree: duree.value.trim(),
+        cout: cout.value.trim(),
+        tags: Array.from(tagsInput.querySelectorAll('.tag-chip')).map(c => c.dataset.tag)
+      }));
+      btnBrouillon.innerHTML = '<i class="fi fi-rr-check"></i> Enregistré';
+      setTimeout(() => {
+        btnBrouillon.innerHTML = '<i class="fi fi-rr-bookmark"></i> Brouillon';
+      }, 2000);
+    } catch (e) {
+      afficherErreur('Impossible d\'enregistrer le brouillon.');
+    }
+  });
+
+  /* Pré-remplir avec un brouillon existant */
+  try {
+    const brut = localStorage.getItem('josdore_brouillon_post');
+    if (brut) {
+      const b = JSON.parse(brut);
+      if (b.titre) titre.value = b.titre;
+      if (b.description) desc.value = b.description;
+      if (b.ville) ville.value = b.ville;
+      if (b.quartier) quartier.value = b.quartier;
+      if (b.specialite) specialite.value = b.specialite;
+      if (b.duree) duree.value = b.duree;
+      if (b.cout) cout.value = b.cout;
+      if (Array.isArray(b.tags)) b.tags.forEach(ajouterTag);
+      majCompteur(titre, compteurTitre, 100);
+      majCompteur(desc, compteurDesc, 800);
+      majApercu();
+    }
+  } catch (e) {}
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Publier', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

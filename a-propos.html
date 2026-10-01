@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — JosDore Group</title>
+<meta name="description" content="Découvre JosDore Group : son histoire, sa vision, ses 4 pôles et son fondateur. Un écosystème technologique et éducatif africain.">
+<meta name="theme-color" content="#0A2540">
+
+<!-- Open Graph -->
+<meta property="og:title" content="À propos — JosDore Group">
+<meta property="og:description" content="Notre histoire, notre vision, nos 4 pôles, notre fondateur.">
+<meta property="og:image" content="assets/images/og/og-image.jpg">
+<meta property="og:url" content="https://josdore.com/a-propos.html">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE GROUP — À PROPOS
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --pole-communaute: #BE123C;
+  --pole-tech: #2563EB;
+  --pole-commerce: #16A34A;
+  --pole-education: #CA8A04;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --contenu: 1200px;
+  --header-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 16px; line-height: 1.6; color: var(--gris-700); background: var(--blanc); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.15; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+.container { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section--grise { background: var(--gris-50); }
+.section--nuit { background: var(--nuit); color: #fff; }
+.section--nuit h2, .section--nuit h3 { color: #fff; }
+.section--nuit p { color: #CBD5E1; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gris-200);
+  height: var(--header-h);
+}
+.header.is-scrolled { box-shadow: var(--ombre-md); }
+.header__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  position: relative;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 18px; color: var(--gris-900); flex-shrink: 0; }
+.logo__mark { width: 40px; height: 40px; background: var(--nuit); color: var(--or); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; position: relative; flex-shrink: 0; }
+.logo__mark::after { content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--or); border-radius: 50%; }
+.logo__text span { color: var(--or); }
+.logo__suffix { display: block; font-size: 9px; font-weight: 700; color: var(--gris-500); letter-spacing: 2px; text-transform: uppercase; }
+
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { font-size: 14px; font-weight: 600; color: var(--gris-700); position: relative; }
+.nav a:hover, .nav a.is-active { color: var(--bleu); }
+.nav a.is-active::after { content: ''; position: absolute; bottom: -26px; left: 0; right: 0; height: 2px; background: var(--bleu); }
+
+.header__actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.menu-btn {
+  display: none; width: 42px; height: 42px;
+  border-radius: var(--rayon-sm); border: 1px solid var(--gris-200);
+  background: #fff; color: var(--gris-900);
+  align-items: center; justify-content: center;
+  font-size: 20px; transition: all var(--transition); flex-shrink: 0;
+}
+.menu-btn:hover { border-color: var(--gris-900); background: var(--gris-50); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px; font-family: var(--police-titre); font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md); border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 12px 28px rgba(37,99,235,0.35); }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 12px 28px rgba(245,158,11,0.4); }
+.btn--outline { background: transparent; color: var(--bleu); border-color: var(--bleu); }
+.btn--outline:hover { background: var(--bleu); color: #fff; }
+.btn--ghost { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--blanc { background: #fff; color: var(--bleu); }
+.btn--blanc:hover { box-shadow: var(--ombre-lg); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+.btn--ghost-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.btn--sm { padding: 9px 18px; font-size: 13px; }
+.btn--lg { padding: 16px 34px; font-size: 15px; }
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb { background: var(--gris-50); padding: 12px 0; font-size: 13px; border-bottom: 1px solid var(--gris-200); }
+.breadcrumb__inner { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--gris-500); }
+.breadcrumb a { color: var(--bleu); font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb i { font-size: 14px; color: var(--gris-300); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative; padding: 100px 0 120px;
+  background: linear-gradient(160deg, var(--nuit) 0%, #143154 60%, #1E3A5F 100%);
+  color: #fff; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(37,99,235,0.2), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero__inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; text-align: center; }
+.hero__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.35); border-radius: 999px;
+  color: var(--or); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 24px;
+}
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 900; line-height: 1.05; color: #fff; margin-bottom: 24px; letter-spacing: -0.03em; }
+.hero h1 span { background: linear-gradient(135deg, var(--or), #FBBF24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 1.2rem; color: #CBD5E1; max-width: 680px; margin: 0 auto 40px; line-height: 1.7; }
+.hero__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+.stat { text-align: center; padding: 26px 16px; background: #fff; border-radius: var(--rayon-lg); border: 1px solid var(--gris-200); }
+.stat__value { font-family: var(--police-titre); font-size: 42px; font-weight: 900; color: var(--or-fonce); line-height: 1; margin-bottom: 8px; }
+.stat__label { font-size: 12px; color: var(--gris-500); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ============================================================
+   SECTION HEAD
+   ============================================================ */
+.section-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+.section-head__eyebrow { display: inline-block; font-size: 12px; font-weight: 800; color: var(--or); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+.section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 14px; }
+.section-head p { font-size: 1.05rem; color: var(--gris-500); }
+
+/* ============================================================
+   HISTOIRE
+   ============================================================ */
+.histoire {
+  max-width: 800px; margin: 0 auto;
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--gris-700);
+  text-align: center;
+}
+.histoire p { margin-bottom: 20px; }
+.histoire p strong { color: var(--nuit); font-weight: 800; }
+.histoire p:last-child { margin-bottom: 0; }
+.histoire__citation {
+  margin: 40px auto;
+  max-width: 640px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, var(--gris-50), #FFFBF5);
+  border-left: 4px solid var(--or);
+  border-radius: 0 var(--rayon-lg) var(--rayon-lg) 0;
+  text-align: left;
+  font-family: var(--police-titre);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--gris-900);
+  line-height: 1.5;
+  font-style: italic;
+}
+.histoire__citation footer {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--or-fonce);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   4 PÔLES
+   ============================================================ */
+.poles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+.pole-carte {
+  background: #fff; border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg); padding: 32px 28px;
+  cursor: pointer; transition: var(--transition);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.pole-carte::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: var(--couleur, var(--bleu));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s;
+}
+.pole-carte:hover { transform: translateY(-8px); box-shadow: var(--ombre-lg); border-color: transparent; }
+.pole-carte:hover::before { transform: scaleX(1); }
+
+.pole-carte__icon {
+  width: 64px; height: 64px; border-radius: 18px;
+  background: var(--couleur, var(--bleu)); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.pole-carte h3 { font-size: 22px; margin-bottom: 10px; }
+.pole-carte__desc { font-size: 14px; color: var(--gris-500); line-height: 1.7; margin-bottom: 20px; flex: 1; }
+.pole-carte__filiales {
+  display: flex; flex-direction: column; gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-100);
+  margin-bottom: 18px;
+}
+.pole-filiale {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--gris-700); font-weight: 600;
+}
+.pole-filiale i { color: var(--couleur, var(--bleu)); font-size: 14px; flex-shrink: 0; }
+.pole-carte__lien {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 800;
+  color: var(--couleur, var(--bleu));
+}
+.pole-carte__lien i { transition: transform 0.25s; }
+.pole-carte:hover .pole-carte__lien i { transform: translateX(4px); }
+
+/* ============================================================
+   VISION / VALEURS
+   ============================================================ */
+.vision-layout {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 60px; align-items: center;
+}
+.vision-texte h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 20px;
+}
+.vision-texte .vision-texte__eyebrow {
+  display: block;
+  font-size: 12px; font-weight: 800;
+  color: var(--or);
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.vision-texte p {
+  font-size: 16px; line-height: 1.85;
+  color: var(--gris-700);
+  margin-bottom: 18px;
+}
+.vision-texte p strong { color: var(--nuit); font-weight: 800; }
+
+.vision-valeurs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.valeur-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px 20px;
+  transition: var(--transition);
+}
+.valeur-carte:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ombre-md);
+  border-color: var(--or);
+}
+.valeur-carte__icon {
+  width: 48px; height: 48px;
+  border-radius: 13px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+.valeur-carte h4 {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 6px;
+}
+.valeur-carte p {
+  font-size: 13px; color: var(--gris-500);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FONDATEUR
+   ============================================================ */
+.fondateur {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.fondateur::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--or), #FBBF24);
+}
+.fondateur__avatar {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-size: 48px; font-weight: 900;
+  flex-shrink: 0;
+  box-shadow: 0 12px 32px rgba(245,158,11,0.3);
+  border: 4px solid #fff;
+  position: relative;
+}
+.fondateur__avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 6px; right: 6px;
+  width: 22px; height: 22px;
+  background: var(--vert);
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+.fondateur__nom {
+  font-size: 26px; font-weight: 900;
+  color: var(--gris-900);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.fondateur__role {
+  font-size: 13px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+.fondateur__bio {
+  font-size: 15px;
+  color: var(--gris-500);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.fondateur__citation {
+  font-size: 14px;
+  color: var(--gris-700);
+  font-style: italic;
+  padding-left: 16px;
+  border-left: 3px solid var(--or);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta {
+  background: linear-gradient(135deg, var(--nuit), #143154);
+  color: #fff;
+  padding: 80px 24px;
+  text-align: center;
+  border-radius: var(--rayon-lg);
+  margin: 40px auto;
+  max-width: var(--contenu);
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; top: -50%; left: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(245,158,11,0.15), transparent 60%);
+  pointer-events: none;
+}
+.cta__inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 16px;
+}
+.cta h2 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cta p {
+  color: #CBD5E1;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+}
+.cta__actions {
+  display: flex; gap: 14px;
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--gris-900); color: #94A3B8; padding: 64px 0 28px; margin-top: auto; }
+.footer__grid { max-width: 1280px; margin: 0 auto 40px; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 14px; }
+.footer__logo .logo__mark { background: var(--or); color: var(--nuit); }
+.footer__logo .logo__mark::after { background: var(--nuit); }
+.footer__desc { font-size: 14px; line-height: 1.7; max-width: 320px; }
+.footer__desc strong { color: #fff; }
+.footer__titre { color: #fff; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer__liens { display: flex; flex-direction: column; gap: 10px; }
+.footer__liens a, .footer__liens button { font-size: 14px; color: #94A3B8; text-align: left; padding: 0; transition: var(--transition); }
+.footer__liens a:hover, .footer__liens button:hover { color: var(--or); }
+.footer__bas {
+  max-width: 1280px; margin: 0 auto; padding: 24px 24px 0;
+  border-top: 1px solid #1E293B;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px;
+}
+.footer__bas i { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #fff; border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 20px 24px; display: none;
+  animation: slideUp 0.3s ease;
+}
+.cookies.is-open { display: block; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cookies__texte { flex: 1; min-width: 280px; font-size: 14px; color: var(--gris-700); line-height: 1.6; }
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookies__btn { padding: 10px 20px; font-family: var(--police-titre); font-size: 13px; font-weight: 700; border-radius: var(--rayon-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
+.cookies__btn--accept { background: var(--bleu); color: #fff; }
+.cookies__btn--accept:hover { background: var(--bleu-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 12px 24px; background: #fff;
+    border-bottom: 1px solid var(--gris-200);
+    box-shadow: var(--ombre-md);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--gris-100); }
+  .nav a:last-child { border-bottom: none; }
+  .nav a.is-active::after { display: none; }
+  .menu-btn { display: inline-flex; }
+  .header__actions .btn--ghost { display: none; }
+  .vision-layout { grid-template-columns: 1fr; gap: 40px; }
+  .fondateur { grid-template-columns: 1fr; text-align: center; gap: 24px; padding: 32px 24px; }
+  .fondateur__avatar { margin: 0 auto; width: 110px; height: 110px; font-size: 38px; }
+  .fondateur__citation { text-align: left; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+  .section { padding: 56px 0; }
+  .hero { padding: 70px 0 90px; }
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bas { flex-direction: column; text-align: center; }
+  .cta { border-radius: 0; margin: 40px 0; }
+  .stat__value { font-size: 32px; }
+  .fondateur__nom { font-size: 20px; }
+  .vision-valeurs { grid-template-columns: 1fr; }
+  .histoire { font-size: 15.5px; }
+  .histoire__citation { padding: 22px 20px; font-size: 17px; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="logo" aria-label="JosDore — Accueil">
+      <div class="logo__mark">J</div>
+      <div class="logo__text">
+        Jos<span>Dore</span>
+        <span class="logo__suffix">Group</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="a-propos.html" class="is-active">À propos</a>
+      <a href="pages/communaute/">Communauté</a>
+      <a href="pages/tech/">Tech</a>
+      <a href="pages/commerce/">Commerce</a>
+      <a href="pages/education/">Éducation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="connexion.html" class="btn btn--ghost btn--sm">Connexion</a>
+      <a href="inscription.html" class="btn btn--primary btn--sm">
+        <i class="fi fi-rr-user-add"></i> Créer un compte
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- BREADCRUMB                                                   -->
+<!-- ============================================================ -->
+<nav class="breadcrumb" aria-label="Fil d'ariane">
+  <div class="breadcrumb__inner">
+    <a href="/">Accueil</a>
+    <i class="fi fi-rr-angle-small-right"></i>
+    <span>À propos</span>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">
+        <i class="fi fi-rr-building"></i>
+        JosDore Group — Écosystème
+      </div>
+      <h1>Une seule vision,<br><span>plusieurs expertises.</span></h1>
+      <p>
+        JosDore est un écosystème technologique et éducatif africain qui
+        accompagne les particuliers, les entreprises et les écoles dans leur
+        transformation numérique.
+      </p>
+      <div class="hero__actions">
+        <a href="#poles" class="btn btn--or btn--lg">
+          <i class="fi fi-rr-apps"></i> Nos 4 pôles
+        </a>
+        <a href="contact.html" class="btn btn--ghost-light btn--lg">
+          <i class="fi fi-rr-envelope"></i> Nous contacter
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section" style="padding-top: 56px; padding-bottom: 56px;">
+    <div class="container">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__value">4</div>
+          <div class="stat__label">Pôles</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">10</div>
+          <div class="stat__label">Activités</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">100+</div>
+          <div class="stat__label">Clients servis</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">1</div>
+          <div class="stat__label">Vision africaine</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTOIRE -->
+  <section class="section section--grise">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Notre histoire</span>
+        <h2>Comment tout a commencé</h2>
+      </div>
+
+      <div class="histoire">
+        <p>
+          JosDore est né d'une conviction simple : <strong>chaque technicien
+          africain mérite d'être reconnu pour son travail</strong>. Chaque
+          étudiant mérite d'accéder aux compétences du numérique. Chaque
+          entreprise mérite des solutions fiables et abordables.
+        </p>
+
+        <p>
+          Nous avons commencé par la réparation d'ordinateurs à
+          Abomey-Calavi, au Bénin. Un client, puis deux, puis cent.
+          Au fil des interventions, une évidence s'est imposée : le problème
+          n'était pas seulement technique. C'était aussi un problème
+          de <strong>visibilité</strong>, de <strong>formation</strong> et
+          d'<strong>accès aux outils</strong>.
+        </p>
+
+        <p>
+          C'est ainsi que JosDore a grandi. D'un simple atelier de réparation,
+          nous sommes devenus un écosystème complet qui rassemble aujourd'hui
+          <strong>4 pôles et 10 activités</strong> : un réseau social pour les
+          techniciens, des formations certifiantes, une boutique informatique,
+          des outils gratuits, des jeux éducatifs et bien plus.
+        </p>
+
+        <div class="histoire__citation">
+          « On ne construit pas l'Afrique numérique avec des importations.
+          On la construit avec des Africains formés, outillés et connectés. »
+          <footer>— Ulrich Jos Doré HOUNKPE, fondateur</footer>
+        </div>
+
+        <p>
+          Notre ambition est claire : faire de JosDore <strong>une référence
+          de l'écosystème tech et éducatif en Afrique de l'Ouest</strong>.
+          Pas à pas, avec nos partenaires, nos techniciens et notre communauté.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LES 4 PÔLES -->
+  <section class="section" id="poles">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Nos 4 pôles</span>
+        <h2>Un écosystème complet</h2>
+        <p>Quatre pôles complémentaires au service de la réussite africaine.</p>
+      </div>
+
+      <div class="poles-grid">
+
+        <!-- PÔLE 1 — COMMUNAUTÉ -->
+        <a href="pages/communaute/" class="pole-carte" style="--couleur: var(--pole-communaute);">
+          <div class="pole-carte__icon"><i class="fi fi-rr-users"></i></div>
+          <h3>Communauté</h3>
+          <p class="pole-carte__desc">
+            Connecter les techniciens d'Afrique entre eux. Le réseau social qui
+            valorise le travail.
+          </p>
+          <div class="pole-carte__filiales">
+            <div class="pole-filiale">
+              <i class="fi fi-rr-globe"></i>
+              <span>JosDore Réseau</span>
+            </div>
+          </div>
+          <span class="pole-carte__lien">Découvrir le pôle <i class="fi fi-rr-arrow-right"></i></span>
+        </a>
+
+        <!-- PÔLE 2 — TECH -->
+        <a href="pages/tech/" class="pole-carte" style="--couleur: var(--pole-tech);">
+          <div class="pole-carte__icon"><i class="fi fi-rr-computer"></i></div>
+          <h3>Tech & Maintenance</h3>
+          <p class="pole-carte__desc">
+            Services informatiques, logiciels et outils gratuits pour tous.
+          </p>
+          <div class="pole-carte__filiales">
+            <div class="pole-filiale">
+              <i class="fi fi-rr-tools"></i>
+              <span>JosDore Techs</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-apps"></i>
+              <span>JosDore Software</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-bolt"></i>
+              <span>JosDore Outils</span>
+            </div>
+          </div>
+          <span class="pole-carte__lien">Découvrir le pôle <i class="fi fi-rr-arrow-right"></i></span>
+        </a>
+
+        <!-- PÔLE 3 — COMMERCE -->
+        <a href="pages/commerce/" class="pole-carte" style="--couleur: var(--pole-commerce);">
+          <div class="pole-carte__icon"><i class="fi fi-rr-shopping-cart"></i></div>
+          <h3>Commerce</h3>
+          <p class="pole-carte__desc">
+            Boutique informatique et matériel professionnel pour techniciens.
+          </p>
+          <div class="pole-carte__filiales">
+            <div class="pole-filiale">
+              <i class="fi fi-rr-shopping-bag"></i>
+              <span>JosDore Store</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-toolbox"></i>
+              <span>JosDore Kit</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-book"></i>
+              <span>JosDore Books</span>
+            </div>
+          </div>
+          <span class="pole-carte__lien">Découvrir le pôle <i class="fi fi-rr-arrow-right"></i></span>
+        </a>
+
+        <!-- PÔLE 4 — ÉDUCATION -->
+        <a href="pages/education/" class="pole-carte" style="--couleur: var(--pole-education);">
+          <div class="pole-carte__icon"><i class="fi fi-rr-graduation-cap"></i></div>
+          <h3>Éducation</h3>
+          <p class="pole-carte__desc">
+            Formations certifiantes, anglais gratuit et jeux éducatifs.
+          </p>
+          <div class="pole-carte__filiales">
+            <div class="pole-filiale">
+              <i class="fi fi-rr-diploma"></i>
+              <span>JosDore Academy</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-language"></i>
+              <span>JosDore English</span>
+            </div>
+            <div class="pole-filiale">
+              <i class="fi fi-rr-gamepad"></i>
+              <span>JosDore Games</span>
+            </div>
+          </div>
+          <span class="pole-carte__lien">Découvrir le pôle <i class="fi fi-rr-arrow-right"></i></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION / VALEURS -->
+  <section class="section section--grise">
+    <div class="container">
+      <div class="vision-layout">
+
+        <div class="vision-texte">
+          <span class="vision-texte__eyebrow">Notre vision</span>
+          <h2>Construire l'écosystème<br>technologique africain.</h2>
+          <p>
+            Notre vision n'est pas de copier ce qui existe ailleurs. Elle est
+            de <strong>créer les outils, les formations et les connexions</strong>
+            dont l'Afrique a réellement besoin, en partant du terrain.
+          </p>
+          <p>
+            Nous croyons qu'une <strong>Afrique numérique</strong> se construit
+            par ses propres talents : les techniciens qui réparent, les
+            formateurs qui transmettent, les entrepreneurs qui créent. JosDore
+            est là pour les outiller, les connecter et les faire grandir.
+          </p>
+          <p>
+            Chaque pôle, chaque activité, chaque ligne de code sert cette
+            ambition : rendre la technologie <strong>accessible, utile
+            et durable</strong> sur le continent.
+          </p>
+        </div>
+
+        <div class="vision-valeurs">
+
+          <div class="valeur-carte">
+            <div class="valeur-carte__icon"><i class="fi fi-rr-bullseye"></i></div>
+            <h4>Excellence</h4>
+            <p>Un travail de qualité, sans compromis, pour chaque client.</p>
+          </div>
+
+          <div class="valeur-carte">
+            <div class="valeur-carte__icon"><i class="fi fi-rr-handshake"></i></div>
+            <h4>Confiance</h4>
+            <p>Transparence totale sur nos prix, services et engagements.</p>
+          </div>
+
+          <div class="valeur-carte">
+            <div class="valeur-carte__icon"><i class="fi fi-rr-rocket"></i></div>
+            <h4>Innovation</h4>
+            <p>Des solutions modernes, adaptées aux réalités africaines.</p>
+          </div>
+
+          <div class="valeur-carte">
+            <div class="valeur-carte__icon"><i class="fi fi-rr-users"></i></div>
+            <h4>Communauté</h4>
+            <p>Nous construisons avec et pour les techniciens africains.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FONDATEUR -->
+  <section class="section" id="fondateur">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Le fondateur</span>
+        <h2>Derrière JosDore</h2>
+        <p>Celui qui a lancé tout ça, un ordinateur à la fois.</p>
+      </div>
+
+      <div class="fondateur">
+        <div class="fondateur__avatar">UH</div>
+        <div>
+          <div class="fondateur__nom">Ulrich Jos Doré HOUNKPE</div>
+          <div class="fondateur__role">Fondateur & Visionnaire</div>
+          <p class="fondateur__bio">
+            Passionné de technologie et d'éducation, Ulrich a créé JosDore
+            pour répondre à un besoin réel : outiller les techniciens africains,
+            former les étudiants et connecter les professionnels entre eux.
+            Son ambition : faire de JosDore une référence de l'écosystème
+            tech et éducatif en Afrique de l'Ouest.
+          </p>
+          <div class="fondateur__citation">
+            « Ton travail parle mieux que ton CV. Chaque intervention
+            publiée, c'est une preuve de ce que tu sais faire. »
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="container">
+    <div class="cta">
+      <div class="cta__inner">
+        <h2>Prêt à rejoindre<br><span>l'écosystème JosDore ?</span></h2>
+        <p>Découvre nos 4 pôles ou contacte-nous directement pour en savoir plus.</p>
+        <div class="cta__actions">
+          <a href="inscription.html" class="btn btn--or btn--lg">
+            <i class="fi fi-rr-user-add"></i> Créer mon compte
+          </a>
+          <a href="contact.html" class="btn btn--blanc btn--lg">
+            Nous contacter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__logo">
+        <div class="logo__mark">J</div>
+        <div>Jos<span>Dore</span></div>
+      </div>
+      <p class="footer__desc">
+        Écosystème technologique et éducatif africain à 4 pôles et 10 activités.<br>
+        <strong>Apprendre. Travailler. Évoluer.</strong>
+      </p>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Nos pôles</h4>
+      <div class="footer__liens">
+        <a href="pages/communaute/">Communauté</a>
+        <a href="pages/tech/">Tech</a>
+        <a href="pages/commerce/">Commerce</a>
+        <a href="pages/education/">Éducation</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Le groupe</h4>
+      <div class="footer__liens">
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog/">Blog</a>
+        <a href="support/">Aide</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Légal</h4>
+      <div class="footer__liens">
+        <a href="legal/confidentialite.html">Confidentialité</a>
+        <a href="legal/cgu.html">CGU</a>
+        <a href="legal/mentions.html">Mentions</a>
+        <button type="button" id="revoirCookies">Revoir le consentement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bas">
+    <div>© <span id="annee"></span> JosDore — Tous droits réservés.</div>
+    <div>Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi, Bénin</div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- BANDEAU COOKIES                                              -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore utilise des cookies pour améliorer ton expérience, mesurer
+      l'audience et personnaliser le contenu. Tu peux accepter tous les cookies
+      ou refuser ceux qui ne sont pas essentiels.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Header scroll */
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* Menu burger */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const nav = document.getElementById('nav');
+  if (menuBtn && nav && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = nav.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(ouvert));
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuIcon.className = 'fi fi-rr-menu-burger';
+      });
+    });
+  }
+
+  /* Scroll fluide sur les ancres internes */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (href.length > 1) {
+        const cible = document.querySelector(href);
+        if (cible) {
+          e.preventDefault();
+          const top = cible.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+          history.replaceState(null, '', href);
+        }
+      }
+    });
+  });
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  const btnRevoir = document.getElementById('revoirCookies');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+  if (btnRevoir) btnRevoir.addEventListener('click', () => {
+    try { localStorage.removeItem(CLE); } catch (e) {}
+    ouvrir();
+  });
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore — À propos', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon profil — JosDore Réseau</title>
+<meta name="description" content="Ton profil technicien JosDore Réseau : portfolio, avis, statistiques.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — MON PROFIL
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+
+/* ============================================================
+   HERO PROFIL
+   ============================================================ */
+.profil-hero {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.profil-hero__banniere {
+  height: 130px;
+  background: linear-gradient(135deg, var(--nuit) 0%, var(--bleu) 60%, var(--or) 130%);
+  position: relative;
+  overflow: hidden;
+}
+.profil-hero__banniere::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.profil-hero__banniere::after {
+  content: '';
+  position: absolute; bottom: -80px; left: -80px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+
+.profil-hero__corps {
+  padding: 0 24px 24px;
+  position: relative;
+}
+
+.profil-hero__avatar-wrap {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px;
+  margin-top: -52px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.profil-hero__avatar {
+  width: 104px; height: 104px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 36px;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 24px rgba(10,37,64,0.15);
+  flex-shrink: 0;
+  position: relative;
+}
+.profil-hero__avatar-edit {
+  position: absolute; bottom: 4px; right: 4px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--bleu); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.profil-hero__avatar-edit:hover { background: var(--bleu-fonce); transform: scale(1.08); }
+
+.profil-hero__actions {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+
+.profil-hero__nom {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 900;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.profil-hero__nom i { color: var(--bleu); font-size: 20px; }
+
+.profil-hero__role {
+  font-size: 15px;
+  color: var(--gris-500);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.profil-hero__role i { color: var(--or-fonce); font-size: 14px; }
+
+.profil-hero__badges {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.badge {
+  font-size: 11px; font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--rayon-full);
+  display: inline-flex; align-items: center; gap: 4px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.badge--bleu { background: rgba(37,99,235,0.10); color: var(--bleu); }
+.badge--or { background: rgba(245,158,11,0.14); color: var(--or-fonce); }
+.badge--vert { background: rgba(22,163,74,0.10); color: var(--vert); }
+.badge--gris { background: var(--gris-100); color: var(--gris-500); }
+
+.profil-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-100);
+}
+.profil-stat { text-align: center; }
+.profil-stat__v {
+  font-family: var(--police-titre);
+  font-size: 22px; font-weight: 900;
+  color: var(--or-fonce);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.profil-stat__l {
+  font-size: 11px; font-weight: 700;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   ONGLETS
+   ============================================================ */
+.tabs {
+  display: flex;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 4px;
+  gap: 2px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: var(--rayon-md);
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.tab i { font-size: 15px; }
+.tab:hover { background: var(--gris-50); color: var(--gris-900); }
+.tab.is-active {
+  background: var(--or);
+  color: var(--nuit);
+}
+.tab__badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: rgba(255,255,255,0.3);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.tab:not(.is-active) .tab__badge {
+  background: var(--gris-100);
+  color: var(--gris-700);
+}
+
+/* ============================================================
+   PANNEAUX
+   ============================================================ */
+.panneau { display: none; }
+.panneau.is-actif { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.carte__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.carte__titre i { color: var(--or-fonce); font-size: 18px; }
+.carte__action {
+  font-size: 13px; font-weight: 800;
+  color: var(--or-fonce);
+  display: inline-flex; align-items: center; gap: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.carte__action:hover { color: var(--or); }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 40px 20px;
+}
+.vide__icone {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 14px;
+}
+.vide__titre {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 6px;
+}
+.vide__texte {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  max-width: 360px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================
+   PORTFOLIO GRID
+   ============================================================ */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.portfolio-item {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #1E293B, #334155);
+  border-radius: var(--rayon-md);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--ombre-md);
+}
+.portfolio-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(245,158,11,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   AVIS
+   ============================================================ */
+.avis-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.avis-item:last-child { border-bottom: none; }
+.avis-item__avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bleu), #7C3AED);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.avis-item__contenu { flex: 1; min-width: 0; }
+.avis-item__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+.avis-item__nom { font-size: 14px; font-weight: 800; color: var(--gris-900); }
+.avis-item__date { font-size: 12px; color: var(--gris-500); }
+.avis-item__etoiles {
+  color: var(--or);
+  font-size: 13px;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.avis-item__texte { font-size: 13.5px; color: var(--gris-700); line-height: 1.6; }
+
+/* ============================================================
+   À PROPOS
+   ============================================================ */
+.about-row {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.about-row:last-child { border-bottom: none; }
+.about-row__icone {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.about-row__contenu { flex: 1; min-width: 0; }
+.about-row__label {
+  font-size: 11px;
+  color: var(--gris-500);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+.about-row__valeur {
+  font-size: 14px;
+  color: var(--gris-900);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.competences {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.competence {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px;
+  background: var(--gris-100);
+  color: var(--gris-700);
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  font-weight: 700;
+}
+.competence i { color: var(--or-fonce); font-size: 12px; }
+
+/* ============================================================
+   STATISTIQUES
+   ============================================================ */
+.stat-lignes { display: flex; flex-direction: column; }
+.stat-ligne {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.stat-ligne:last-child { border-bottom: none; }
+.stat-ligne__label {
+  font-size: 14px;
+  color: var(--gris-700);
+  display: flex; align-items: center; gap: 10px;
+}
+.stat-ligne__label i { color: var(--or-fonce); font-size: 16px; }
+.stat-ligne__valeur {
+  font-family: var(--police-titre);
+  font-size: 16px; font-weight: 900;
+  color: var(--gris-900);
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.badge-card {
+  text-align: center;
+  padding: 20px 14px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-md);
+  border: 1px solid var(--gris-200);
+  opacity: 0.5;
+  transition: var(--transition);
+}
+.badge-card.is-obtenu { opacity: 1; border-color: var(--or); background: rgba(245,158,11,0.06); }
+.badge-card__icone {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--gris-200);
+  color: var(--gris-500);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 12px;
+}
+.badge-card.is-obtenu .badge-card__icone {
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: #fff;
+}
+.badge-card__nom {
+  font-size: 13px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 4px;
+}
+.badge-card__desc {
+  font-size: 11px;
+  color: var(--gris-500);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+  .profil-hero__corps { padding: 0 32px 28px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .profil-hero__corps { padding: 0 18px 20px; }
+  .profil-hero__avatar-wrap { margin-top: -40px; margin-bottom: 12px; }
+  .profil-hero__avatar { width: 84px; height: 84px; font-size: 30px; }
+  .profil-hero__actions { width: 100%; }
+  .profil-hero__actions .btn { flex: 1; justify-content: center; }
+  .profil-hero__stats { grid-template-columns: repeat(2, 1fr); gap: 12px; padding-top: 14px; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .tab { padding: 10px 10px; font-size: 12px; }
+  .tab span { display: none; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">4</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- ============ HERO PROFIL ============ -->
+  <div class="profil-hero">
+
+    <div class="profil-hero__banniere"></div>
+
+    <div class="profil-hero__corps">
+
+      <div class="profil-hero__avatar-wrap">
+
+        <div class="profil-hero__avatar">
+          KA
+          <a href="app/parametres.html" class="profil-hero__avatar-edit" aria-label="Changer la photo">
+            <i class="fi fi-rr-camera"></i>
+          </a>
+        </div>
+
+        <div class="profil-hero__actions">
+          <a href="app/parametres.html" class="btn btn--ghost btn--sm">
+            <i class="fi fi-rr-edit"></i> Modifier
+          </a>
+          <a href="app/profil-public.html?id=moi" class="btn btn--ghost btn--sm">
+            <i class="fi fi-rr-eye"></i> Voir public
+          </a>
+          <button type="button" class="btn btn--or btn--sm" id="btnPartagerProfil">
+            <i class="fi fi-rr-share"></i> Partager
+          </button>
+        </div>
+
+      </div>
+
+      <div class="profil-hero__nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié" title="Compte vérifié"></i>
+      </div>
+
+      <div class="profil-hero__role">
+        <span><i class="fi fi-rr-briefcase"></i> Technicien informatique</span>
+        <span>·</span>
+        <span><i class="fi fi-rr-marker"></i> Abomey-Calavi</span>
+        <span>·</span>
+        <span><i class="fi fi-rr-calendar"></i> Inscrit en 2026</span>
+      </div>
+
+      <div class="profil-hero__badges">
+        <span class="badge badge--bleu">
+          <i class="fi fi-rr-shield-check"></i> Vérifié
+        </span>
+        <span class="badge badge--gris">
+          <i class="fi fi-rr-hourglass-end"></i> Nouveau
+        </span>
+      </div>
+
+      <div class="profil-hero__stats">
+        <div class="profil-stat">
+          <div class="profil-stat__v">0</div>
+          <div class="profil-stat__l">Interventions</div>
+        </div>
+        <div class="profil-stat">
+          <div class="profil-stat__v">—</div>
+          <div class="profil-stat__l">Note moyenne</div>
+        </div>
+        <div class="profil-stat">
+          <div class="profil-stat__v">0</div>
+          <div class="profil-stat__l">Avis reçus</div>
+        </div>
+        <div class="profil-stat">
+          <div class="profil-stat__v">0</div>
+          <div class="profil-stat__l">Vues du profil</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ============ ONGLETS ============ -->
+  <div class="tabs" role="tablist">
+    <button class="tab is-active" role="tab" data-tab="portfolio" type="button">
+      <i class="fi fi-rr-picture"></i> <span>Portfolio</span>
+    </button>
+    <button class="tab" role="tab" data-tab="avis" type="button">
+      <i class="fi fi-rr-star"></i> <span>Avis</span>
+      <span class="tab__badge">0</span>
+    </button>
+    <button class="tab" role="tab" data-tab="about" type="button">
+      <i class="fi fi-rr-user"></i> <span>À propos</span>
+    </button>
+    <button class="tab" role="tab" data-tab="stats" type="button">
+      <i class="fi fi-rr-chart-line-up"></i> <span>Stats</span>
+    </button>
+  </div>
+
+  <!-- ============ PANNEAU PORTFOLIO ============ -->
+  <div class="panneau is-actif" id="panneau-portfolio">
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-picture"></i> Mon portfolio
+        </h2>
+        <a href="app/publier.html" class="carte__action">
+          <i class="fi fi-rr-plus"></i> Ajouter
+        </a>
+      </div>
+
+      <div class="vide">
+        <div class="vide__icone"><i class="fi fi-rr-picture"></i></div>
+        <div class="vide__titre">Ton portfolio est vide</div>
+        <p class="vide__texte">
+          Chaque intervention que tu publies devient une preuve de ton savoir-faire.
+          Commence par en publier une.
+        </p>
+        <a href="app/publier.html" class="btn btn--or btn--sm">
+          <i class="fi fi-rr-plus"></i> Publier ma première intervention
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PANNEAU AVIS ============ -->
+  <div class="panneau" id="panneau-avis">
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-star"></i> Avis reçus
+        </h2>
+      </div>
+
+      <div class="vide">
+        <div class="vide__icone"><i class="fi fi-rr-star"></i></div>
+        <div class="vide__titre">Aucun avis pour le moment</div>
+        <p class="vide__texte">
+          Les avis de tes clients apparaîtront ici. Plus tu réalises
+          d'interventions, plus ta réputation se construit.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PANNEAU À PROPOS ============ -->
+  <div class="panneau" id="panneau-about">
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-user"></i> Bio
+        </h2>
+        <a href="/app/parametres.html" class="carte__action">
+          <i class="fi fi-rr-edit"></i> Modifier
+        </a>
+      </div>
+
+      <p style="font-size:14.5px;color:var(--gris-700);line-height:1.7;margin-bottom:0;">
+        Aucune bio pour le moment. Présente-toi en quelques lignes pour que les clients te découvrent.
+      </p>
+    </div>
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-info"></i> Informations
+        </h2>
+      </div>
+
+      <div class="about-row">
+        <div class="about-row__icone"><i class="fi fi-rr-briefcase"></i></div>
+        <div class="about-row__contenu">
+          <div class="about-row__label">Spécialité</div>
+          <div class="about-row__valeur">Technicien informatique</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <div class="about-row__icone"><i class="fi fi-rr-marker"></i></div>
+        <div class="about-row__contenu">
+          <div class="about-row__label">Ville</div>
+          <div class="about-row__valeur">Abomey-Calavi, Bénin</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <div class="about-row__icone"><i class="fi fi-rr-calendar"></i></div>
+        <div class="about-row__contenu">
+          <div class="about-row__label">Membre depuis</div>
+          <div class="about-row__valeur">2026</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <div class="about-row__icone"><i class="fi fi-rr-envelope"></i></div>
+        <div class="about-row__contenu">
+          <div class="about-row__label">Email</div>
+          <div class="about-row__valeur">koffi@example.com</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <div class="about-row__icone" style="background:#DCFCE7;color:#16A34A;"><i class="fi fi-brands-whatsapp"></i></div>
+        <div class="about-row__contenu">
+          <div class="about-row__label">WhatsApp</div>
+          <div class="about-row__valeur">+229 01 28 62 14 07</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-tools"></i> Compétences
+        </h2>
+        <a href="app/parametres.html" class="carte__action">
+          <i class="fi fi-rr-edit"></i> Modifier
+        </a>
+      </div>
+
+      <p style="font-size:13px;color:var(--gris-500);margin-bottom:12px;">
+        Ajoute tes compétences pour apparaître dans les recherches.
+      </p>
+
+      <div class="competences">
+        <span class="competence" style="background:var(--gris-50);color:var(--gris-500);">
+          <i class="fi fi-rr-plus" style="color:var(--gris-500);"></i> Aucune compétence ajoutée
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ PANNEAU STATS ============ -->
+  <div class="panneau" id="panneau-stats">
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-chart-line-up"></i> Statistiques globales
+        </h2>
+      </div>
+
+      <div class="stat-lignes">
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-target"></i> Interventions publiées
+          </span>
+          <span class="stat-ligne__valeur">0</span>
+        </div>
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-check-circle"></i> Missions terminées
+          </span>
+          <span class="stat-ligne__valeur">0</span>
+        </div>
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-star"></i> Note moyenne
+          </span>
+          <span class="stat-ligne__valeur">—</span>
+        </div>
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-eye"></i> Vues du profil
+          </span>
+          <span class="stat-ligne__valeur">0</span>
+        </div>
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-users"></i> Clients servis
+          </span>
+          <span class="stat-ligne__valeur">0</span>
+        </div>
+        <div class="stat-ligne">
+          <span class="stat-ligne__label">
+            <i class="fi fi-rr-coins"></i> Revenus cumulés
+          </span>
+          <span class="stat-ligne__valeur">0 FCFA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-trophy"></i> Badges
+        </h2>
+      </div>
+
+      <div class="badges-grid">
+
+        <div class="badge-card is-obtenu">
+          <div class="badge-card__icone"><i class="fi fi-rr-user"></i></div>
+          <div class="badge-card__nom">Bienvenue</div>
+          <div class="badge-card__desc">Compte créé</div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card__icone"><i class="fi fi-rr-picture"></i></div>
+          <div class="badge-card__nom">Portfolio</div>
+          <div class="badge-card__desc">10 interventions publiées</div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card__icone"><i class="fi fi-rr-star"></i></div>
+          <div class="badge-card__nom">Bien noté</div>
+          <div class="badge-card__desc">Note ≥ 4.5</div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card__icone"><i class="fi fi-rr-bolt"></i></div>
+          <div class="badge-card__nom">Rapide</div>
+          <div class="badge-card__desc">Réponse en moins d'1h</div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card__icone"><i class="fi fi-rr-trophy"></i></div>
+          <div class="badge-card__nom">Top Technicien</div>
+          <div class="badge-card__desc">50 missions réussies</div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card__icone"><i class="fi fi-rr-flame"></i></div>
+          <div class="badge-card__nom">Série</div>
+          <div class="badge-card__desc">7 jours consécutifs actif</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Sidebar mobile */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  /* Onglets */
+  const tabs = document.querySelectorAll('.tab');
+  const panneaux = document.querySelectorAll('.panneau');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cible = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      panneaux.forEach(p => p.classList.remove('is-actif'));
+      const panneauCible = document.getElementById('panneau-' + cible);
+      if (panneauCible) panneauCible.classList.add('is-actif');
+
+      history.replaceState(null, '', '#tab=' + cible);
+    });
+  });
+
+  /* Deep link initial */
+  const hashParams = new URLSearchParams((window.location.hash || '').replace('#', '?'));
+  const tabInitial = hashParams.get('tab');
+  if (tabInitial) {
+    const tabCible = document.querySelector('.tab[data-tab="' + tabInitial + '"]');
+    if (tabCible) tabCible.click();
+  }
+
+  /* Bouton Partager */
+  const btnPartager = document.getElementById('btnPartagerProfil');
+  if (btnPartager) {
+    btnPartager.addEventListener('click', () => {
+      const url = window.location.origin + '/app/profil-public.html?id=moi';
+      if (navigator.share) {
+        navigator.share({
+          title: 'Mon profil JosDore',
+          text: 'Découvre mon profil technicien sur JosDore Réseau',
+          url: url
+        }).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          btnPartager.innerHTML = '<i class="fi fi-rr-check"></i> Lien copié !';
+          setTimeout(() => {
+            btnPartager.innerHTML = '<i class="fi fi-rr-share"></i> Partager';
+          }, 1800);
+        });
+      }
+    });
+  }
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Profil', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenue — JosDore Réseau</title>
+<meta name="description" content="Bienvenue sur JosDore Réseau. Complète ton profil en 2 minutes pour commencer.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — ONBOARDING
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER SIMPLE
+   ============================================================ */
+.app-header {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+.app-header__skip {
+  margin-left: auto;
+  padding: 8px 14px;
+  border-radius: var(--rayon-md);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gris-500);
+  transition: var(--transition);
+}
+.app-header__skip:hover {
+  color: var(--gris-900);
+  background: var(--gris-100);
+}
+
+/* ============================================================
+   BARRE DE PROGRESSION
+   ============================================================ */
+.progress-bar {
+  position: sticky; top: var(--header-h); z-index: 90;
+  height: 4px;
+  background: var(--gris-200);
+}
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--or), var(--or-fonce));
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 999px 999px 0;
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.onboarding-main {
+  flex: 1;
+  padding: 32px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.onboarding-container {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* Carte */
+.onboarding-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 40px 32px;
+  box-shadow: var(--ombre-sm);
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Étapes (écrans) */
+.etape-ecran {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+}
+.etape-ecran.is-active {
+  display: flex;
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Étape compteur */
+.etape-compteur {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  border-radius: var(--rayon-full);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+/* Icône principale de l'étape */
+.etape-icon {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+/* Titre / sous-titre */
+.etape-titre {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 900;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.etape-titre span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.etape-sous {
+  font-size: 15px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* Contenu de l'étape */
+.etape-contenu {
+  flex: 1;
+}
+
+/* Pied de l'étape (boutons) */
+.etape-pied {
+  display: flex;
+  gap: 10px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gris-100);
+}
+.etape-pied .btn { flex: 1; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 24px;
+  font-family: var(--police-titre);
+  font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn:active { transform: translateY(0); }
+.btn--or {
+  background: var(--or); color: var(--nuit);
+}
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--ghost {
+  background: transparent; color: var(--gris-700); border-color: var(--gris-200);
+}
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--block { width: 100%; }
+.btn--lg { padding: 15px 28px; font-size: 15px; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   CHOIX MULTIPLES (cartes cliquables)
+   ============================================================ */
+.choix-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+.choix {
+  padding: 16px 14px;
+  background: #fff;
+  border: 2px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.choix:hover {
+  border-color: var(--or);
+  background: rgba(245,158,11,0.03);
+}
+.choix.is-selectionne {
+  border-color: var(--or);
+  background: rgba(245,158,11,0.08);
+  box-shadow: 0 4px 12px rgba(245,158,11,0.15);
+}
+.choix__icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--gris-100);
+  color: var(--gris-700);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  transition: var(--transition);
+}
+.choix.is-selectionne .choix__icon {
+  background: var(--or);
+  color: var(--nuit);
+}
+.choix__label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gris-900);
+  line-height: 1.3;
+}
+.choix__desc {
+  font-size: 11px;
+  color: var(--gris-500);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: block;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-label .requis { color: var(--rouge); margin-left: 2px; }
+.form-label .optionnel {
+  font-size: 10px; font-weight: 700;
+  color: var(--gris-500);
+  text-transform: none; letter-spacing: 0;
+  padding: 2px 8px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+  margin-left: 6px;
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  padding-left: 16px;
+  line-height: 1.6;
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none; border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   AVATAR UPLOADER
+   ============================================================ */
+.avatar-uploader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.avatar-preview {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-size: 38px; font-weight: 900;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.avatar-preview img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.avatar-uploader__btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.avatar-uploader__btn:hover {
+  border-color: var(--or);
+  color: var(--or-fonce);
+}
+.avatar-uploader__btn input { display: none; }
+
+/* ============================================================
+   ÉTAPE FINALE (Succès)
+   ============================================================ */
+.etape-succes {
+  text-align: center;
+  padding: 12px 0;
+}
+.etape-succes__icon {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+  margin: 0 auto 24px;
+  box-shadow: 0 16px 40px rgba(245,158,11,0.35);
+  animation: pop 0.5s ease;
+}
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.etape-succes h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 12px;
+}
+.etape-succes p {
+  font-size: 15px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 auto 24px;
+}
+.etape-succes__recap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 380px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+.recap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-sm);
+  border: 1px solid var(--gris-200);
+}
+.recap-item__icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: rgba(245,158,11,0.15);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.recap-item__label {
+  font-size: 10px;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+.recap-item__valeur {
+  font-size: 13px;
+  color: var(--gris-900);
+  font-weight: 700;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .app-header { padding: 0 12px; }
+  .app-header__logo-suffix { display: none; }
+  .onboarding-main { padding: 20px 12px; }
+  .onboarding-carte {
+    padding: 28px 20px;
+    min-height: auto;
+    border-radius: var(--rayon-md);
+  }
+  .etape-icon { width: 60px; height: 60px; font-size: 28px; }
+  .etape-pied { flex-direction: column-reverse; }
+  .etape-pied .btn { width: 100%; }
+  .choix-grille { grid-template-columns: 1fr 1fr; }
+  .etape-succes__recap { grid-template-columns: 1fr; }
+  .avatar-preview { width: 96px; height: 96px; font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER SIMPLE                                                -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <a href="app/dashboard.html" class="app-header__skip">
+    Passer <i class="fi fi-rr-angle-small-right"></i>
+  </a>
+</header>
+
+<!-- ============================================================ -->
+<!-- PROGRESS BAR                                                 -->
+<!-- ============================================================ -->
+<div class="progress-bar" aria-hidden="true">
+  <div class="progress-bar__fill" id="progress-fill"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="onboarding-main">
+  <div class="onboarding-container">
+    <div class="onboarding-carte">
+
+      <!-- ===================== ÉTAPE 1 : BIENVENUE ===================== -->
+      <div class="etape-ecran is-active" data-etape="1">
+        <div class="etape-compteur">
+          <i class="fi fi-rr-rocket"></i>
+          Étape 1 sur 5
+        </div>
+
+        <div class="etape-icon">
+          <i class="fi fi-sr-hand-wave"></i>
+        </div>
+
+        <h1 class="etape-titre">
+          Bienvenue sur <span>JosDore Réseau</span>.
+        </h1>
+        <p class="etape-sous">
+          Ton compte est prêt. En 2 minutes, on va configurer ton profil pour que
+          les clients puissent te trouver facilement.
+        </p>
+
+        <div class="etape-contenu">
+          <div class="choix-grille" style="grid-template-columns: 1fr;">
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:16px;background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.15);border-radius:var(--rayon-md);">
+              <i class="fi fi-rr-info" style="color:var(--bleu);font-size:20px;flex-shrink:0;margin-top:2px;"></i>
+              <div>
+                <div style="font-size:13.5px;font-weight:800;color:var(--gris-900);margin-bottom:4px;">Tout est modifiable plus tard</div>
+                <div style="font-size:13px;color:var(--gris-500);line-height:1.55;">Tes réponses ne sont pas définitives. Tu pourras les modifier dans tes paramètres à tout moment.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="etape-pied">
+          <button type="button" class="btn btn--or btn--lg" data-action="suivant">
+            C'est parti <i class="fi fi-rr-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== ÉTAPE 2 : MÉTIER ===================== -->
+      <div class="etape-ecran" data-etape="2">
+        <div class="etape-compteur">
+          <i class="fi fi-rr-briefcase"></i>
+          Étape 2 sur 5
+        </div>
+
+        <div class="etape-icon">
+          <i class="fi fi-rr-briefcase"></i>
+        </div>
+
+        <h1 class="etape-titre">Quel est ton <span>métier principal</span> ?</h1>
+        <p class="etape-sous">
+          Choisis la spécialité qui te correspond le mieux. Tu pourras en ajouter d'autres plus tard.
+        </p>
+
+        <div class="etape-contenu">
+          <div class="choix-grille" id="grille-metier">
+            <button type="button" class="choix" data-valeur="Informatique">
+              <div class="choix__icon"><i class="fi fi-rr-computer"></i></div>
+              <div class="choix__label">Informatique</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Réseaux">
+              <div class="choix__icon"><i class="fi fi-rr-wifi"></i></div>
+              <div class="choix__label">Réseaux</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Électricité">
+              <div class="choix__icon"><i class="fi fi-rr-bolt"></i></div>
+              <div class="choix__label">Électricité</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Hardware">
+              <div class="choix__icon"><i class="fi fi-rr-microchip"></i></div>
+              <div class="choix__label">Hardware</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Développement web">
+              <div class="choix__icon"><i class="fi fi-rr-brackets-curly"></i></div>
+              <div class="choix__label">Développement</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Design">
+              <div class="choix__icon"><i class="fi fi-rr-palette"></i></div>
+              <div class="choix__label">Design</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Maintenance">
+              <div class="choix__icon"><i class="fi fi-rr-settings"></i></div>
+              <div class="choix__label">Maintenance</div>
+            </button>
+            <button type="button" class="choix" data-valeur="Autre">
+              <div class="choix__icon"><i class="fi fi-rr-plus"></i></div>
+              <div class="choix__label">Autre</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="etape-pied">
+          <button type="button" class="btn btn--ghost btn--lg" data-action="retour">
+            <i class="fi fi-rr-arrow-left"></i> Retour
+          </button>
+          <button type="button" class="btn btn--or btn--lg" data-action="suivant" data-besoin="metier" disabled>
+            Continuer <i class="fi fi-rr-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== ÉTAPE 3 : VILLE ===================== -->
+      <div class="etape-ecran" data-etape="3">
+        <div class="etape-compteur">
+          <i class="fi fi-rr-marker"></i>
+          Étape 3 sur 5
+        </div>
+
+        <div class="etape-icon">
+          <i class="fi fi-rr-marker"></i>
+        </div>
+
+        <h1 class="etape-titre">Où <span>travailles-tu</span> ?</h1>
+        <p class="etape-sous">
+          Indique ta ville principale. Les clients près de chez toi pourront te trouver plus facilement.
+        </p>
+
+        <div class="etape-contenu">
+          <div class="form-group">
+            <label class="form-label" for="onb-ville">
+              Ville <span class="requis">*</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-marker" aria-hidden="true"></i>
+              <input
+                class="form-input"
+                type="text"
+                id="onb-ville"
+                placeholder="Ex : Abomey-Calavi"
+                autocomplete="address-level2"
+                required
+              >
+            </div>
+            <p class="form-help">Tu pourras ajouter d'autres zones d'intervention plus tard.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="onb-quartier">
+              Quartier / zone
+              <span class="optionnel">Optionnel</span>
+            </label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-map" aria-hidden="true"></i>
+              <input
+                class="form-input"
+                type="text"
+                id="onb-quartier"
+                placeholder="Ex : Sainte Rita, Godomey…"
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="etape-pied">
+          <button type="button" class="btn btn--ghost btn--lg" data-action="retour">
+            <i class="fi fi-rr-arrow-left"></i> Retour
+          </button>
+          <button type="button" class="btn btn--or btn--lg" data-action="suivant" data-besoin="ville" disabled>
+            Continuer <i class="fi fi-rr-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== ÉTAPE 4 : TARIF + BIO ===================== -->
+      <div class="etape-ecran" data-etape="4">
+        <div class="etape-compteur">
+          <i class="fi fi-rr-coins"></i>
+          Étape 4 sur 5
+        </div>
+
+        <div class="etape-icon">
+          <i class="fi fi-rr-coins"></i>
+        </div>
+
+        <h1 class="etape-titre">Ton <span>tarif indicatif</span></h1>
+        <p class="etape-sous">
+          Un tarif clair rassure les clients. Tu pourras toujours ajuster au cas par cas.
+        </p>
+
+        <div class="etape-contenu">
+          <div class="form-group">
+            <label class="form-label">Tarif horaire indicatif</label>
+            <div class="choix-grille" id="grille-tarif">
+              <button type="button" class="choix" data-valeur="À partir de 3000 F/h">
+                <div class="choix__label">3 000 F/h</div>
+                <div class="choix__desc">Débutant</div>
+              </button>
+              <button type="button" class="choix" data-valeur="À partir de 5000 F/h">
+                <div class="choix__label">5 000 F/h</div>
+                <div class="choix__desc">Standard</div>
+              </button>
+              <button type="button" class="choix" data-valeur="À partir de 8000 F/h">
+                <div class="choix__label">8 000 F/h</div>
+                <div class="choix__desc">Confirmé</div>
+              </button>
+              <button type="button" class="choix" data-valeur="Sur devis">
+                <div class="choix__icon"><i class="fi fi-rr-document-signed"></i></div>
+                <div class="choix__label">Sur devis</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="onb-bio">
+              Bio courte
+              <span class="optionnel">Optionnel</span>
+            </label>
+            <textarea
+              class="form-textarea"
+              id="onb-bio"
+              placeholder="Ex : Technicien informatique à Calavi, 5 ans d'expérience en réseaux et réparation PC."
+              maxlength="200"
+            ></textarea>
+            <p class="form-help">
+              <i class="fi fi-rr-info"></i>
+              200 caractères max. Présente-toi en 1-2 phrases.
+            </p>
+          </div>
+        </div>
+
+        <div class="etape-pied">
+          <button type="button" class="btn btn--ghost btn--lg" data-action="retour">
+            <i class="fi fi-rr-arrow-left"></i> Retour
+          </button>
+          <button type="button" class="btn btn--or btn--lg" data-action="suivant">
+            Continuer <i class="fi fi-rr-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== ÉTAPE 5 : PHOTO ===================== -->
+      <div class="etape-ecran" data-etape="5">
+        <div class="etape-compteur">
+          <i class="fi fi-rr-picture"></i>
+          Étape 5 sur 5
+        </div>
+
+        <div class="etape-icon">
+          <i class="fi fi-rr-picture"></i>
+        </div>
+
+        <h1 class="etape-titre">Ajoute une <span>photo de profil</span></h1>
+        <p class="etape-sous">
+          Un profil avec photo reçoit 4× plus de contacts. Si tu n'en as pas, on utilise ta première lettre.
+        </p>
+
+        <div class="etape-contenu">
+          <div class="avatar-uploader">
+            <div class="avatar-preview" id="avatar-preview">
+              <span id="avatar-initiale">K</span>
+            </div>
+
+            <label class="avatar-uploader__btn">
+              <i class="fi fi-rr-camera"></i> Choisir une photo
+              <input type="file" id="avatar-input" accept="image/png,image/jpeg,image/webp">
+            </label>
+
+            <p class="form-help" style="text-align:center;margin-top:0;">
+              JPG, PNG ou WebP. 2 Mo maximum.
+            </p>
+          </div>
+        </div>
+
+        <div class="etape-pied">
+          <button type="button" class="btn btn--ghost btn--lg" data-action="retour">
+            <i class="fi fi-rr-arrow-left"></i> Retour
+          </button>
+          <button type="button" class="btn btn--or btn--lg" data-action="terminer">
+            <i class="fi fi-rr-check"></i> Terminer
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== ÉTAPE FINALE : SUCCÈS ===================== -->
+      <div class="etape-ecran" data-etape="6">
+        <div class="etape-succes">
+          <div class="etape-succes__icon">
+            <i class="fi fi-rr-check"></i>
+          </div>
+
+          <h2>Ton profil est prêt !</h2>
+          <p>
+            Bienvenue dans la communauté JosDore Réseau. Commence par publier ta première intervention
+            pour construire ton portfolio.
+          </p>
+
+          <!-- Récap -->
+          <div class="etape-succes__recap">
+
+            <div class="recap-item">
+              <div class="recap-item__icon"><i class="fi fi-rr-briefcase"></i></div>
+              <div>
+                <div class="recap-item__label">Métier</div>
+                <div class="recap-item__valeur" id="recap-metier">—</div>
+              </div>
+            </div>
+
+            <div class="recap-item">
+              <div class="recap-item__icon"><i class="fi fi-rr-marker"></i></div>
+              <div>
+                <div class="recap-item__label">Ville</div>
+                <div class="recap-item__valeur" id="recap-ville">—</div>
+              </div>
+            </div>
+
+            <div class="recap-item">
+              <div class="recap-item__icon"><i class="fi fi-rr-coins"></i></div>
+              <div>
+                <div class="recap-item__label">Tarif</div>
+                <div class="recap-item__valeur" id="recap-tarif">—</div>
+              </div>
+            </div>
+
+            <div class="recap-item">
+              <div class="recap-item__icon"><i class="fi fi-rr-picture"></i></div>
+              <div>
+                <div class="recap-item__label">Photo</div>
+                <div class="recap-item__valeur" id="recap-photo">Aucune</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+            <a href="app/dashboard.html" class="btn btn--or btn--lg">
+              <i class="fi fi-rr-apps"></i> Aller à mon tableau de bord
+            </a>
+          </div>
+
+          <p style="font-size:12.5px;color:var(--gris-500);margin-top:18px;margin-bottom:0;">
+            Astuce : tu peux tout modifier à tout moment dans <a href="app/parametres.html" style="color:var(--or-fonce);font-weight:700;">tes paramètres</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ÉTAT DE L'ONBOARDING
+     ============================================================ */
+  const TOTAL_ETAPES = 5; // étapes utiles (hors succès)
+  const CLE_STORAGE = 'josdore_onboarding_draft';
+
+  const data = {
+    metier: '',
+    ville: '',
+    quartier: '',
+    tarif: '',
+    bio: '',
+    photo: null  // DataURL
+  };
+
+  // Charger un éventuel brouillon
+  try {
+    const brut = localStorage.getItem(CLE_STORAGE);
+    if (brut) Object.assign(data, JSON.parse(brut));
+  } catch (e) {}
+
+  /* ============================================================
+     ÉLÉMENTS
+     ============================================================ */
+  const ecrans = document.querySelectorAll('.etape-ecran');
+  const fill = document.getElementById('progress-fill');
+
+  const grilleMetier = document.getElementById('grille-metier');
+  const grilleTarif = document.getElementById('grille-tarif');
+
+  const inputVille = document.getElementById('onb-ville');
+  const inputQuartier = document.getElementById('onb-quartier');
+  const inputBio = document.getElementById('onb-bio');
+
+  const avatarInput = document.getElementById('avatar-input');
+  const avatarPreview = document.getElementById('avatar-preview');
+  const avatarInitiale = document.getElementById('avatar-initiale');
+
+  const recapMetier = document.getElementById('recap-metier');
+  const recapVille = document.getElementById('recap-ville');
+  const recapTarif = document.getElementById('recap-tarif');
+  const recapPhoto = document.getElementById('recap-photo');
+
+  /* ============================================================
+     NAVIGATION ENTRE ÉTAPES
+     ============================================================ */
+  let etapeActuelle = 1;
+
+  const afficherEtape = (n) => {
+    etapeActuelle = n;
+    ecrans.forEach(e => {
+      e.classList.toggle('is-active', parseInt(e.dataset.etape) === n);
+    });
+
+    // Mise à jour barre de progression
+    const pct = Math.min(100, Math.round(((n - 1) / TOTAL_ETAPES) * 100));
+    fill.style.width = pct + '%';
+
+    // Pré-remplir selon l'étape
+    if (n === 3) {
+      if (inputVille && data.ville) inputVille.value = data.ville;
+      if (inputQuartier && data.quartier) inputQuartier.value = data.quartier;
+    }
+    if (n === 4 && inputBio && data.bio) inputBio.value = data.bio;
+
+    // Maj récap
+    if (n === 6) remplirRecap();
+
+    // Scroll top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  /* ============================================================
+     BOUTONS : SUIVANT / RETOUR / TERMINER
+     ============================================================ */
+  document.querySelectorAll('[data-action="suivant"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Validation selon l'étape
+      if (etapeActuelle === 2 && !data.metier) return;
+      if (etapeActuelle === 3) {
+        const v = inputVille.value.trim();
+        if (v.length < 2) {
+          inputVille.focus();
+          inputVille.style.borderColor = 'var(--rouge)';
+          setTimeout(() => inputVille.style.borderColor = '', 1500);
+          return;
+        }
+        data.ville = v;
+        data.quartier = inputQuartier.value.trim();
+        sauvegarder();
+      }
+      if (etapeActuelle === 4) {
+        data.bio = inputBio.value.trim();
+        sauvegarder();
+      }
+      afficherEtape(etapeActuelle + 1);
+    });
+  });
+
+  document.querySelectorAll('[data-action="retour"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (etapeActuelle > 1) afficherEtape(etapeActuelle - 1);
+    });
+  });
+
+  document.querySelectorAll('[data-action="terminer"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Fin : on sauvegarde et on va à l'écran 6 (succès)
+      sauvegarder();
+      marquerTermine();
+      afficherEtape(6);
+    });
+  });
+
+  /* ============================================================
+     CHOIX MÉTIER
+     ============================================================ */
+  if (grilleMetier) {
+    grilleMetier.querySelectorAll('.choix').forEach(choix => {
+      choix.addEventListener('click', () => {
+        grilleMetier.querySelectorAll('.choix').forEach(c => c.classList.remove('is-selectionne'));
+        choix.classList.add('is-selectionne');
+        data.metier = choix.dataset.valeur;
+        sauvegarder();
+        // Active le bouton Continuer
+        const btn = document.querySelector('[data-etape="2"] [data-action="suivant"]');
+        if (btn) btn.disabled = false;
+      });
+    });
+  }
+
+  /* ============================================================
+     CHOIX TARIF
+     ============================================================ */
+  if (grilleTarif) {
+    grilleTarif.querySelectorAll('.choix').forEach(choix => {
+      choix.addEventListener('click', () => {
+        grilleTarif.querySelectorAll('.choix').forEach(c => c.classList.remove('is-selectionne'));
+        choix.classList.add('is-selectionne');
+        data.tarif = choix.dataset.valeur;
+        sauvegarder();
+      });
+    });
+  }
+
+  /* ============================================================
+     INPUT VILLE → active Continuer
+     ============================================================ */
+  if (inputVille) {
+    inputVille.addEventListener('input', () => {
+      const v = inputVille.value.trim();
+      const btn = document.querySelector('[data-etape="3"] [data-action="suivant"]');
+      if (btn) btn.disabled = v.length < 2;
+    });
+  }
+
+  /* ============================================================
+     AVATAR UPLOADER
+     ============================================================ */
+  if (avatarInput) {
+    avatarInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      // Limite 2 Mo
+      if (file.size > 2 * 1024 * 1024) {
+        alert('La photo est trop lourde (2 Mo maximum).');
+        avatarInput.value = '';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        data.photo = ev.target.result;
+        sauvegarder();
+
+        // Afficher l'aperçu
+        avatarPreview.innerHTML = `<img src="${data.photo}" alt="Photo de profil">`;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ============================================================
+     PRÉ-REMPLIR L'AVATAR À L'ARRIVÉE
+     ============================================================ */
+  const chargerAvatarExistant = () => {
+    if (data.photo) {
+      avatarPreview.innerHTML = `<img src="${data.photo}" alt="Photo de profil">`;
+    } else if (data.ville) {
+      // Initiale du nom stocké ? On peut prendre l'initiale du prénom stocké en sessionStorage
+      // Pour simplifier, on laisse "K" par défaut (initiale de Koffi)
+      if (avatarInitiale) avatarInitiale.textContent = 'K';
+    }
+  };
+
+  /* ============================================================
+     RÉCAP FINAL
+     ============================================================ */
+  const remplirRecap = () => {
+    if (recapMetier) recapMetier.textContent = data.metier || '—';
+    if (recapVille) recapVille.textContent = data.ville + (data.quartier ? ' · ' + data.quartier : '') || '—';
+    if (recapTarif) recapTarif.textContent = data.tarif || 'Sur devis';
+    if (recapPhoto) recapPhoto.textContent = data.photo ? 'Ajoutée' : 'Aucune';
+  };
+
+  /* ============================================================
+     SAUVEGARDE
+     ============================================================ */
+  const sauvegarder = () => {
+    try {
+      localStorage.setItem(CLE_STORAGE, JSON.stringify(data));
+    } catch (e) {}
+  };
+
+  const marquerTermine = () => {
+    try {
+      localStorage.setItem('josdore_onboarding_termine', '1');
+    } catch (e) {}
+  };
+
+  /* ============================================================
+     DÉMARRAGE
+     ============================================================ */
+  chargerAvatarExistant();
+
+  // Si on arrive avec ?step=N dans l'URL, on va directement à cette étape
+  const params = new URLSearchParams(window.location.search);
+  const step = parseInt(params.get('step'));
+  if (step && step >= 1 && step <= 6) {
+    afficherEtape(step);
+  } else {
+    afficherEtape(1);
+  }
+
+  console.log('%cJosDore Réseau — Onboarding', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

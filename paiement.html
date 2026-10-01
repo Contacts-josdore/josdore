@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paiement — JosDore Réseau</title>
+<meta name="description" content="Paiement sécurisé d'une mission JosDore Réseau. Mobile Money, carte bancaire.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — PAIEMENT
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Retour */
+.retour {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 16px;
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-500);
+  transition: var(--transition);
+}
+.retour:hover { color: var(--or-fonce); }
+.retour i { font-size: 14px; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 15px 28px; font-size: 15px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   ÉTAPES
+   ============================================================ */
+.etapes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.etape {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.etape__num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--gris-200);
+  color: var(--gris-500);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-size: 12px;
+  font-weight: 900;
+}
+.etape.is-active .etape__num {
+  background: var(--or);
+  color: var(--nuit);
+}
+.etape.is-active { color: var(--or-fonce); }
+.etape.is-done .etape__num {
+  background: var(--vert);
+  color: #fff;
+}
+.etape-sep {
+  width: 24px; height: 2px;
+  background: var(--gris-200);
+  border-radius: 999px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.paiement-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* ============================================================
+   CARTE GÉNÉRIQUE
+   ============================================================ */
+.carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.carte__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.carte__titre i { color: var(--or-fonce); font-size: 18px; }
+
+/* ============================================================
+   RÉCAPITULATIF MISSION
+   ============================================================ */
+.recap-mission {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--rayon-md);
+  margin-bottom: 16px;
+}
+.recap-mission__icone {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(245,158,11,0.15);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.recap-mission__contenu { flex: 1; min-width: 0; }
+.recap-mission__titre {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.recap-mission__client {
+  font-size: 13px;
+  color: var(--gris-500);
+  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 6px;
+}
+.recap-mission__meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11.5px;
+  color: var(--gris-500);
+  flex-wrap: wrap;
+}
+.recap-mission__meta span {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.recap-mission__meta i { font-size: 11px; color: var(--or-fonce); }
+
+/* ============================================================
+   DÉTAIL PRIX
+   ============================================================ */
+.detail-prix {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-md);
+  margin-bottom: 20px;
+}
+.detail-prix__ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--gris-700);
+}
+.detail-prix__ligne--total {
+  font-family: var(--police-titre);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--gris-900);
+  padding-top: 10px;
+  border-top: 2px solid var(--gris-200);
+  margin-top: 4px;
+}
+.detail-prix__ligne--total span:last-child {
+  color: var(--or-fonce);
+}
+
+/* ============================================================
+   MOYENS DE PAIEMENT
+   ============================================================ */
+.moyens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.moyen {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: #fff;
+  border: 2px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: inherit;
+  position: relative;
+}
+.moyen:hover {
+  border-color: var(--or);
+}
+.moyen.is-active {
+  border-color: var(--or);
+  background: rgba(245,158,11,0.04);
+  box-shadow: 0 4px 12px rgba(245,158,11,0.12);
+}
+.moyen__logo {
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-size: 11px;
+  font-weight: 900;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.moyen__logo--mtn { background: #FFCC00; color: #000; }
+.moyen__logo--moov { background: #0066CC; color: #fff; }
+.moyen__logo--visa { background: #1A1F71; color: #fff; }
+.moyen__logo--mastercard { background: linear-gradient(135deg, #EB001B, #F79E1B); color: #fff; }
+.moyen__info { flex: 1; min-width: 0; }
+.moyen__nom {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 2px;
+}
+.moyen__desc {
+  font-size: 11.5px;
+  color: var(--gris-500);
+}
+.moyen__check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  color: transparent;
+  font-size: 12px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.moyen.is-active .moyen__check {
+  background: var(--or);
+  border-color: var(--or);
+  color: var(--nuit);
+}
+
+/* ============================================================
+   FORMULAIRE DE PAIEMENT
+   ============================================================ */
+.form-paiement { display: none; }
+.form-paiement.is-visible { display: block; animation: fadeIn 0.25s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.form-groupe { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--or);
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.12);
+}
+.form-input.is-invalide { border-color: var(--rouge); background: #FFFBFB; }
+
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ============================================================
+   BANDEAU SÉCURITÉ
+   ============================================================ */
+.securite-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  border-radius: var(--rayon-sm);
+  margin: 20px 0;
+  font-size: 12.5px;
+  color: var(--gris-700);
+  line-height: 1.55;
+}
+.securite-info i {
+  color: var(--vert);
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.securite-info strong { color: var(--gris-900); font-weight: 800; }
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+.actions-paiement {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.actions-paiement .btn { flex: 1; min-width: 140px; }
+
+/* ============================================================
+   ALERTES
+   ============================================================ */
+.alerte {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.alerte.is-visible { display: flex; }
+.alerte i { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.alerte--erreur {
+  background: #FEF2F2;
+  border: 1px solid rgba(220,38,38,0.2);
+  color: #991B1B;
+}
+.alerte--erreur i { color: var(--rouge); }
+.alerte strong { color: var(--gris-900); font-weight: 800; }
+
+/* ============================================================
+   ÉCRAN SUCCÈS
+   ============================================================ */
+.succes-bloc {
+  display: none;
+  text-align: center;
+  padding: 40px 24px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.succes-bloc.is-visible { display: block; animation: fadeIn 0.4s ease; }
+.succes-bloc__icon {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--vert), #059669);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+  margin: 0 auto 24px;
+  box-shadow: 0 16px 40px rgba(22,163,74,0.35);
+  animation: pop 0.5s ease;
+}
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.succes-bloc h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 12px;
+}
+.succes-bloc p {
+  font-size: 15px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 0 auto 24px;
+}
+
+.succes-bloc__recap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 460px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+.recap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-sm);
+  border: 1px solid var(--gris-200);
+}
+.recap-item__icon {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: rgba(245,158,11,0.15);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.recap-item__label {
+  font-size: 10px;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+.recap-item__valeur {
+  font-size: 13px;
+  color: var(--gris-900);
+  font-weight: 800;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.succes-bloc__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   ÉTAT INTROUVABLE
+   ============================================================ */
+.introuvable {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.introuvable.is-visible { display: block; }
+.introuvable__icon {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+}
+.introuvable h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.introuvable p {
+  font-size: 14.5px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+/* Wrapper principal (caché si introuvable) */
+.paiement-wrapper { display: block; }
+.paiement-wrapper.is-cache { display: none; }
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .paiement-layout {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .carte { padding: 18px; }
+  .moyens { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .succes-bloc__recap { grid-template-columns: 1fr; }
+  .actions-paiement { flex-direction: column; }
+  .actions-paiement .btn { width: 100%; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/index.html" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <a href="app/missions.html" class="retour">
+    <i class="fi fi-rr-arrow-left"></i> Retour aux missions
+  </a>
+
+  <!-- ============ ÉTAT INTROUVABLE ============ -->
+  <div class="introuvable" id="introuvable">
+    <div class="introuvable__icon"><i class="fi fi-rr-inbox"></i></div>
+    <h2>Mission introuvable</h2>
+    <p>
+      Impossible de trouver la mission à payer. Elle a peut-être été retirée
+      ou l'identifiant est incorrect.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="app/missions.html" class="btn btn--or">
+        <i class="fi fi-rr-target"></i> Voir les missions
+      </a>
+      <a href="app/dashboard.html" class="btn btn--ghost">
+        <i class="fi fi-rr-apps"></i> Tableau de bord
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ WRAPPER PAIEMENT ============ -->
+  <div class="paiement-wrapper" id="paiement-wrapper">
+
+    <!-- Étapes -->
+    <div class="etapes" id="etapes">
+      <div class="etape is-active" data-etape="1">
+        <span class="etape__num">1</span>
+        <span>Méthode</span>
+      </div>
+      <div class="etape-sep"></div>
+      <div class="etape" data-etape="2">
+        <span class="etape__num">2</span>
+        <span>Paiement</span>
+      </div>
+      <div class="etape-sep"></div>
+      <div class="etape" data-etape="3">
+        <span class="etape__num">3</span>
+        <span>Confirmation</span>
+      </div>
+    </div>
+
+    <!-- Layout principal -->
+    <div class="paiement-layout" id="paiement-layout">
+
+      <!-- ============================================ -->
+      <!-- COLONNE PRINCIPALE                           -->
+      <!-- ============================================ -->
+      <div>
+
+        <div class="carte">
+          <div class="carte__head">
+            <h1 class="carte__titre">
+              <i class="fi fi-rr-lock"></i> Paiement sécurisé
+            </h1>
+          </div>
+
+          <!-- Alerte erreur -->
+          <div class="alerte alerte--erreur" id="alerte-erreur" role="alert">
+            <i class="fi fi-rr-cross-circle"></i>
+            <span id="alerte-erreur-texte">Merci de vérifier tes informations.</span>
+          </div>
+
+          <!-- Choix du moyen -->
+          <div id="zone-moyens">
+            <p style="font-size:14px;color:var(--gris-500);margin-bottom:16px;">
+              Choisis ton moyen de paiement préféré.
+            </p>
+
+            <div class="moyens" id="moyens">
+
+              <button type="button" class="moyen is-active" data-moyen="mtn" data-type="mobile">
+                <div class="moyen__logo moyen__logo--mtn">MTN</div>
+                <div class="moyen__info">
+                  <div class="moyen__nom">MTN Mobile Money</div>
+                  <div class="moyen__desc">Paiement par téléphone</div>
+                </div>
+                <div class="moyen__check"><i class="fi fi-sr-check"></i></div>
+              </button>
+
+              <button type="button" class="moyen" data-moyen="moov" data-type="mobile">
+                <div class="moyen__logo moyen__logo--moov">MOOV</div>
+                <div class="moyen__info">
+                  <div class="moyen__nom">Moov Money</div>
+                  <div class="moyen__desc">Paiement par téléphone</div>
+                </div>
+                <div class="moyen__check"><i class="fi fi-sr-check"></i></div>
+              </button>
+
+              <button type="button" class="moyen" data-moyen="visa" data-type="carte">
+                <div class="moyen__logo moyen__logo--visa">VISA</div>
+                <div class="moyen__info">
+                  <div class="moyen__nom">Visa</div>
+                  <div class="moyen__desc">Carte bancaire</div>
+                </div>
+                <div class="moyen__check"><i class="fi fi-sr-check"></i></div>
+              </button>
+
+              <button type="button" class="moyen" data-moyen="mastercard" data-type="carte">
+                <div class="moyen__logo moyen__logo--mastercard">MC</div>
+                <div class="moyen__info">
+                  <div class="moyen__nom">Mastercard</div>
+                  <div class="moyen__desc">Carte bancaire</div>
+                </div>
+                <div class="moyen__check"><i class="fi fi-sr-check"></i></div>
+              </button>
+
+            </div>
+
+            <!-- Formulaire Mobile Money -->
+            <div class="form-paiement" id="form-mobile">
+              <div class="form-groupe">
+                <label class="form-label" for="mobile-num">Numéro de téléphone</label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-rr-mobile-notch" aria-hidden="true"></i>
+                  <input class="form-input" type="tel" id="mobile-num" placeholder="Ex : +229 01 28 62 14 07" inputmode="tel" autocomplete="tel">
+                </div>
+                <p class="form-help">
+                  <i class="fi fi-rr-info"></i>
+                  Tu recevras une demande de confirmation sur ce numéro.
+                </p>
+              </div>
+
+              <div class="form-groupe">
+                <label class="form-label" for="mobile-nom">Nom du titulaire</label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-rr-user" aria-hidden="true"></i>
+                  <input class="form-input" type="text" id="mobile-nom" placeholder="Ex : Koffi Adande" autocomplete="name">
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulaire Carte bancaire -->
+            <div class="form-paiement" id="form-carte">
+              <div class="form-groupe">
+                <label class="form-label" for="carte-num">Numéro de carte</label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-rr-credit-card" aria-hidden="true"></i>
+                  <input class="form-input" type="text" id="carte-num" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19">
+                </div>
+              </div>
+
+              <div class="form-groupe">
+                <label class="form-label" for="carte-nom">Nom sur la carte</label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-rr-user" aria-hidden="true"></i>
+                  <input class="form-input" type="text" id="carte-nom" placeholder="Ex : KOFFI ADANDE" autocomplete="cc-name">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-groupe">
+                  <label class="form-label" for="carte-exp">Expiration</label>
+                  <div class="form-input-wrap">
+                    <i class="fi fi-rr-calendar" aria-hidden="true"></i>
+                    <input class="form-input" type="text" id="carte-exp" placeholder="MM/AA" maxlength="5" inputmode="numeric">
+                  </div>
+                </div>
+
+                <div class="form-groupe">
+                  <label class="form-label" for="carte-cvv">CVV</label>
+                  <div class="form-input-wrap">
+                    <i class="fi fi-rr-lock" aria-hidden="true"></i>
+                    <input class="form-input" type="text" id="carte-cvv" placeholder="123" maxlength="4" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sécurité -->
+          <div class="securite-info">
+            <i class="fi fi-rr-lock"></i>
+            <span>
+              <strong>Paiement 100% sécurisé.</strong>
+              Tes informations bancaires ne sont jamais stockées sur nos serveurs.
+              Les transactions sont chiffrées de bout en bout.
+            </span>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions-paiement">
+            <button type="button" class="btn btn--or btn--lg" id="btn-payer">
+              <i class="fi fi-rr-lock"></i> Payer maintenant
+            </button>
+            <a href="app/missions.html" class="btn btn--ghost btn--lg">
+              Annuler
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ============================================ -->
+      <!-- COLONNE RÉCAPITULATIF                        -->
+      <!-- ============================================ -->
+      <aside>
+
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-receipt"></i> Récapitulatif
+            </h2>
+          </div>
+
+          <!-- Mission -->
+          <div class="recap-mission">
+            <div class="recap-mission__icone" id="recap-icone">
+              <i class="fi fi-rr-target"></i>
+            </div>
+            <div class="recap-mission__contenu">
+              <div class="recap-mission__titre" id="recap-titre">…</div>
+              <div class="recap-mission__client">
+                <i class="fi fi-rr-building"></i>
+                <span id="recap-client">…</span>
+              </div>
+              <div class="recap-mission__meta" id="recap-meta"></div>
+            </div>
+          </div>
+
+          <!-- Détail prix -->
+          <div class="detail-prix">
+            <div class="detail-prix__ligne">
+              <span>Prestation</span>
+              <span id="prix-prestation">Sur devis</span>
+            </div>
+            <div class="detail-prix__ligne">
+              <span>Frais de service</span>
+              <span>0 FCFA</span>
+            </div>
+            <div class="detail-prix__ligne detail-prix__ligne--total">
+              <span>Total à payer</span>
+              <span id="prix-total">Sur devis</span>
+            </div>
+          </div>
+
+          <!-- Note -->
+          <p style="font-size:12.5px;color:var(--gris-500);line-height:1.6;margin:0;">
+            <i class="fi fi-rr-info" style="color:var(--or-fonce);"></i>
+            Le montant final peut varier selon le devis validé avec le client.
+            Tu recevras une facture par email après paiement.
+          </p>
+        </div>
+
+        <!-- Aide -->
+        <div class="carte" style="background:linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02)); border-color: rgba(245,158,11,0.25);">
+          <div class="carte__head" style="border-bottom-color: rgba(245,158,11,0.15);">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-bulb"></i> Besoin d'aide ?
+            </h2>
+          </div>
+          <p style="font-size:13.5px;color:var(--gris-700);line-height:1.65;margin:0 0 14px;">
+            Un problème avec le paiement ? Contacte-nous sur WhatsApp, on te répond en moins de 30 minutes.
+          </p>
+          <a href="https://wa.me/2290128621407" target="_blank" rel="noopener" class="btn btn--or btn--sm btn--block">
+            <i class="fi fi-brands-whatsapp"></i> Contacter le support
+          </a>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- ============ ÉCRAN SUCCÈS ============ -->
+  <div class="succes-bloc" id="succes-bloc">
+    <div class="succes-bloc__icon">
+      <i class="fi fi-rr-check"></i>
+    </div>
+    <h2>Paiement confirmé !</h2>
+    <p>
+      Merci ! Ton paiement a bien été enregistré. Le client a été notifié
+      et tu recevras une facture par email.
+    </p>
+
+    <div class="succes-bloc__recap">
+      <div class="recap-item">
+        <div class="recap-item__icon"><i class="fi fi-rr-receipt"></i></div>
+        <div>
+          <div class="recap-item__label">Référence</div>
+          <div class="recap-item__valeur" id="succes-ref">—</div>
+        </div>
+      </div>
+
+      <div class="recap-item">
+        <div class="recap-item__icon"><i class="fi fi-rr-coins"></i></div>
+        <div>
+          <div class="recap-item__label">Montant</div>
+          <div class="recap-item__valeur" id="succes-montant">—</div>
+        </div>
+      </div>
+
+      <div class="recap-item">
+        <div class="recap-item__icon"><i class="fi fi-rr-credit-card"></i></div>
+        <div>
+          <div class="recap-item__label">Méthode</div>
+          <div class="recap-item__valeur" id="succes-methode">—</div>
+        </div>
+      </div>
+
+      <div class="recap-item">
+        <div class="recap-item__icon"><i class="fi fi-rr-calendar"></i></div>
+        <div>
+          <div class="recap-item__label">Date</div>
+          <div class="recap-item__valeur" id="succes-date">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="succes-bloc__actions">
+      <a href="app/comptabilite.html" class="btn btn--or btn--lg">
+        <i class="fi fi-rr-coins"></i> Voir mes revenus
+      </a>
+      <a href="app/missions.html" class="btn btn--ghost btn--lg">
+        <i class="fi fi-rr-target"></i> Retour aux missions
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="index.html">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/index.html">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrirCookies = () => cookies && cookies.classList.add('is-open');
+  const fermerCookies = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarderChoix = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermerCookies();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrirCookies, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarderChoix('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarderChoix('refuse'));
+
+  /* ============================================================
+     BASE DE MISSIONS (DÉMO)
+     ------------------------------------------------------------
+     En production : fetch('assets/data/missions.json')
+     ============================================================ */
+  const MISSIONS = {
+    'm-1024': {
+      titre: 'Réparer réseau WiFi école',
+      client: 'École Les Palmiers',
+      ville: 'Abomey-Calavi',
+      specialite: 'Réseaux',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-wifi'
+    },
+    'm-1025': {
+      titre: 'Maintenance parc informatique',
+      client: 'TechSolutions SARL',
+      ville: 'Cotonou',
+      specialite: 'Informatique',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-computer'
+    },
+    'm-1026': {
+      titre: 'Installation réseau bureau médical',
+      client: 'Cabinet Médical Zongo',
+      ville: 'Cotonou',
+      specialite: 'Réseaux',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-wifi'
+    },
+    'm-1027': {
+      titre: 'Récupération de données disque dur',
+      client: 'Particulier',
+      ville: 'Abomey-Calavi',
+      specialite: 'Hardware',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-disk'
+    },
+    'm-1028': {
+      titre: 'Création site vitrine PME',
+      client: 'Boutique Élégance',
+      ville: 'Cotonou',
+      specialite: 'Développement web',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-brackets-curly'
+    },
+    'm-1029': {
+      titre: 'Installation logiciels + formation',
+      client: 'Cabinet Avocat Kossi',
+      ville: 'Porto-Novo',
+      specialite: 'Informatique',
+      budget: 'Sur devis',
+      budgetVal: 0,
+      icone: 'fi fi-rr-computer'
+    }
+  };
+
+  /* ============================================================
+     LECTURE DU PARAMÈTRE id
+     ============================================================ */
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  const paiementWrapper = document.getElementById('paiement-wrapper');
+  const introuvable = document.getElementById('introuvable');
+
+  if (!id || !MISSIONS[id]) {
+    paiementWrapper.classList.add('is-cache');
+    introuvable.classList.add('is-visible');
+    console.log('[JosDore] Mission introuvable :', id);
+    return;
+  }
+
+  const mission = MISSIONS[id];
+
+  /* ============================================================
+     REMPLISSAGE
+     ============================================================ */
+  document.title = 'Paiement — ' + mission.titre;
+
+  // Récap mission
+  const recapIcone = document.getElementById('recap-icone');
+  if (recapIcone) recapIcone.innerHTML = '<i class="' + mission.icone + '"></i>';
+
+  document.getElementById('recap-titre').textContent = mission.titre;
+  document.getElementById('recap-client').textContent = mission.client;
+  document.getElementById('recap-meta').innerHTML =
+    '<span><i class="fi fi-rr-marker"></i> ' + escapeHtml(mission.ville) + '</span>' +
+    '<span><i class="fi fi-rr-tools"></i> ' + escapeHtml(mission.specialite) + '</span>';
+
+  // Prix
+  document.getElementById('prix-prestation').textContent = mission.budget;
+  document.getElementById('prix-total').textContent = mission.budget;
+
+  /* ============================================================
+     GESTION DU MOYEN DE PAIEMENT
+     ============================================================ */
+  const moyens = document.querySelectorAll('.moyen');
+  const formMobile = document.getElementById('form-mobile');
+  const formCarte = document.getElementById('form-carte');
+  const alerteErreur = document.getElementById('alerte-erreur');
+  const alerteErreurTexte = document.getElementById('alerte-erreur-texte');
+
+  let moyenActif = 'mtn';
+  let typeMoyen = 'mobile';
+
+  const afficherForm = (type) => {
+    if (type === 'mobile') {
+      formMobile.classList.add('is-visible');
+      formCarte.classList.remove('is-visible');
+    } else {
+      formCarte.classList.add('is-visible');
+      formMobile.classList.remove('is-visible');
+    }
+  };
+
+  moyens.forEach(m => {
+    m.addEventListener('click', () => {
+      moyens.forEach(x => x.classList.remove('is-active'));
+      m.classList.add('is-active');
+      moyenActif = m.dataset.moyen;
+      typeMoyen = m.dataset.type;
+      afficherForm(typeMoyen);
+      cacherErreur();
+    });
+  });
+
+  // Afficher form mobile par défaut
+  afficherForm('mobile');
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const escapeHtml = (txt) => {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  const formaterMontant = (n) => {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA';
+  };
+
+  const afficherErreur = (msg) => {
+    alerteErreurTexte.textContent = msg;
+    alerteErreur.classList.add('is-visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const cacherErreur = () => {
+    alerteErreur.classList.remove('is-visible');
+  };
+
+  /* ============================================================
+     VALIDATION + PAIEMENT
+     ============================================================ */
+  const btnPayer = document.getElementById('btn-payer');
+
+  // Champs mobile
+  const mobileNum = document.getElementById('mobile-num');
+  const mobileNom = document.getElementById('mobile-nom');
+
+  // Champs carte
+  const carteNum = document.getElementById('carte-num');
+  const carteNom = document.getElementById('carte-nom');
+  const carteExp = document.getElementById('carte-exp');
+  const carteCvv = document.getElementById('carte-cvv');
+
+  // Auto-formatage carte : 1234 5678 9012 3456
+  if (carteNum) {
+    carteNum.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+      v = v.substring(0, 16);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+    });
+  }
+
+  // Auto-formatage expiration : MM/AA
+  if (carteExp) {
+    carteExp.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, '').substring(0, 4);
+      if (v.length > 2) v = v.substring(0, 2) + '/' + v.substring(2);
+      e.target.value = v;
+    });
+  }
+
+  // Nettoyage erreur
+  [mobileNum, mobileNom, carteNum, carteNom, carteExp, carteCvv].forEach(el => {
+    if (el) el.addEventListener('input', () => {
+      el.classList.remove('is-invalide');
+      cacherErreur();
+    });
+  });
+
+  /* ============================================================
+     ÉCRAN SUCCÈS + ÉTAPES
+     ============================================================ */
+  const etapes = document.querySelectorAll('.etape');
+  const succesBloc = document.getElementById('succes-bloc');
+  const paiementLayout = document.getElementById('paiement-layout');
+
+  const passerEtape = (n) => {
+    etapes.forEach(e => {
+      const num = parseInt(e.dataset.etape);
+      e.classList.toggle('is-active', num === n);
+      e.classList.toggle('is-done', num < n);
+    });
+  };
+
+  /* ============================================================
+     SOUMISSION
+     ============================================================ */
+  if (btnPayer) {
+    btnPayer.addEventListener('click', () => {
+      cacherErreur();
+
+      // Validation selon type
+      if (typeMoyen === 'mobile') {
+        const num = mobileNum.value.trim();
+        const nom = mobileNom.value.trim();
+
+        if (!num) {
+          mobileNum.classList.add('is-invalide');
+          mobileNum.focus();
+          return afficherErreur('Merci de saisir ton numéro de téléphone.');
+        }
+        if (!/^[+\d][\d\s().-]{6,}$/.test(num)) {
+          mobileNum.classList.add('is-invalide');
+          mobileNum.focus();
+          return afficherErreur('Ce numéro de téléphone semble invalide.');
+        }
+        if (nom.length < 2) {
+          mobileNom.classList.add('is-invalide');
+          mobileNom.focus();
+          return afficherErreur('Merci de saisir le nom du titulaire du compte.');
+        }
+      } else {
+        const num = carteNum.value.replace(/\s/g, '');
+        const nom = carteNom.value.trim();
+        const exp = carteExp.value.trim();
+        const cvv = carteCvv.value.trim();
+
+        if (num.length < 13 || num.length > 16) {
+          carteNum.classList.add('is-invalide');
+          carteNum.focus();
+          return afficherErreur('Numéro de carte invalide.');
+        }
+        if (nom.length < 2) {
+          carteNom.classList.add('is-invalide');
+          carteNom.focus();
+          return afficherErreur('Merci de saisir le nom sur la carte.');
+        }
+        if (!/^\d{2}\/\d{2}$/.test(exp)) {
+          carteExp.classList.add('is-invalide');
+          carteExp.focus();
+          return afficherErreur('Date d\'expiration invalide (MM/AA).');
+        }
+        if (!/^\d{3,4}$/.test(cvv)) {
+          carteCvv.classList.add('is-invalide');
+          carteCvv.focus();
+          return afficherErreur('Code CVV invalide.');
+        }
+      }
+
+      // Étape 2 : paiement en cours
+      passerEtape(2);
+      btnPayer.disabled = true;
+      btnPayer.innerHTML = '<i class="fi fi-rr-time-quarter-to"></i> Traitement en cours...';
+
+      // Simulation : en production, POST /api/missions/{id}/pay
+      setTimeout(() => {
+        // Étape 3 : confirmation
+        passerEtape(3);
+
+        // Masquer le layout principal
+        paiementLayout.style.display = 'none';
+
+        // Afficher le bloc succès
+        succesBloc.classList.add('is-visible');
+
+        // Remplir le récap succès
+        const ref = 'PAY-' + Date.now().toString().slice(-8);
+        const date = new Date().toLocaleDateString('fr-FR', {
+          day: 'numeric', month: 'long', year: 'numeric'
+        });
+        const methodes = {
+          'mtn': 'MTN Mobile Money',
+          'moov': 'Moov Money',
+          'visa': 'Visa',
+          'mastercard': 'Mastercard'
+        };
+
+        document.getElementById('succes-ref').textContent = ref;
+        document.getElementById('succes-montant').textContent = mission.budget;
+        document.getElementById('succes-methode').textContent = methodes[moyenActif] || moyenActif;
+        document.getElementById('succes-date').textContent = date;
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        console.log('[JosDore] Paiement simulé :', {
+          mission: id,
+          montant: mission.budget,
+          methode: moyenActif,
+          reference: ref
+        });
+      }, 1500);
+    });
+  }
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Paiement', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log('Mission : ' + id);
+});
+</script>
+
+</body>
+</html>

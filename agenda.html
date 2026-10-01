@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda — JosDore Réseau</title>
+<meta name="description" content="Ton agenda JosDore Réseau : missions planifiées, rendez-vous, événements.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — AGENDA
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+  --violet: #7C3AED;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* En-tête */
+.page-entete {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.page-entete__texte { flex: 1; min-width: 200px; }
+.page-entete__eyebrow {
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.page-entete h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 6px;
+}
+.page-entete h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.page-entete__sous { font-size: 14px; color: var(--gris-500); }
+.page-entete__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+.btn--icone {
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+}
+.btn--icone i { font-size: 16px; }
+
+/* ============================================================
+   CALENDRIER — BARRE D'OUTILS
+   ============================================================ */
+.cal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.cal-toolbar__gauche {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cal-toolbar__nav {
+  display: flex;
+  gap: 4px;
+}
+.cal-toolbar__titre {
+  font-family: var(--police-titre);
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--gris-900);
+  min-width: 170px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.cal-toolbar__droite {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Vue selecteur */
+.cal-vues {
+  display: flex;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+  padding: 3px;
+  gap: 2px;
+}
+.cal-vue {
+  padding: 7px 14px;
+  border-radius: var(--rayon-full);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.cal-vue:hover { color: var(--gris-900); }
+.cal-vue.is-active {
+  background: #fff;
+  color: var(--or-fonce);
+  box-shadow: var(--ombre-sm);
+}
+
+/* ============================================================
+   LAYOUT 2 COLONNES
+   ============================================================ */
+.cal-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ============================================================
+   GRILLE CALENDRIER
+   ============================================================ */
+.cal-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.cal-jours-semaine {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.cal-jours-semaine div {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 8px 0;
+}
+
+.cal-grille {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-jour {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6px 2px;
+  border-radius: var(--rayon-sm);
+  background: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+  position: relative;
+  font-family: inherit;
+  min-height: 54px;
+}
+.cal-jour:hover {
+  background: var(--gris-50);
+  border-color: var(--gris-200);
+}
+.cal-jour.is-hors-mois {
+  opacity: 0.35;
+  cursor: default;
+}
+.cal-jour.is-hors-mois:hover { background: transparent; border-color: transparent; }
+.cal-jour.is-aujourdhui {
+  background: rgba(245,158,11,0.08);
+  border-color: var(--or);
+}
+.cal-jour.is-aujourdhui .cal-jour__num {
+  color: var(--or-fonce);
+  font-weight: 900;
+}
+.cal-jour.is-selectionne {
+  background: var(--nuit);
+  border-color: var(--nuit);
+}
+.cal-jour.is-selectionne .cal-jour__num {
+  color: #fff;
+}
+.cal-jour.is-selectionne .cal-jour__point {
+  background: var(--or);
+}
+
+.cal-jour__num {
+  font-family: var(--police-titre);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gris-900);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.cal-jour__points {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cal-jour__point {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--or);
+}
+.cal-jour__point--mission { background: var(--or); }
+.cal-jour__point--perso { background: var(--bleu); }
+.cal-jour__point--rappel { background: var(--violet); }
+.cal-jour__point--annule { background: var(--gris-300); }
+
+/* Légende */
+.cal-legende {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 0 0;
+  margin-top: 14px;
+  border-top: 1px solid var(--gris-100);
+  font-size: 12px;
+  color: var(--gris-500);
+}
+.cal-legende__item {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.cal-legende__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+/* ============================================================
+   PANNEAU JOUR SÉLECTIONNÉ
+   ============================================================ */
+.jour-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 22px;
+}
+.jour-carte__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.jour-carte__date {
+  font-family: var(--police-titre);
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--gris-900);
+  text-transform: capitalize;
+  margin-bottom: 2px;
+}
+.jour-carte__count {
+  font-size: 12.5px;
+  color: var(--gris-500);
+}
+
+.jour-liste { display: flex; flex-direction: column; gap: 10px; }
+
+.evenement {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-md);
+  border-left: 4px solid var(--or);
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+.evenement:hover { background: var(--gris-100); text-decoration: none; }
+.evenement--perso { border-left-color: var(--bleu); }
+.evenement--rappel { border-left-color: var(--violet); }
+.evenement--annule { border-left-color: var(--gris-300); opacity: 0.6; }
+
+.evenement__heure {
+  font-family: var(--police-titre);
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--or-fonce);
+  flex-shrink: 0;
+  min-width: 54px;
+  padding-top: 1px;
+}
+.evenement--perso .evenement__heure { color: var(--bleu); }
+.evenement--rappel .evenement__heure { color: var(--violet); }
+
+.evenement__contenu { flex: 1; min-width: 0; }
+.evenement__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+  line-height: 1.35;
+}
+.evenement__meta {
+  font-size: 12px;
+  color: var(--gris-500);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.evenement__meta span {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.evenement__meta i { font-size: 11px; }
+
+/* ============================================================
+   PROCHAINS ÉVÉNEMENTS
+   ============================================================ */
+.prochains {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 22px;
+  margin-top: 16px;
+}
+.prochains__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.prochains__titre {
+  font-size: 16px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.prochains__titre i { color: var(--or-fonce); font-size: 18px; }
+
+.prochain {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gris-100);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+.prochain:last-child { border-bottom: none; padding-bottom: 0; }
+.prochain:first-child { padding-top: 0; }
+.prochain:hover { opacity: 0.85; text-decoration: none; }
+
+.prochain__date-bloc {
+  width: 46px;
+  height: 52px;
+  border-radius: var(--rayon-sm);
+  background: var(--gris-50);
+  border: 1px solid var(--gris-200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.prochain__jour {
+  font-family: var(--police-titre);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--gris-900);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.prochain__mois {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.prochain__contenu { flex: 1; min-width: 0; }
+.prochain__titre {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.prochain__meta {
+  font-size: 11.5px;
+  color: var(--gris-500);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.prochain__meta span {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.prochain__meta i { font-size: 11px; }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 36px 20px;
+}
+.vide__icone {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 14px;
+}
+.vide__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 6px;
+}
+.vide__texte {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .cal-layout {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-entete h1 { font-size: 1.4rem; }
+  .page-entete__actions { width: 100%; }
+  .page-entete__actions .btn { flex: 1; justify-content: center; }
+  .cal-toolbar { padding: 12px; }
+  .cal-toolbar__titre { min-width: 130px; font-size: 15px; }
+  .cal-carte { padding: 12px; }
+  .cal-jour { min-height: 44px; }
+  .cal-jour__num { font-size: 12px; }
+  .jour-carte, .prochains { padding: 18px; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+
+@media (max-width: 400px) {
+  .cal-jours-semaine div { font-size: 10px; }
+  .cal-jour { min-height: 38px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/index.html" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <!-- En-tête -->
+  <div class="page-entete">
+    <div class="page-entete__texte">
+      <div class="page-entete__eyebrow">Agenda</div>
+      <h1>Mon <span>planning</span></h1>
+      <p class="page-entete__sous">Missions, rendez-vous, rappels. Tout au même endroit.</p>
+    </div>
+    <div class="page-entete__actions">
+      <button type="button" class="btn btn--ghost btn--sm" id="btn-aujourdhui">
+        <i class="fi fi-rr-target"></i> Aujourd'hui
+      </button>
+      <button type="button" class="btn btn--or btn--sm" id="btn-nouvel-event">
+        <i class="fi fi-rr-plus"></i> Nouvel événement
+      </button>
+    </div>
+  </div>
+
+  <!-- Barre d'outils -->
+  <div class="cal-toolbar">
+    <div class="cal-toolbar__gauche">
+      <button type="button" class="btn btn--ghost btn--sm btn--icone" id="mois-precedent" aria-label="Mois précédent">
+        <i class="fi fi-rr-angle-left"></i>
+      </button>
+      <div class="cal-toolbar__titre" id="cal-titre">…</div>
+      <button type="button" class="btn btn--ghost btn--sm btn--icone" id="mois-suivant" aria-label="Mois suivant">
+        <i class="fi fi-rr-angle-right"></i>
+      </button>
+    </div>
+
+    <div class="cal-toolbar__droite">
+      <div class="cal-vues">
+        <button type="button" class="cal-vue is-active" data-vue="mois">Mois</button>
+        <button type="button" class="cal-vue" data-vue="liste">Liste</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendrier (vue Mois) -->
+  <div class="cal-carte" id="cal-carte">
+    <div class="cal-jours-semaine">
+      <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
+    </div>
+    <div class="cal-grille" id="cal-grille"></div>
+
+    <!-- Légende -->
+    <div class="cal-legende">
+      <span class="cal-legende__item">
+        <span class="cal-legende__dot" style="background: var(--or);"></span>
+        Mission
+      </span>
+      <span class="cal-legende__item">
+        <span class="cal-legende__dot" style="background: var(--bleu);"></span>
+        Personnel
+      </span>
+      <span class="cal-legende__item">
+        <span class="cal-legende__dot" style="background: var(--violet);"></span>
+        Rappel
+      </span>
+    </div>
+  </div>
+
+  <!-- Vue Liste (masquée par défaut) -->
+  <div class="cal-carte" id="cal-carte-liste" style="display:none;">
+    <div class="vide">
+      <div class="vide__icone"><i class="fi fi-rr-list"></i></div>
+      <div class="vide__titre">Vue liste à venir</div>
+      <p class="vide__texte">
+        La vue en liste de tous tes événements arrivera prochainement.
+        Utilise la vue « Mois » pour l'instant.
+      </p>
+    </div>
+  </div>
+
+  <!-- Layout 2 colonnes -->
+  <div class="cal-layout" id="cal-layout">
+
+    <!-- Colonne gauche : événements du jour -->
+    <div>
+      <div class="jour-carte">
+        <div class="jour-carte__head">
+          <div>
+            <div class="jour-carte__date" id="jour-date">Sélectionne un jour</div>
+            <div class="jour-carte__count" id="jour-count">—</div>
+          </div>
+          <button type="button" class="btn btn--ghost btn--sm" id="btn-ajouter-jour">
+            <i class="fi fi-rr-plus"></i> Ajouter
+          </button>
+        </div>
+
+        <div class="jour-liste" id="jour-liste"></div>
+
+        <div class="vide" id="jour-vide">
+          <div class="vide__icone"><i class="fi fi-rr-calendar"></i></div>
+          <div class="vide__titre">Rien de prévu</div>
+          <p class="vide__texte">
+            Aucun événement pour cette journée. Profite pour te reposer ou
+            ajouter une mission manuellement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne droite : prochains événements -->
+    <div>
+      <div class="prochains">
+        <div class="prochains__head">
+          <h2 class="prochains__titre">
+            <i class="fi fi-rr-time-past"></i> Prochains événements
+          </h2>
+        </div>
+
+        <div id="prochains-liste"></div>
+
+        <div class="vide" id="prochains-vide" style="padding:24px 20px;">
+          <div class="vide__icone" style="width:48px;height:48px;font-size:20px;">
+            <i class="fi fi-rr-calendar"></i>
+          </div>
+          <div class="vide__titre">Aucun événement à venir</div>
+          <p class="vide__texte" style="font-size:12.5px;">
+            Tes prochaines missions apparaîtront ici.
+          </p>
+        </div>
+      </div>
+
+      <!-- Astuce -->
+      <div class="prochains" style="background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02)); border-color: rgba(245,158,11,0.25);">
+        <div class="prochains__head" style="border-bottom-color: rgba(245,158,11,0.15);">
+          <h2 class="prochains__titre">
+            <i class="fi fi-rr-bulb"></i> Astuce
+          </h2>
+        </div>
+        <p style="font-size:13.5px; color:var(--gris-700); line-height:1.65; margin:0 0 14px;">
+          Planifie tes missions directement depuis l'agenda pour ne rien oublier.
+          Chaque événement te rappelle le lieu et le client.
+        </p>
+        <a href="app/missions.html" class="btn btn--or btn--sm btn--block">
+          <i class="fi fi-rr-target"></i> Voir les missions
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="index.html">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/index.html">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     ÉVÉNEMENTS DÉMO
+     ------------------------------------------------------------
+     Structure : { date: 'YYYY-MM-DD', heure, titre, client,
+                   type: 'mission'|'perso'|'rappel',
+                   duree, lieu, statut }
+     ============================================================ */
+  const aujourdhui = new Date();
+  const anneeActuelle = aujourdhui.getFullYear();
+  const moisActuel = aujourdhui.getMonth();
+
+  // Génère des dates relatives pour la démo
+  const formatISO = (d) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const j = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + j;
+  };
+
+  const ajouterJours = (date, n) => {
+    const d = new Date(date);
+    d.setDate(d.getDate() + n);
+    return d;
+  };
+
+  const EVENEMENTS = [
+    // Aujourd'hui
+    {
+      date: formatISO(aujourdhui),
+      heure: '10:00',
+      duree: '1h',
+      titre: 'Appel client — École Les Palmiers',
+      client: 'École Les Palmiers',
+      type: 'rappel',
+      lieu: 'Téléphone'
+    },
+    {
+      date: formatISO(aujourdhui),
+      heure: '15:00',
+      duree: '2h',
+      titre: 'Réparation PC portable',
+      client: 'Jean Kouassi',
+      type: 'mission',
+      lieu: 'Godomey'
+    },
+
+    // Demain
+    {
+      date: formatISO(ajouterJours(aujourdhui, 1)),
+      heure: '09:00',
+      duree: '3h',
+      titre: 'Installation réseau bureau médical',
+      client: 'Cabinet Médical Zongo',
+      type: 'mission',
+      lieu: 'Cotonou · Zongo'
+    },
+
+    // Dans 2 jours
+    {
+      date: formatISO(ajouterJours(aujourdhui, 2)),
+      heure: '14:00',
+      duree: '1h',
+      titre: 'Rendez-vous formation',
+      client: 'Boutique Élégance',
+      type: 'perso',
+      lieu: 'Cotonou'
+    },
+
+    // Dans 3 jours
+    {
+      date: formatISO(ajouterJours(aujourdhui, 3)),
+      heure: '08:30',
+      duree: '5h',
+      titre: 'Câblage salle serveur',
+      client: 'TechSolutions SARL',
+      type: 'mission',
+      lieu: 'Cotonou · Akpakpa'
+    },
+
+    // Dans 5 jours
+    {
+      date: formatISO(ajouterJours(aujourdhui, 5)),
+      heure: '11:00',
+      duree: '2h',
+      titre: 'Récupération données',
+      client: 'Particulier',
+      type: 'mission',
+      lieu: 'Abomey-Calavi'
+    },
+
+    // Dans 7 jours
+    {
+      date: formatISO(ajouterJours(aujourdhui, 7)),
+      heure: '16:00',
+      duree: '1h',
+      titre: 'Suivi client',
+      client: 'École Les Palmiers',
+      type: 'rappel',
+      lieu: 'Téléphone'
+    }
+  ];
+
+  /* ============================================================
+     ÉTAT
+     ============================================================ */
+  let moisAffiche = moisActuel;
+  let anneeAffichee = anneeActuelle;
+  let jourSelectionne = formatISO(aujourdhui);
+  let vueActuelle = 'mois';
+
+  const MOIS_NOMS = [
+    'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+  ];
+  const MOIS_COURTS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
+                       'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+  const JOURS_LONGS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  const escapeHtml = (txt) => {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  };
+
+  const formatDateFR = (isoDate) => {
+    const [y, m, d] = isoDate.split('-').map(Number);
+    const date = new Date(y, m - 1, d);
+    return date;
+  };
+
+  const titreDateLong = (isoDate) => {
+    const date = formatDateFR(isoDate);
+    const nomJour = JOURS_LONGS[date.getDay()];
+    const numJour = date.getDate();
+    const nomMois = MOIS_NOMS[date.getMonth()];
+    const annee = date.getFullYear();
+    return nomJour + ' ' + numJour + ' ' + nomMois + ' ' + annee;
+  };
+
+  /* ============================================================
+     GÉNÉRATION DU CALENDRIER
+     ============================================================ */
+  const genererCalendrier = () => {
+    const titre = document.getElementById('cal-titre');
+    if (titre) {
+      titre.textContent = MOIS_NOMS[moisAffiche] + ' ' + anneeAffichee;
+    }
+
+    const grille = document.getElementById('cal-grille');
+    if (!grille) return;
+
+    // Premier jour du mois
+    const premier = new Date(anneeAffichee, moisAffiche, 1);
+    // Jour de la semaine du premier (0 = dim, on veut 0 = lun)
+    let jourSemainePremier = premier.getDay();
+    if (jourSemainePremier === 0) jourSemainePremier = 7; // dimanche = 7
+    jourSemainePremier -= 1; // 0 = lundi
+
+    // Nombre de jours dans le mois
+    const joursDansMois = new Date(anneeAffichee, moisAffiche + 1, 0).getDate();
+
+    // Nombre de jours du mois précédent à afficher
+    const moisPrecedent = moisAffiche === 0 ? 11 : moisAffiche - 1;
+    const anneePrecedente = moisAffiche === 0 ? anneeAffichee - 1 : anneeAffichee;
+    const joursDansMoisPrecedent = new Date(anneePrecedente, moisPrecedent + 1, 0).getDate();
+
+    const isoAujourdhui = formatISO(new Date());
+
+    let html = '';
+
+    // Jours du mois précédent
+    for (let i = jourSemainePremier - 1; i >= 0; i--) {
+      const jour = joursDansMoisPrecedent - i;
+      html += '<button type="button" class="cal-jour is-hors-mois" disabled>' +
+              '<span class="cal-jour__num">' + jour + '</span>' +
+              '</button>';
+    }
+
+    // Jours du mois courant
+    for (let j = 1; j <= joursDansMois; j++) {
+      const dateCourante = new Date(anneeAffichee, moisAffiche, j);
+      const iso = formatISO(dateCourante);
+
+      const estAujourdhui = iso === isoAujourdhui;
+      const estSelectionne = iso === jourSelectionne;
+
+      // Récupère les événements de ce jour
+      const eventsJour = EVENEMENTS.filter(e => e.date === iso);
+
+      // Points indicateurs (max 4)
+      let pointsHtml = '';
+      if (eventsJour.length > 0) {
+        const types = eventsJour.slice(0, 4).map(e => e.type);
+        pointsHtml = '<div class="cal-jour__points">' +
+          types.map(t => '<span class="cal-jour__point cal-jour__point--' + t + '"></span>').join('') +
+          '</div>';
+      }
+
+      const classes = [
+        'cal-jour',
+        estAujourdhui ? 'is-aujourdhui' : '',
+        estSelectionne ? 'is-selectionne' : ''
+      ].filter(Boolean).join(' ');
+
+      html += '<button type="button" class="' + classes + '" data-date="' + iso + '">' +
+              '<span class="cal-jour__num">' + j + '</span>' +
+              pointsHtml +
+              '</button>';
+    }
+
+    // Compléter avec les jours du mois suivant
+    const totalCellules = Math.ceil((jourSemainePremier + joursDansMois) / 7) * 7;
+    const joursRestants = totalCellules - (jourSemainePremier + joursDansMois);
+    for (let k = 1; k <= joursRestants; k++) {
+      html += '<button type="button" class="cal-jour is-hors-mois" disabled>' +
+              '<span class="cal-jour__num">' + k + '</span>' +
+              '</button>';
+    }
+
+    grille.innerHTML = html;
+
+    // Attacher les clics sur les jours
+    grille.querySelectorAll('.cal-jour[data-date]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        jourSelectionne = btn.dataset.date;
+        genererCalendrier();
+        afficherJourSelectionne();
+      });
+    });
+  };
+
+  /* ============================================================
+     AFFICHAGE DU JOUR SÉLECTIONNÉ
+     ============================================================ */
+  const afficherJourSelectionne = () => {
+    const titre = document.getElementById('jour-date');
+    const count = document.getElementById('jour-count');
+    const liste = document.getElementById('jour-liste');
+    const vide = document.getElementById('jour-vide');
+
+    if (titre) titre.textContent = titreDateLong(jourSelectionne);
+
+    const events = EVENEMENTS
+      .filter(e => e.date === jourSelectionne)
+      .sort((a, b) => a.heure.localeCompare(b.heure));
+
+    if (count) {
+      count.textContent = events.length === 0
+        ? 'Aucun événement'
+        : events.length + ' événement' + (events.length > 1 ? 's' : '');
+    }
+
+    if (events.length === 0) {
+      if (liste) liste.innerHTML = '';
+      if (vide) vide.style.display = 'block';
+      return;
+    }
+
+    if (vide) vide.style.display = 'none';
+
+    if (liste) {
+      liste.innerHTML = events.map(e => {
+        const classes = 'evenement' +
+          (e.type === 'perso' ? ' evenement--perso' : '') +
+          (e.type === 'rappel' ? ' evenement--rappel' : '') +
+          (e.type === 'annule' ? ' evenement--annule' : '');
+
+        return '<div class="' + classes + '">' +
+          '<div class="evenement__heure">' + escapeHtml(e.heure) + '</div>' +
+          '<div class="evenement__contenu">' +
+            '<div class="evenement__titre">' + escapeHtml(e.titre) + '</div>' +
+            '<div class="evenement__meta">' +
+              '<span><i class="fi fi-rr-time-quarter-to"></i> ' + escapeHtml(e.duree) + '</span>' +
+              (e.lieu ? '<span><i class="fi fi-rr-marker"></i> ' + escapeHtml(e.lieu) + '</span>' : '') +
+              (e.client ? '<span><i class="fi fi-rr-building"></i> ' + escapeHtml(e.client) + '</span>' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+  };
+
+  /* ============================================================
+     AFFICHAGE DES PROCHAINS ÉVÉNEMENTS
+     ============================================================ */
+  const afficherProchains = () => {
+    const liste = document.getElementById('prochains-liste');
+    const vide = document.getElementById('prochains-vide');
+
+    const isoAujourdhui = formatISO(new Date());
+    const prochains = EVENEMENTS
+      .filter(e => e.date >= isoAujourdhui)
+      .sort((a, b) => {
+        if (a.date !== b.date) return a.date.localeCompare(b.date);
+        return a.heure.localeCompare(b.heure);
+      })
+      .slice(0, 5);
+
+    if (prochains.length === 0) {
+      if (liste) liste.innerHTML = '';
+      if (vide) vide.style.display = 'block';
+      return;
+    }
+
+    if (vide) vide.style.display = 'none';
+
+    if (liste) {
+      liste.innerHTML = prochains.map(e => {
+        const date = formatDateFR(e.date);
+        const jour = date.getDate();
+        const moisCourt = MOIS_COURTS[date.getMonth()];
+        return '<div class="prochain">' +
+          '<div class="prochain__date-bloc">' +
+            '<div class="prochain__jour">' + jour + '</div>' +
+            '<div class="prochain__mois">' + moisCourt + '</div>' +
+          '</div>' +
+          '<div class="prochain__contenu">' +
+            '<div class="prochain__titre">' + escapeHtml(e.titre) + '</div>' +
+            '<div class="prochain__meta">' +
+              '<span><i class="fi fi-rr-clock"></i> ' + escapeHtml(e.heure) + '</span>' +
+              (e.lieu ? '<span><i class="fi fi-rr-marker"></i> ' + escapeHtml(e.lieu) + '</span>' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+  };
+
+  /* ============================================================
+     ÉCOUTEURS
+     ============================================================ */
+
+  const btnPrec = document.getElementById('mois-precedent');
+  const btnSuiv = document.getElementById('mois-suivant');
+  const btnAujourdhui = document.getElementById('btn-aujourdhui');
+  const btnNouvelEvent = document.getElementById('btn-nouvel-event');
+  const btnAjouterJour = document.getElementById('btn-ajouter-jour');
+  const vuesBtns = document.querySelectorAll('.cal-vue');
+  const calCarte = document.getElementById('cal-carte');
+  const calCarteListe = document.getElementById('cal-carte-liste');
+  const calLayout = document.getElementById('cal-layout');
+
+  if (btnPrec) {
+    btnPrec.addEventListener('click', () => {
+      moisAffiche--;
+      if (moisAffiche < 0) { moisAffiche = 11; anneeAffichee--; }
+      genererCalendrier();
+    });
+  }
+
+  if (btnSuiv) {
+    btnSuiv.addEventListener('click', () => {
+      moisAffiche++;
+      if (moisAffiche > 11) { moisAffiche = 0; anneeAffichee++; }
+      genererCalendrier();
+    });
+  }
+
+  if (btnAujourdhui) {
+    btnAujourdhui.addEventListener('click', () => {
+      const now = new Date();
+      moisAffiche = now.getMonth();
+      anneeAffichee = now.getFullYear();
+      jourSelectionne = formatISO(now);
+      genererCalendrier();
+      afficherJourSelectionne();
+    });
+  }
+
+  if (btnNouvelEvent) {
+    btnNouvelEvent.addEventListener('click', () => {
+      alert('Ajout d\'événement : fonctionnalité à venir.\n\nTu pourras planifier tes missions, rendez-vous et rappels directement depuis l\'agenda.');
+    });
+  }
+
+  if (btnAjouterJour) {
+    btnAjouterJour.addEventListener('click', () => {
+      alert('Ajout d\'événement pour le ' + titreDateLong(jourSelectionne) + ' : fonctionnalité à venir.');
+    });
+  }
+
+  vuesBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const vue = btn.dataset.vue;
+
+      vuesBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      vueActuelle = vue;
+
+      if (vue === 'liste') {
+        if (calCarte) calCarte.style.display = 'none';
+        if (calCarteListe) calCarteListe.style.display = 'block';
+        if (calLayout) calLayout.style.display = 'none';
+      } else {
+        if (calCarte) calCarte.style.display = 'block';
+        if (calCarteListe) calCarteListe.style.display = 'none';
+        if (calLayout) calLayout.style.display = 'grid';
+      }
+    });
+  });
+
+  /* ============================================================
+     DÉMARRAGE
+     ============================================================ */
+  genererCalendrier();
+  afficherJourSelectionne();
+  afficherProchains();
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Agenda', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log(EVENEMENTS.length + ' événement(s) en démo.');
+});
+</script>
+
+</body>
+</html>

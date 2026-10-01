@@ -1,0 +1,18 @@
+# ============================================================
+# robots.txt — JosDore
+# https://josdore.com
+# ============================================================
+
+# Autorise tous les robots pour le contenu public
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /compte/
+Disallow: /admin/
+Disallow: /reinitialiser-mdp.html
+Disallow: /mot-de-passe-oublie.html
+Disallow: /*.json$
+Disallow: /assets/data/
+
+# Sitemap
+Sitemap: https://josdore.com/sitemap.xml

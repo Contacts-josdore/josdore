@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — JosDore</title>
+<meta name="description" content="Contacte JosDore : WhatsApp, email, formulaire. Devis gratuit en moins de 30 minutes pour tous tes besoins tech, commerce ou formation.">
+<meta name="theme-color" content="#0A2540">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Contact — JosDore">
+<meta property="og:description" content="Parlons de ton projet. Réponse garantie en moins de 30 minutes.">
+<meta property="og:image" content="assets/images/og/og-image.jpg">
+<meta property="og:url" content="https://josdore.com/contact.html">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE — CONTACT
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --pole-communaute: #BE123C;
+  --pole-tech: #2563EB;
+  --pole-commerce: #16A34A;
+  --pole-education: #CA8A04;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --contenu: 1200px;
+  --header-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 16px; line-height: 1.6; color: var(--gris-700); background: var(--blanc); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.15; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+.container { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section--grise { background: var(--gris-50); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gris-200);
+  height: var(--header-h);
+}
+.header.is-scrolled { box-shadow: var(--ombre-md); }
+.header__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  position: relative;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 18px; color: var(--gris-900); flex-shrink: 0; }
+.logo__mark { width: 40px; height: 40px; background: var(--nuit); color: var(--or); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; position: relative; flex-shrink: 0; }
+.logo__mark::after { content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--or); border-radius: 50%; }
+.logo__text span { color: var(--or); }
+.logo__suffix { display: block; font-size: 9px; font-weight: 700; color: var(--gris-500); letter-spacing: 2px; text-transform: uppercase; }
+
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { font-size: 14px; font-weight: 600; color: var(--gris-700); position: relative; }
+.nav a:hover, .nav a.is-active { color: var(--bleu); }
+.nav a.is-active::after { content: ''; position: absolute; bottom: -26px; left: 0; right: 0; height: 2px; background: var(--bleu); }
+
+.header__actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.menu-btn {
+  display: none; width: 42px; height: 42px;
+  border-radius: var(--rayon-sm); border: 1px solid var(--gris-200);
+  background: #fff; color: var(--gris-900);
+  align-items: center; justify-content: center;
+  font-size: 20px; transition: all var(--transition); flex-shrink: 0;
+}
+.menu-btn:hover { border-color: var(--gris-900); background: var(--gris-50); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px; font-family: var(--police-titre); font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md); border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 12px 28px rgba(37,99,235,0.35); }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 12px 28px rgba(245,158,11,0.4); }
+.btn--outline { background: transparent; color: var(--bleu); border-color: var(--bleu); }
+.btn--outline:hover { background: var(--bleu); color: #fff; }
+.btn--ghost { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--whatsapp { background: #25D366; color: #fff; }
+.btn--whatsapp:hover { background: #1ebe57; box-shadow: 0 12px 28px rgba(37,211,102,0.35); }
+.btn--blanc { background: #fff; color: var(--bleu); }
+.btn--blanc:hover { box-shadow: var(--ombre-lg); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+.btn--ghost-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.btn--sm { padding: 9px 18px; font-size: 13px; }
+.btn--lg { padding: 16px 34px; font-size: 15px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb { background: var(--gris-50); padding: 12px 0; font-size: 13px; border-bottom: 1px solid var(--gris-200); }
+.breadcrumb__inner { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--gris-500); }
+.breadcrumb a { color: var(--bleu); font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb i { font-size: 14px; color: var(--gris-300); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative; padding: 80px 0 100px;
+  background: linear-gradient(160deg, var(--nuit) 0%, #143154 60%, #1E3A5F 100%);
+  color: #fff; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -200px; left: -200px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(37,99,235,0.2), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero__inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; text-align: center; }
+.hero__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.35); border-radius: 999px;
+  color: var(--or); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 24px;
+}
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.05; color: #fff; margin-bottom: 20px; letter-spacing: -0.03em; }
+.hero h1 span { background: linear-gradient(135deg, var(--or), #FBBF24); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { font-size: 1.15rem; color: #CBD5E1; max-width: 620px; margin: 0 auto 36px; line-height: 1.7; }
+
+/* Statut en ligne */
+.hero__statut {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 20px; background: rgba(22,163,74,0.15);
+  border: 1px solid rgba(22,163,74,0.35); border-radius: var(--rayon-full);
+  font-size: 13px; font-weight: 700; color: #86EFAC;
+}
+.hero__statut::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(34,197,94,0.25); }
+  50% { box-shadow: 0 0 0 8px rgba(34,197,94,0.1); }
+}
+
+/* ============================================================
+   SECTION HEAD
+   ============================================================ */
+.section-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+.section-head__eyebrow { display: inline-block; font-size: 12px; font-weight: 800; color: var(--or); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+.section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 14px; }
+.section-head p { font-size: 1.05rem; color: var(--gris-500); }
+
+/* ============================================================
+   CANAUX DE CONTACT
+   ============================================================ */
+.canaux-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.canal {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 28px 24px;
+  transition: var(--transition);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+.canal::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--couleur, var(--bleu));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.canal:hover { transform: translateY(-6px); box-shadow: var(--ombre-lg); border-color: transparent; text-decoration: none; }
+.canal:hover::before { transform: scaleX(1); }
+
+.canal__icon {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--couleur-light, rgba(37,99,235,0.10));
+  color: var(--couleur, var(--bleu));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.canal h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.canal p {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.canal__valeur {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 800;
+  color: var(--couleur, var(--bleu));
+}
+.canal__valeur i { font-size: 14px; transition: transform 0.25s; }
+.canal:hover .canal__valeur i { transform: translateX(4px); }
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
+.form-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.form-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 36px 32px;
+  position: relative;
+}
+
+.form-carte__head {
+  margin-bottom: 26px;
+}
+.form-carte__head h2 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.form-carte__head p {
+  font-size: 14px;
+  color: var(--gris-500);
+}
+
+/* Form */
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  gap: 8px;
+}
+.form-label .requis { color: var(--rouge); margin-left: 2px; }
+.form-label .optionnel {
+  font-size: 10px; font-weight: 700;
+  color: var(--gris-500); text-transform: none;
+  letter-spacing: 0; padding: 2px 8px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+  padding-left: 16px;
+  line-height: 1.6;
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none; border-color: var(--bleu);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
+}
+.form-input.is-invalide,
+.form-textarea.is-invalide,
+.form-select.is-invalide {
+  border-color: var(--rouge);
+  background: #FFFBFB;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Checkbox CGU */
+.form-cgu {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 14px;
+  background: var(--gris-50);
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  margin: 18px 0;
+  font-size: 13px;
+  color: var(--gris-700);
+  line-height: 1.55;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.form-cgu:hover { border-color: var(--bleu); }
+.form-cgu.is-invalide { border-color: var(--rouge); background: #FFFBFB; }
+.form-cgu input {
+  width: 18px; height: 18px;
+  accent-color: var(--bleu);
+  cursor: pointer;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.form-cgu a { color: var(--bleu); font-weight: 700; }
+.form-cgu strong { color: var(--gris-900); font-weight: 800; }
+
+/* Alertes */
+.form-alert {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.form-alert.is-visible { display: flex; }
+.form-alert i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.form-alert--erreur {
+  background: #FEF2F2;
+  border: 1px solid rgba(220,38,38,0.2);
+  color: #991B1B;
+}
+.form-alert--erreur i { color: var(--rouge); }
+.form-alert--succes {
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  color: #14532D;
+}
+.form-alert--succes i { color: var(--vert); }
+
+/* Bloc succès (caché) */
+.succes-bloc {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.succes-bloc.is-visible { display: block; }
+.succes-bloc__icon {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: #F0FDF4;
+  border: 3px solid rgba(22,163,74,0.25);
+  color: var(--vert);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px;
+  margin: 0 auto 20px;
+}
+.succes-bloc h3 {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+.succes-bloc p {
+  font-size: 15px;
+  color: var(--gris-700);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   INFOS LATÉRALES
+   ============================================================ */
+.info-laterale {
+  display: flex; flex-direction: column;
+  gap: 16px;
+}
+
+.info-carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+}
+.info-carte__head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.info-carte__icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.info-carte__titre {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gris-900);
+}
+
+.info-ligne {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.info-ligne:last-child { border-bottom: none; padding-bottom: 0; }
+.info-ligne > i {
+  width: 20px;
+  color: var(--or-fonce);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.info-ligne__contenu { flex: 1; min-width: 0; }
+.info-ligne__label {
+  font-size: 11px;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+.info-ligne__valeur {
+  font-size: 14px;
+  color: var(--gris-900);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.info-ligne__valeur a {
+  color: var(--bleu);
+  font-weight: 700;
+}
+.info-ligne__valeur a:hover { text-decoration: underline; }
+
+/* Horaires */
+.horaires {
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.horaire {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.horaire:last-child { border-bottom: none; }
+.horaire__jour {
+  font-weight: 700;
+  color: var(--gris-700);
+}
+.horaire__heure {
+  font-weight: 800;
+  color: var(--gris-900);
+}
+.horaire__heure--ferme { color: var(--rouge); }
+
+/* Drapeau Bénin */
+.drapeau-benin {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px;
+  background: var(--gris-50);
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gris-700);
+}
+.drapeau-benin__couleurs {
+  display: inline-flex;
+  width: 22px; height: 14px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+.drapeau-benin__couleurs span {
+  flex: 1;
+}
+.drapeau-benin__couleurs .vert { background: #008751; }
+.drapeau-benin__couleurs .jaune { background: #FCD116; }
+.drapeau-benin__couleurs .rouge { background: #E8112D; }
+
+/* ============================================================
+   FAQ RAPIDE
+   ============================================================ */
+.faq-rapide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  padding: 20px;
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  display: flex; gap: 14px;
+}
+.faq-item:hover {
+  border-color: var(--or);
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-md);
+  text-decoration: none;
+}
+.faq-item__icon {
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.faq-item__contenu { flex: 1; min-width: 0; }
+.faq-item__titre {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 4px;
+}
+.faq-item__desc {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--gris-900); color: #94A3B8; padding: 64px 0 28px; margin-top: auto; }
+.footer__grid { max-width: 1280px; margin: 0 auto 40px; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 14px; }
+.footer__logo .logo__mark { background: var(--or); color: var(--nuit); }
+.footer__logo .logo__mark::after { background: var(--nuit); }
+.footer__desc { font-size: 14px; line-height: 1.7; max-width: 320px; }
+.footer__desc strong { color: #fff; }
+.footer__titre { color: #fff; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer__liens { display: flex; flex-direction: column; gap: 10px; }
+.footer__liens a, .footer__liens button { font-size: 14px; color: #94A3B8; text-align: left; padding: 0; transition: var(--transition); }
+.footer__liens a:hover, .footer__liens button:hover { color: var(--or); }
+.footer__bas {
+  max-width: 1280px; margin: 0 auto; padding: 24px 24px 0;
+  border-top: 1px solid #1E293B;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px;
+}
+.footer__bas i { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #fff; border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 20px 24px; display: none;
+  animation: slideUp 0.3s ease;
+}
+.cookies.is-open { display: block; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cookies__texte { flex: 1; min-width: 280px; font-size: 14px; color: var(--gris-700); line-height: 1.6; }
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookies__btn { padding: 10px 20px; font-family: var(--police-titre); font-size: 13px; font-weight: 700; border-radius: var(--rayon-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
+.cookies__btn--accept { background: var(--bleu); color: #fff; }
+.cookies__btn--accept:hover { background: var(--bleu-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 12px 24px; background: #fff;
+    border-bottom: 1px solid var(--gris-200);
+    box-shadow: var(--ombre-md);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--gris-100); }
+  .nav a:last-child { border-bottom: none; }
+  .nav a.is-active::after { display: none; }
+  .menu-btn { display: inline-flex; }
+  .header__actions .btn--ghost { display: none; }
+  .form-layout { grid-template-columns: 1fr; gap: 28px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+  .section { padding: 56px 0; }
+  .hero { padding: 60px 0 80px; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bas { flex-direction: column; text-align: center; }
+  .form-carte { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .canaux-grid { grid-template-columns: 1fr; }
+  .faq-rapide { grid-template-columns: 1fr; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="logo" aria-label="JosDore — Accueil">
+      <div class="logo__mark">J</div>
+      <div class="logo__text">
+        Jos<span>Dore</span>
+        <span class="logo__suffix">Group</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="pages/communaute/">Communauté</a>
+      <a href="pages/tech/">Tech</a>
+      <a href="pages/commerce/">Commerce</a>
+      <a href="pages/education/">Éducation</a>
+      <a href="contact.html" class="is-active">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="connexion.html" class="btn btn--ghost btn--sm">Connexion</a>
+      <a href="inscription.html" class="btn btn--primary btn--sm">
+        <i class="fi fi-rr-user-add"></i> Créer un compte
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- BREADCRUMB                                                   -->
+<!-- ============================================================ -->
+<nav class="breadcrumb" aria-label="Fil d'ariane">
+  <div class="breadcrumb__inner">
+    <a href="/">Accueil</a>
+    <i class="fi fi-rr-angle-small-right"></i>
+    <span>Contact</span>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">
+        <i class="fi fi-rr-envelope"></i>
+        Contact — JosDore
+      </div>
+      <h1>Parlons de <span>ton projet.</span></h1>
+      <p>
+        Une question, un devis, une commande spéciale, une idée ?
+        Écris-nous ou contacte-nous sur WhatsApp. On te répond vite.
+      </p>
+      <div class="hero__statut">
+        Équipe disponible — Lundi au samedi, 8h à 20h
+      </div>
+    </div>
+  </section>
+
+  <!-- CANAUX DE CONTACT -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="section-head__eyebrow">Canaux directs</span>
+        <h2>Choisis ton canal préféré</h2>
+        <p>Trois façons simples de nous joindre. WhatsApp est le plus rapide.</p>
+      </div>
+
+      <div class="canaux-grid">
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/2290128621407?text=Bonjour%20JosDore" target="_blank" rel="noopener" class="canal" style="--couleur: #25D366; --couleur-light: rgba(37,211,102,0.12);">
+          <div class="canal__icon"><i class="fi fi-brands-whatsapp"></i></div>
+          <h3>WhatsApp</h3>
+          <p>Le plus rapide. Idéal pour un devis immédiat, une commande ou une question urgente.</p>
+          <span class="canal__valeur">
+            +229 01 28 62 14 07 <i class="fi fi-rr-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:contact@josdore.app" class="canal" style="--couleur: #2563EB; --couleur-light: rgba(37,99,235,0.10);">
+          <div class="canal__icon"><i class="fi fi-rr-envelope"></i></div>
+          <h3>Email</h3>
+          <p>Pour les demandes détaillées, les documents à joindre ou les partenariats.</p>
+          <span class="canal__valeur">
+            contact@josdore.app <i class="fi fi-rr-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Adresse -->
+        <div class="canal" style="--couleur: #F59E0B; --couleur-light: rgba(245,158,11,0.12); cursor: default;">
+          <div class="canal__icon"><i class="fi fi-rr-marker"></i></div>
+          <h3>Siège</h3>
+          <p>Notre base physique à Abomey-Calavi. Rendez-vous sur demande.</p>
+          <span class="canal__valeur" style="color: var(--or-fonce);">
+            Abomey-Calavi, Bénin
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE + INFOS -->
+  <section class="section section--grise">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="section-head__eyebrow">Formulaire</span>
+        <h2>Ou écris-nous directement</h2>
+        <p>Remplis ce formulaire, on te répond par email ou WhatsApp dans les plus brefs délais.</p>
+      </div>
+
+      <div class="form-layout">
+
+        <!-- FORMULAIRE -->
+        <div class="form-carte">
+
+          <div class="form-carte__head">
+            <h2>Ton message</h2>
+            <p>Réponse garantie en moins de 24h (souvent bien moins).</p>
+          </div>
+
+          <!-- État erreur -->
+          <div class="form-alert form-alert--erreur" id="alerte-erreur" role="alert">
+            <i class="fi fi-rr-cross-circle"></i>
+            <span id="alerte-erreur-texte">Merci de vérifier tes informations.</span>
+          </div>
+
+          <!-- État succès -->
+          <div class="form-alert form-alert--succes" id="alerte-succes" role="status">
+            <i class="fi fi-rr-check-circle"></i>
+            <span>Message envoyé ! On te répond très vite.</span>
+          </div>
+
+          <!-- Le formulaire (masqué après succès) -->
+          <form id="form-contact" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-nom">
+                  Nom complet <span class="requis">*</span>
+                </label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-rr-user" aria-hidden="true"></i>
+                  <input class="form-input" type="text" id="contact-nom" name="nom" placeholder="Koffi Adande" autocomplete="name" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-tel">
+                  Téléphone / WhatsApp
+                  <span class="optionnel">Optionnel</span>
+                </label>
+                <div class="form-input-wrap">
+                  <i class="fi fi-brands-whatsapp" aria-hidden="true"></i>
+                  <input class="form-input" type="tel" id="contact-tel" name="tel" placeholder="+229 01 28 62 14 07" autocomplete="tel">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">
+                Email <span class="requis">*</span>
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-envelope" aria-hidden="true"></i>
+                <input class="form-input" type="email" id="contact-email" name="email" placeholder="ton.email@example.com" autocomplete="email" inputmode="email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-sujet">
+                Sujet <span class="requis">*</span>
+              </label>
+              <div class="form-input-wrap">
+                <i class="fi fi-rr-tag" aria-hidden="true"></i>
+                <select class="form-select" id="contact-sujet" name="sujet" required>
+                  <option value="">-- Choisis un sujet --</option>
+                  <option value="devis">Demande de devis</option>
+                  <option value="commande">Commande produit</option>
+                  <option value="formation">Question sur une formation</option>
+                  <option value="technique">Problème technique</option>
+                  <option value="compte">Question sur mon compte</option>
+                  <option value="partenariat">Partenariat</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">
+                Ton message <span class="requis">*</span>
+              </label>
+              <textarea class="form-textarea" id="contact-message" name="message" placeholder="Décris ta demande en détail. Plus tu es précis, plus vite on peut t'aider." required minlength="10"></textarea>
+              <p class="form-help" id="help-message">
+                <i class="fi fi-rr-info"></i>
+                Décris ta demande en quelques phrases. 10 caractères minimum.
+              </p>
+            </div>
+
+            <label class="form-cgu" id="cgu-wrapper">
+              <input type="checkbox" id="contact-cgu" name="cgu" required>
+              <span>
+                J'accepte que JosDore utilise ces informations pour me répondre,
+                conformément à la <a href="legal/confidentialite.html" target="_blank" rel="noopener">Politique de confidentialité</a>.
+              </span>
+            </label>
+
+            <button type="submit" class="btn btn--or btn--lg btn--block" id="btn-submit">
+              <i class="fi fi-rr-paper-plane"></i>
+              Envoyer le message
+            </button>
+
+          </form>
+
+          <!-- Bloc succès (affiché après envoi) -->
+          <div class="succes-bloc" id="succes-bloc">
+            <div class="succes-bloc__icon">
+              <i class="fi fi-rr-check"></i>
+            </div>
+            <h3>Message envoyé !</h3>
+            <p>
+              Merci <strong id="succes-nom">!</strong> Nous avons bien reçu ton message.
+              On te répond en moins de 24h — souvent en moins de 30 minutes pendant nos horaires.
+            </p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <a href="https://wa.me/2290128621407?text=Bonjour%20JosDore" target="_blank" rel="noopener" class="btn btn--whatsapp">
+                <i class="fi fi-brands-whatsapp"></i> Plus rapide sur WhatsApp
+              </a>
+              <a href="/" class="btn btn--ghost">
+                <i class="fi fi-rr-home"></i> Retour à l'accueil
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- INFOS LATÉRALES -->
+        <aside class="info-laterale">
+
+          <!-- Coordonnées -->
+          <div class="info-carte">
+            <div class="info-carte__head">
+              <div class="info-carte__icon"><i class="fi fi-rr-info"></i></div>
+              <div class="info-carte__titre">Coordonnées</div>
+            </div>
+
+            <div class="info-ligne">
+              <i class="fi fi-brands-whatsapp"></i>
+              <div class="info-ligne__contenu">
+                <div class="info-ligne__label">WhatsApp</div>
+                <div class="info-ligne__valeur">
+                  <a href="https://wa.me/2290128621407" target="_blank" rel="noopener">+229 01 28 62 14 07</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-ligne">
+              <i class="fi fi-rr-envelope"></i>
+              <div class="info-ligne__contenu">
+                <div class="info-ligne__label">Email</div>
+                <div class="info-ligne__valeur">
+                  <a href="mailto:contact@josdore.app">contact@josdore.app</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-ligne">
+              <i class="fi fi-rr-marker"></i>
+              <div class="info-ligne__contenu">
+                <div class="info-ligne__label">Adresse</div>
+                <div class="info-ligne__valeur">
+                  Abomey-Calavi<br>République du Bénin
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <span class="drapeau-benin">
+                <span class="drapeau-benin__couleurs">
+                  <span class="vert"></span>
+                  <span class="jaune"></span>
+                  <span class="rouge"></span>
+                </span>
+                Bénin
+              </span>
+            </div>
+          </div>
+
+          <!-- Horaires -->
+          <div class="info-carte">
+            <div class="info-carte__head">
+              <div class="info-carte__icon"><i class="fi fi-rr-clock"></i></div>
+              <div class="info-carte__titre">Horaires</div>
+            </div>
+
+            <div class="horaires">
+              <div class="horaire">
+                <span class="horaire__jour">Lundi - Vendredi</span>
+                <span class="horaire__heure">8h — 20h</span>
+              </div>
+              <div class="horaire">
+                <span class="horaire__jour">Samedi</span>
+                <span class="horaire__heure">9h — 18h</span>
+              </div>
+              <div class="horaire">
+                <span class="horaire__jour">Dimanche</span>
+                <span class="horaire__heure horaire__heure--ferme">Fermé</span>
+              </div>
+            </div>
+
+            <p style="font-size:12.5px;color:var(--gris-500);margin-top:14px;line-height:1.6;">
+              <i class="fi fi-rr-info" style="color:var(--or-fonce);"></i>
+              Hors horaires ? Écris-nous quand même, on répond dès l'ouverture.
+            </p>
+          </div>
+
+          <!-- Réseaux -->
+          <div class="info-carte">
+            <div class="info-carte__head">
+              <div class="info-carte__icon"><i class="fi fi-rr-share"></i></div>
+              <div class="info-carte__titre">Suis-nous</div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="https://wa.me/2290128621407" target="_blank" rel="noopener" title="WhatsApp" style="width:44px;height:44px;border-radius:12px;background:rgba(37,211,102,0.12);color:#25D366;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all 0.25s;">
+                <i class="fi fi-brands-whatsapp"></i>
+              </a>
+              <a href="#" title="Facebook" style="width:44px;height:44px;border-radius:12px;background:rgba(24,119,242,0.12);color:#1877F2;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all 0.25s;">
+                <i class="fi fi-brands-facebook"></i>
+              </a>
+              <a href="#" title="Instagram" style="width:44px;height:44px;border-radius:12px;background:rgba(225,48,108,0.12);color:#E1306C;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all 0.25s;">
+                <i class="fi fi-brands-instagram"></i>
+              </a>
+              <a href="#" title="LinkedIn" style="width:44px;height:44px;border-radius:12px;background:rgba(10,102,194,0.12);color:#0A66C2;display:flex;align-items:center;justify-content:center;font-size:20px;transition:all 0.25s;">
+                <i class="fi fi-brands-linkedin"></i>
+              </a>
+            </div>
+
+            <p style="font-size:12.5px;color:var(--gris-500);margin-top:14px;line-height:1.6;">
+              Nouveautés, promos, articles. Sans spam.
+            </p>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ RAPIDE -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="section-head__eyebrow">Avant de nous écrire</span>
+        <h2>Tu trouveras peut-être plus vite</h2>
+        <p>Certaines réponses sont déjà disponibles. Un coup d'œil rapide et tu gagnes du temps.</p>
+      </div>
+
+      <div class="faq-rapide">
+
+        <a href="support/faq.html" class="faq-item">
+          <div class="faq-item__icon"><i class="fi fi-rr-interrogation"></i></div>
+          <div class="faq-item__contenu">
+            <div class="faq-item__titre">Questions fréquentes</div>
+            <div class="faq-item__desc">Commandes, livraison, paiement, formations…</div>
+          </div>
+        </a>
+
+        <a href="pages/tech/techs/services.html" class="faq-item">
+          <div class="faq-item__icon"><i class="fi fi-rr-tools"></i></div>
+          <div class="faq-item__contenu">
+            <div class="faq-item__titre">Nos services</div>
+            <div class="faq-item__desc">Réparation, réseaux, sécurité, formation.</div>
+          </div>
+        </a>
+
+        <a href="pages/tech/techs/tarifs.html" class="faq-item">
+          <div class="faq-item__icon"><i class="fi fi-rr-tag"></i></div>
+          <div class="faq-item__contenu">
+            <div class="faq-item__titre">Nos tarifs</div>
+            <div class="faq-item__desc">Grille tarifaire claire et transparente.</div>
+          </div>
+        </a>
+
+        <a href="support/" class="faq-item">
+          <div class="faq-item__icon"><i class="fi fi-rr-headset"></i></div>
+          <div class="faq-item__contenu">
+            <div class="faq-item__titre">Centre d'aide</div>
+            <div class="faq-item__desc">Guides, tutos, réponses détaillées.</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__logo">
+        <div class="logo__mark">J</div>
+        <div>Jos<span>Dore</span></div>
+      </div>
+      <p class="footer__desc">
+        Écosystème technologique et éducatif africain à 4 pôles et 10 activités.<br>
+        <strong>Apprendre. Travailler. Évoluer.</strong>
+      </p>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Nos pôles</h4>
+      <div class="footer__liens">
+        <a href="pages/communaute/">Communauté</a>
+        <a href="pages/tech/">Tech</a>
+        <a href="pages/commerce/">Commerce</a>
+        <a href="pages/education/">Éducation</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Le groupe</h4>
+      <div class="footer__liens">
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog/">Blog</a>
+        <a href="support/">Aide</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Légal</h4>
+      <div class="footer__liens">
+        <a href="legal/confidentialite.html">Confidentialité</a>
+        <a href="legal/cgu.html">CGU</a>
+        <a href="legal/mentions.html">Mentions</a>
+        <button type="button" id="revoirCookies">Revoir le consentement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bas">
+    <div>© <span id="annee"></span> JosDore — Tous droits réservés.</div>
+    <div>Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi, Bénin</div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- BANDEAU COOKIES                                              -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore utilise des cookies pour améliorer ton expérience, mesurer
+      l'audience et personnaliser le contenu. Tu peux accepter tous les cookies
+      ou refuser ceux qui ne sont pas essentiels.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Header scroll */
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* Menu burger */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const nav = document.getElementById('nav');
+  if (menuBtn && nav && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = nav.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(ouvert));
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuIcon.className = 'fi fi-rr-menu-burger';
+      });
+    });
+  }
+
+  /* ============================================================
+     FORMULAIRE CONTACT
+     ============================================================ */
+  const form = document.getElementById('form-contact');
+  const nomInput = document.getElementById('contact-nom');
+  const telInput = document.getElementById('contact-tel');
+  const emailInput = document.getElementById('contact-email');
+  const sujetInput = document.getElementById('contact-sujet');
+  const messageInput = document.getElementById('contact-message');
+  const cguInput = document.getElementById('contact-cgu');
+  const cguWrap = document.getElementById('cgu-wrapper');
+  const btnSubmit = document.getElementById('btn-submit');
+  const helpMessage = document.getElementById('help-message');
+
+  const alerteErreur = document.getElementById('alerte-erreur');
+  const alerteErreurTexte = document.getElementById('alerte-erreur-texte');
+  const alerteSucces = document.getElementById('alerte-succes');
+  const succesBloc = document.getElementById('succes-bloc');
+  const succesNom = document.getElementById('succes-nom');
+
+  /* Affichage erreur */
+  const afficherErreur = (message) => {
+    alerteErreurTexte.textContent = message;
+    alerteErreur.classList.add('is-visible');
+    alerteSucces.classList.remove('is-visible');
+    window.scrollTo({ top: alerteErreur.offsetTop - 120, behavior: 'smooth' });
+  };
+  const cacherErreur = () => {
+    alerteErreur.classList.remove('is-visible');
+  };
+
+  /* Nettoyage live */
+  [nomInput, telInput, emailInput, sujetInput, messageInput].forEach(el => {
+    if (el) el.addEventListener('input', () => {
+      el.classList.remove('is-invalide');
+      cacherErreur();
+    });
+  });
+  if (cguInput) cguInput.addEventListener('change', () => {
+    cguWrap.classList.remove('is-invalide');
+    cacherErreur();
+  });
+
+  /* Compteur caractères message */
+  if (messageInput && helpMessage) {
+    const compteur = () => {
+      const n = messageInput.value.trim().length;
+      if (n === 0) {
+        helpMessage.innerHTML = '<i class="fi fi-rr-info"></i> Décris ta demande en quelques phrases. 10 caractères minimum.';
+        helpMessage.classList.remove('is-erreur', 'is-ok');
+      } else if (n < 10) {
+        helpMessage.innerHTML = '<i class="fi fi-rr-info"></i> ' + n + ' / 10 caractères minimum';
+        helpMessage.classList.remove('is-ok');
+      } else {
+        helpMessage.innerHTML = '<i class="fi fi-rr-check-circle"></i> ' + n + ' caractères';
+        helpMessage.classList.remove('is-erreur');
+      }
+    };
+    messageInput.addEventListener('input', compteur);
+    compteur();
+  }
+
+  /* Soumission */
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nom = nomInput.value.trim();
+      const tel = telInput.value.trim();
+      const email = emailInput.value.trim();
+      const sujet = sujetInput.value;
+      const message = messageInput.value.trim();
+
+      if (nom.length < 2) {
+        nomInput.classList.add('is-invalide');
+        nomInput.focus();
+        return afficherErreur('Merci de saisir ton nom complet (2 caractères minimum).');
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.classList.add('is-invalide');
+        emailInput.focus();
+        return afficherErreur('Merci de saisir une adresse email valide.');
+      }
+      if (tel && !/^[+\d][\d\s().-]{6,}$/.test(tel)) {
+        telInput.classList.add('is-invalide');
+        telInput.focus();
+        return afficherErreur('Le numéro de téléphone semble invalide.');
+      }
+      if (!sujet) {
+        sujetInput.classList.add('is-invalide');
+        sujetInput.focus();
+        return afficherErreur('Choisis un sujet pour ton message.');
+      }
+      if (message.length < 10) {
+        messageInput.classList.add('is-invalide');
+        messageInput.focus();
+        return afficherErreur('Ton message est trop court (10 caractères minimum).');
+      }
+      if (!cguInput.checked) {
+        cguWrap.classList.add('is-invalide');
+        return afficherErreur('Tu dois accepter la Politique de confidentialité.');
+      }
+
+      // Simulation envoi
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<i class="fi fi-rr-time-quarter-to"></i> Envoi en cours...';
+
+      setTimeout(() => {
+        // Masque le formulaire
+        form.style.display = 'none';
+        alerteErreur.classList.remove('is-visible');
+        alerteSucces.classList.remove('is-visible');
+
+        // Affiche le bloc succès
+        succesNom.textContent = nom.split(' ')[0];
+        succesBloc.classList.add('is-visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        console.log('[JosDore] Message contact simulé :', { nom, tel, email, sujet, message });
+      }, 900);
+    });
+  }
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  const btnRevoir = document.getElementById('revoirCookies');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+  if (btnRevoir) btnRevoir.addEventListener('click', () => {
+    try { localStorage.removeItem(CLE); } catch (e) {}
+    ouvrir();
+  });
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore — Contact', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

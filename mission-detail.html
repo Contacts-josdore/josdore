@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détail mission — JosDore Réseau</title>
+<meta name="description" content="Détails complets d'une mission JosDore Réseau : client, budget, lieu, description. Postule en 1 clic.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — DÉTAIL MISSION
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none; background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge); color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Retour */
+.retour {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 16px;
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-500);
+  transition: var(--transition);
+}
+.retour:hover { color: var(--or-fonce); }
+.retour i { font-size: 14px; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--whatsapp { background: #25D366; color: #fff; }
+.btn--whatsapp:hover { background: #1ebe57; box-shadow: 0 8px 20px rgba(37,211,102,0.35); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   LAYOUT 2 COLONNES
+   ============================================================ */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* ============================================================
+   EN-TÊTE MISSION
+   ============================================================ */
+.mission-hero {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 28px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.mission-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--couleur-statut, var(--or));
+}
+.mission-hero--urgent::before { background: var(--rouge); }
+.mission-hero--normal::before { background: var(--or); }
+.mission-hero--nouveau::before { background: var(--vert); }
+
+/* Badge démo */
+.mission-hero__badge-demo {
+  position: absolute;
+  top: 14px; right: 14px;
+  padding: 4px 10px;
+  background: rgba(245,158,11,0.95);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: var(--police-titre);
+  z-index: 2;
+}
+
+.mission-hero__badges {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.mission-hero__badge {
+  font-size: 11px; font-weight: 800;
+  padding: 4px 11px;
+  border-radius: var(--rayon-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.mission-hero__badge--urgent { background: #FEE2E2; color: #991B1B; }
+.mission-hero__badge--normal { background: #FEF3C7; color: #92400E; }
+.mission-hero__badge--nouveau { background: #DCFCE7; color: #15803D; }
+.mission-hero__badge--verifie { background: #DBEAFE; color: #1E40AF; }
+.mission-hero__badge--publiee { background: var(--gris-100); color: var(--gris-700); }
+
+.mission-hero h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  padding-right: 80px;
+}
+.mission-hero__client {
+  font-size: 15px;
+  color: var(--gris-500);
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.mission-hero__client i { color: var(--or-fonce); }
+.mission-hero__client strong {
+  color: var(--gris-900);
+  font-weight: 800;
+}
+
+/* Bandeau budget + actions */
+.mission-hero__actions {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid var(--gris-100);
+}
+.mission-hero__budget-zone {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mission-hero__budget-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.mission-hero__budget {
+  font-family: var(--police-titre);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--or-fonce);
+  line-height: 1;
+}
+.mission-hero__btns {
+  display: flex; gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   CARTE GÉNÉRIQUE
+   ============================================================ */
+.carte {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.carte__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--gris-100);
+  flex-wrap: wrap;
+}
+.carte__titre {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 10px;
+}
+.carte__titre i { color: var(--or-fonce); font-size: 18px; }
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+.mission-desc {
+  font-size: 15px;
+  color: var(--gris-700);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* ============================================================
+   GRILLE INFOS
+   ============================================================ */
+.infos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.info-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px;
+  background: var(--gris-50);
+  border-radius: var(--rayon-md);
+  border: 1px solid var(--gris-100);
+}
+.info-item__icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.info-item__label {
+  font-size: 11px;
+  color: var(--gris-500);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+.info-item__valeur {
+  font-size: 14px;
+  color: var(--gris-900);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   CARTE CLIENT
+   ============================================================ */
+.client-bloc {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.client-bloc__avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bleu), #7C3AED);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 22px;
+  flex-shrink: 0;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(10,37,64,0.10);
+}
+.client-bloc__infos { flex: 1; min-width: 0; }
+.client-bloc__nom {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+.client-bloc__badges {
+  display: flex; gap: 5px; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.client-bloc__badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: var(--rayon-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.client-bloc__badge--verifie { background: #DBEAFE; color: #1E40AF; }
+.client-bloc__badge--nouveau { background: var(--gris-100); color: var(--gris-700); }
+.client-bloc__badge--top { background: #FEF3C7; color: #92400E; }
+
+.client-bloc__meta {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--gris-500);
+}
+.client-bloc__meta span {
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.client-bloc__meta i { color: var(--or-fonce); font-size: 12px; }
+
+/* ============================================================
+   STATUT CANDIDATURE
+   ============================================================ */
+.statut-candidature {
+  display: none;
+  align-items: flex-start; gap: 12px;
+  padding: 16px;
+  border-radius: var(--rayon-md);
+  border: 1.5px solid var(--vert);
+  background: rgba(22,163,74,0.06);
+  margin-top: 16px;
+}
+.statut-candidature.is-visible { display: flex; }
+.statut-candidature__icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--vert);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.statut-candidature__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 3px;
+}
+.statut-candidature__desc {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   MISSIONS SIMILAIRES
+   ============================================================ */
+.similaires-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.similaire {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-md);
+  padding: 16px;
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+.similaire:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-md);
+  border-color: var(--or);
+  text-decoration: none;
+}
+.similaire__titre {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-900);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.similaire__client {
+  font-size: 12px;
+  color: var(--gris-500);
+  display: flex; align-items: center; gap: 4px;
+  margin-bottom: 8px;
+}
+.similaire__meta {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gris-100);
+  font-size: 11px;
+  color: var(--gris-500);
+}
+.similaire__budget {
+  font-family: var(--police-titre);
+  font-weight: 900;
+  color: var(--or-fonce);
+  font-size: 13px;
+}
+
+/* ============================================================
+   ÉTAT : MISSION INTROUVABLE
+   ============================================================ */
+.introuvable {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.introuvable.is-visible { display: block; }
+.introuvable__icon {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+}
+.introuvable h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.introuvable p {
+  font-size: 14.5px;
+  color: var(--gris-500);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+/* Wrapper (caché si introuvable) */
+.mission-wrapper { display: block; }
+.mission-wrapper.is-cache { display: none; }
+
+/* ============================================================
+   ALERTE SUCCÈS POSTULATION
+   ============================================================ */
+.alerte {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.alerte.is-visible { display: flex; }
+.alerte i { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.alerte--succes {
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  color: #14532D;
+}
+.alerte--succes i { color: var(--vert); }
+.alerte strong { color: var(--gris-900); font-weight: 800; }
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .detail-layout {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .mission-hero { padding: 22px 18px; }
+  .mission-hero h1 { padding-right: 0; }
+  .mission-hero__actions { flex-direction: column; align-items: stretch; }
+  .mission-hero__btns { width: 100%; }
+  .mission-hero__btns .btn { flex: 1; }
+  .carte { padding: 18px; }
+  .similaires-grid { grid-template-columns: 1fr; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">6</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <a href="app/missions.html" class="retour">
+    <i class="fi fi-rr-arrow-left"></i> Retour aux missions
+  </a>
+
+  <!-- Alerte succès (cachée par défaut) -->
+  <div class="alerte alerte--succes" id="alerte-succes" role="status">
+    <i class="fi fi-rr-check-circle"></i>
+    <span><strong>Candidature envoyée !</strong> Le client va recevoir ton profil. Tu seras notifié dès qu'il répond.</span>
+  </div>
+
+  <!-- ============ ÉTAT INTROUVABLE ============ -->
+  <div class="introuvable" id="introuvable">
+    <div class="introuvable__icon"><i class="fi fi-rr-inbox"></i></div>
+    <h2>Mission introuvable</h2>
+    <p>
+      Cette mission n'existe pas ou a été retirée. Elle a peut-être déjà trouvé
+      son technicien.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="app/missions.html" class="btn btn--or">
+        <i class="fi fi-rr-target"></i> Voir les missions
+      </a>
+      <a href="app/feed.html" class="btn btn--ghost">
+        <i class="fi fi-rr-home"></i> Retour au feed
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ WRAPPER MISSION ============ -->
+  <div class="mission-wrapper" id="mission-wrapper">
+
+    <!-- HERO MISSION -->
+    <div class="mission-hero" id="mission-hero">
+      <span class="mission-hero__badge-demo" id="badge-demo" style="display:none;">Démo</span>
+
+      <div class="mission-hero__badges" id="mission-badges"></div>
+
+      <h1 id="mission-titre">Chargement…</h1>
+
+      <div class="mission-hero__client">
+        <i class="fi fi-rr-building"></i>
+        <span>Client : <strong id="mission-client">…</strong></span>
+      </div>
+
+      <div class="mission-hero__actions">
+        <div class="mission-hero__budget-zone">
+          <div class="mission-hero__budget-label">Budget</div>
+          <div class="mission-hero__budget" id="mission-budget">Sur devis</div>
+        </div>
+
+        <div class="mission-hero__btns">
+          <button type="button" class="btn btn--ghost btn--sm" id="btn-favori">
+            <i class="fi fi-rr-heart"></i> Sauvegarder
+          </button>
+          <button type="button" class="btn btn--ghost btn--sm" id="btn-partager">
+            <i class="fi fi-rr-share"></i> Partager
+          </button>
+          <button type="button" class="btn btn--or btn--lg" id="btn-postuler">
+            <i class="fi fi-rr-paper-plane"></i> Postuler
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAYOUT 2 COLONNES -->
+    <div class="detail-layout">
+
+      <!-- ============================================ -->
+      <!-- COLONNE GAUCHE — CONTENU                     -->
+      <!-- ============================================ -->
+      <div>
+
+        <!-- Description -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-align-left"></i> Description
+            </h2>
+          </div>
+          <p class="mission-desc" id="mission-desc">…</p>
+        </div>
+
+        <!-- Infos clés -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-info"></i> Informations clés
+            </h2>
+          </div>
+
+          <div class="infos-grid">
+            <div class="info-item">
+              <div class="info-item__icon"><i class="fi fi-rr-marker"></i></div>
+              <div>
+                <div class="info-item__label">Ville</div>
+                <div class="info-item__valeur" id="info-ville">—</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__icon"><i class="fi fi-rr-tools"></i></div>
+              <div>
+                <div class="info-item__label">Spécialité</div>
+                <div class="info-item__valeur" id="info-specialite">—</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__icon"><i class="fi fi-rr-flame"></i></div>
+              <div>
+                <div class="info-item__label">Urgence</div>
+                <div class="info-item__valeur" id="info-urgence">—</div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-item__icon"><i class="fi fi-rr-time-past"></i></div>
+              <div>
+                <div class="info-item__label">Publiée</div>
+                <div class="info-item__valeur" id="info-publiee">—</div>
+              </div>
+            </div>
+
+            <div class="info-item" id="info-item-delai" style="display:none;">
+              <div class="info-item__icon"><i class="fi fi-rr-clock"></i></div>
+              <div>
+                <div class="info-item__label">Délai souhaité</div>
+                <div class="info-item__valeur" id="info-delai">—</div>
+              </div>
+            </div>
+
+            <div class="info-item" id="info-item-type" style="display:none;">
+              <div class="info-item__icon"><i class="fi fi-rr-briefcase"></i></div>
+              <div>
+                <div class="info-item__label">Type</div>
+                <div class="info-item__valeur" id="info-type">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ============================================ -->
+      <!-- COLONNE DROITE — CLIENT + ACTIONS            -->
+      <!-- ============================================ -->
+      <aside>
+
+        <!-- Carte client -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-user"></i> À propos du client
+            </h2>
+          </div>
+
+          <div class="client-bloc">
+            <div class="client-bloc__avatar" id="client-avatar">?</div>
+            <div class="client-bloc__infos">
+              <div class="client-bloc__nom">
+                <span id="client-nom">…</span>
+              </div>
+              <div class="client-bloc__badges" id="client-badges"></div>
+              <div class="client-bloc__meta" id="client-meta"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc contact -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-phone-call"></i> Contact
+            </h2>
+          </div>
+
+          <p style="font-size:13px;color:var(--gris-500);line-height:1.6;margin-bottom:14px;">
+            Le contact direct est débloqué <strong style="color:var(--gris-900);">une fois ta candidature acceptée</strong> par le client.
+          </p>
+
+          <button type="button" class="btn btn--primary btn--block btn--sm" disabled style="margin-bottom:8px;">
+            <i class="fi fi-rr-lock"></i> Numéro masqué
+          </button>
+
+          <a href="app/messages.html" class="btn btn--or btn--block btn--sm">
+            <i class="fi fi-rr-comment"></i> Envoyer un message
+          </a>
+        </div>
+
+        <!-- Statut candidature -->
+        <div class="statut-candidature" id="statut-candidature">
+          <div class="statut-candidature__icon">
+            <i class="fi fi-rr-check"></i>
+          </div>
+          <div>
+            <div class="statut-candidature__titre">Candidature envoyée</div>
+            <div class="statut-candidature__desc" id="statut-candidature-date">
+              En attente de réponse du client.
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions secondaires -->
+        <div class="carte">
+          <div class="carte__head">
+            <h2 class="carte__titre">
+              <i class="fi fi-rr-apps"></i> Actions
+            </h2>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button type="button" class="btn btn--ghost btn--block btn--sm" id="btn-signaler">
+              <i class="fi fi-rr-flag"></i> Signaler la mission
+            </button>
+            <a href="app/messages.html" class="btn btn--ghost btn--block btn--sm">
+              <i class="fi fi-rr-comment"></i> Poser une question
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- MISSIONS SIMILAIRES -->
+    <div class="carte" id="carte-similaires" style="margin-top:20px;">
+      <div class="carte__head">
+        <h2 class="carte__titre">
+          <i class="fi fi-rr-target"></i> Missions similaires
+        </h2>
+        <a href="app/missions.html" class="btn btn--ghost btn--sm">
+          Voir tout <i class="fi fi-rr-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="similaires-grid" id="similaires-grid"></div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ============================================================
+     ANNÉE / SIDEBAR / COOKIES
+     ============================================================ */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  const cookies = document.getElementById('cookies');
+  const CLE_COOKIES = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE_COOKIES, choix); } catch (e) {}
+    fermer();
+  };
+  let choix = null;
+  try { choix = localStorage.getItem(CLE_COOKIES); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* ============================================================
+     BASE DE MISSIONS (DÉMO)
+     ------------------------------------------------------------
+     En production : fetch('/assets/data/missions.json')
+     ============================================================ */
+  const MISSIONS = {
+    'm-1024': {
+      demo: true,
+      titre: 'Réparer réseau WiFi école',
+      client: 'École Les Palmiers',
+      clientType: 'École privée',
+      clientVille: 'Abomey-Calavi',
+      clientMembre: '2025',
+      clientVerifie: true,
+      clientTop: false,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Abomey-Calavi',
+      quartier: 'Sainte Rita',
+      specialite: 'Réseaux',
+      urgence: 'urgent',
+      delai: 'Sous 48h',
+      type: 'Ponctuelle',
+      desc: '15 PC à connecter au réseau. Installation d\'une borne WiFi pour couvrir 3 salles de classe.\n\nLe réseau actuel est instable et empêche les cours numériques. L\'école souhaite une solution fiable pour la rentrée.\n\nMatériel sur place : les PC, la connexion fibre existante. Le technicien doit apporter son propre matériel de câblage et de test.',
+      verifie: true,
+      publieeHeures: 2
+    },
+    'm-1025': {
+      demo: true,
+      titre: 'Maintenance parc informatique',
+      client: 'TechSolutions SARL',
+      clientType: 'PME',
+      clientVille: 'Cotonou',
+      clientMembre: '2024',
+      clientVerifie: true,
+      clientTop: true,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Cotonou',
+      quartier: 'Akpakpa',
+      specialite: 'Informatique',
+      urgence: 'normal',
+      delai: 'Flexible',
+      type: 'Contrat 6 mois',
+      desc: 'Contrat de 6 mois pour la maintenance d\'un parc informatique.\n\n25 postes de travail + 1 serveur. Maintenance préventive (mises à jour, antivirus) et curative (dépannage en cas de panne).\n\nInterventions régulières à planifier avec le responsable IT. Possibilité de venir sur site 1 fois par semaine.',
+      verifie: true,
+      publieeHeures: 24
+    },
+    'm-1026': {
+      demo: true,
+      titre: 'Installation réseau bureau médical',
+      client: 'Cabinet Médical Zongo',
+      clientType: 'Cabinet médical',
+      clientVille: 'Cotonou',
+      clientMembre: '2025',
+      clientVerifie: true,
+      clientTop: false,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Cotonou',
+      quartier: 'Zongo',
+      specialite: 'Réseaux',
+      urgence: 'normal',
+      delai: 'Ce week-end',
+      type: 'Ponctuelle',
+      desc: 'Installation réseau filaire pour 8 postes + imprimante réseau.\n\nCâblage propre, configuration des postes, tests de débit. Le cabinet est en activité, donc l\'intervention doit être faite en dehors des heures de consultation (soir ou week-end).\n\nLe local est déjà équipé d\'un switch et d\'une baie de brassage à installer.',
+      verifie: true,
+      publieeHeures: 48
+    },
+    'm-1027': {
+      demo: true,
+      titre: 'Récupération de données disque dur',
+      client: 'Particulier',
+      clientType: 'Particulier',
+      clientVille: 'Abomey-Calavi',
+      clientMembre: '2026',
+      clientVerifie: false,
+      clientTop: false,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Abomey-Calavi',
+      quartier: 'Godomey',
+      specialite: 'Hardware',
+      urgence: 'urgent',
+      delai: 'Sous 24h',
+      type: 'Ponctuelle',
+      desc: 'Disque dur externe qui ne monte plus. Récupération de photos et documents importants (mémoire familiale).\n\nLe disque fait un bruit de cliquetis. Aucune sauvegarde disponible. Intervention rapide souhaitée.\n\nLivraison possible du disque à l\'atelier ou intervention à domicile.',
+      verifie: false,
+      publieeHeures: 0.5
+    },
+    'm-1028': {
+      demo: true,
+      titre: 'Création site vitrine PME',
+      client: 'Boutique Élégance',
+      clientType: 'Boutique',
+      clientVille: 'Cotonou',
+      clientMembre: '2025',
+      clientVerifie: true,
+      clientTop: false,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Cotonou',
+      quartier: 'Fidjrossè',
+      specialite: 'Développement web',
+      urgence: 'normal',
+      delai: 'Sous 3 semaines',
+      type: 'Projet',
+      desc: 'Site vitrine 5 pages pour une boutique de prêt-à-porter.\n\nDesign moderne, responsive, formulaire de contact. Pas de e-commerce pour l\'instant, juste la présentation de la collection et un formulaire de contact.\n\nLe client fournira les photos et textes.',
+      verifie: true,
+      publieeHeures: 72
+    },
+    'm-1029': {
+      demo: true,
+      titre: 'Installation logiciels + formation',
+      client: 'Cabinet Avocat Kossi',
+      clientType: 'Cabinet d\'avocat',
+      clientVille: 'Porto-Novo',
+      clientMembre: '2024',
+      clientVerifie: true,
+      clientTop: false,
+      budget: 'Sur devis',
+      budgetVal: 0,
+      ville: 'Porto-Novo',
+      quartier: 'Centre',
+      specialite: 'Informatique',
+      urgence: 'normal',
+      delai: 'Sous 2 semaines',
+      type: 'Ponctuelle + formation',
+      desc: 'Installation d\'Office 365 sur 4 postes + formation de 2 heures.\n\nFormation pour maîtriser Word et Excel au quotidien (rédaction de documents juridiques, suivi de dossiers clients).\n\nClient situé au centre-ville de Porto-Novo. Intervention à planifier en semaine.',
+      verifie: true,
+      publieeHeures: 120
+    }
+  };
+
+  /* ============================================================
+     LECTURE DE L'ID
+     ============================================================ */
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  const missionWrapper = document.getElementById('mission-wrapper');
+  const introuvable = document.getElementById('introuvable');
+
+  if (!id || !MISSIONS[id]) {
+    missionWrapper.classList.add('is-cache');
+    introuvable.classList.add('is-visible');
+    console.log('[JosDore] Mission introuvable :', id);
+    return;
+  }
+
+  const m = MISSIONS[id];
+
+  /* ============================================================
+     REMPLISSAGE DE LA PAGE
+     ============================================================ */
+  document.title = m.titre + ' — JosDore Réseau';
+
+  // Badge démo
+  const badgeDemo = document.getElementById('badge-demo');
+  if (m.demo && badgeDemo) badgeDemo.style.display = 'inline-block';
+
+  // Hero — couleur de la barre
+  const hero = document.getElementById('mission-hero');
+  if (m.urgence === 'urgent') {
+    hero.classList.add('mission-hero--urgent');
+  } else {
+    hero.classList.add('mission-hero--normal');
+  }
+
+  // Badges
+  const badgesEl = document.getElementById('mission-badges');
+  let badgesHtml = '';
+  if (m.urgence === 'urgent') {
+    badgesHtml += '<span class="mission-hero__badge mission-hero__badge--urgent"><i class="fi fi-rr-flame"></i> Urgent</span>';
+  } else {
+    badgesHtml += '<span class="mission-hero__badge mission-hero__badge--normal"><i class="fi fi-rr-clock"></i> Normal</span>';
+  }
+  if (m.verifie) {
+    badgesHtml += '<span class="mission-hero__badge mission-hero__badge--verifie"><i class="fi fi-rr-shield-check"></i> Client vérifié</span>';
+  } else {
+    badgesHtml += '<span class="mission-hero__badge mission-hero__badge--nouveau"><i class="fi fi-rr-star"></i> Nouveau client</span>';
+  }
+  badgesHtml += '<span class="mission-hero__badge mission-hero__badge--publiee"><i class="fi fi-rr-time-past"></i> Publiée ' + formatDateRelative(m.publieeHeures) + '</span>';
+  badgesEl.innerHTML = badgesHtml;
+
+  // Titre
+  document.getElementById('mission-titre').textContent = m.titre;
+
+  // Client
+  document.getElementById('mission-client').textContent = m.client;
+
+  // Budget
+  document.getElementById('mission-budget').textContent = m.budget;
+
+  // Description
+  document.getElementById('mission-desc').textContent = m.desc;
+
+  // Infos clés
+  document.getElementById('info-ville').textContent = m.ville + (m.quartier ? ' · ' + m.quartier : '');
+  document.getElementById('info-specialite').textContent = m.specialite;
+  document.getElementById('info-urgence').textContent = m.urgence === 'urgent' ? 'Urgente' : 'Normale';
+  document.getElementById('info-publiee').textContent = formatDateRelative(m.publieeHeures);
+
+  if (m.delai) {
+    document.getElementById('info-item-delai').style.display = 'flex';
+    document.getElementById('info-delai').textContent = m.delai;
+  }
+
+  if (m.type) {
+    document.getElementById('info-item-type').style.display = 'flex';
+    document.getElementById('info-type').textContent = m.type;
+  }
+
+  // Carte client
+  const initiale = m.client.charAt(0).toUpperCase();
+  document.getElementById('client-avatar').textContent = initiale;
+  document.getElementById('client-nom').textContent = m.client;
+
+  const clientBadges = document.getElementById('client-badges');
+  let badgesClientHtml = '';
+  badgesClientHtml += '<span class="client-bloc__badge client-bloc__badge--nouveau">' + escapeHtml(m.clientType) + '</span>';
+  if (m.clientVerifie) badgesClientHtml += '<span class="client-bloc__badge client-bloc__badge--verifie"><i class="fi fi-rr-shield-check"></i> Vérifié</span>';
+  if (m.clientTop) badgesClientHtml += '<span class="client-bloc__badge client-bloc__badge--top"><i class="fi fi-rr-trophy"></i> Top client</span>';
+  clientBadges.innerHTML = badgesHtml ? badgesClientHtml : '';
+
+  const clientMeta = document.getElementById('client-meta');
+  clientMeta.innerHTML = `
+    <span><i class="fi fi-rr-marker"></i> ${escapeHtml(m.clientVille)}</span>
+    <span><i class="fi fi-rr-calendar"></i> Membre depuis ${escapeHtml(m.clientMembre)}</span>
+  `;
+
+  /* ============================================================
+     POSTULER
+     ============================================================ */
+  const btnPostuler = document.getElementById('btn-postuler');
+  const statutCandidature = document.getElementById('statut-candidature');
+  const statutDate = document.getElementById('statut-candidature-date');
+  const alerteSucces = document.getElementById('alerte-succes');
+
+  // Vérifie si déjà postulé
+  const getCandidatures = () => {
+    try {
+      return JSON.parse(localStorage.getItem('josdore_candidatures') || '[]');
+    } catch (e) {
+      return [];
+    }
+  };
+
+  const setCandidatures = (liste) => {
+    try {
+      localStorage.setItem('josdore_candidatures', JSON.stringify(liste));
+    } catch (e) {}
+  };
+
+  const deja = getCandidatures().includes(id);
+  if (deja) {
+    marquerCommePostule();
+  }
+
+  function marquerCommePostule() {
+    btnPostuler.disabled = true;
+    btnPostuler.innerHTML = '<i class="fi fi-rr-check"></i> Candidature envoyée';
+    btnPostuler.style.background = 'var(--vert)';
+    btnPostuler.style.color = '#fff';
+    statutCandidature.classList.add('is-visible');
+    statutDate.textContent = 'En attente de réponse du client.';
+  }
+
+  if (btnPostuler) {
+    btnPostuler.addEventListener('click', () => {
+      if (confirm('Postuler à "' + m.titre + '" ?\n\nTa candidature sera envoyée au client avec ton profil.')) {
+        const liste = getCandidatures();
+        if (!liste.includes(id)) {
+          liste.push(id);
+          setCandidatures(liste);
+        }
+
+        marquerCommePostule();
+
+        // Alerte en haut de page
+        alerteSucces.classList.add('is-visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        console.log('[JosDore] Candidature envoyée pour la mission :', id);
+      }
+    });
+  }
+
+  /* ============================================================
+     FAVORI
+     ============================================================ */
+  const btnFavori = document.getElementById('btn-favori');
+  const getFavoris = () => {
+    try { return JSON.parse(localStorage.getItem('josdore_favoris_missions') || '[]'); }
+    catch (e) { return []; }
+  };
+  const setFavoris = (liste) => {
+    try { localStorage.setItem('josdore_favoris_missions', JSON.stringify(liste)); }
+    catch (e) {}
+  };
+
+  let estFavori = getFavoris().includes(id);
+  const majFavori = () => {
+    if (estFavori) {
+      btnFavori.innerHTML = '<i class="fi fi-sr-heart"></i> Sauvegardée';
+      btnFavori.style.color = 'var(--rouge)';
+      btnFavori.style.borderColor = 'var(--rouge)';
+    } else {
+      btnFavori.innerHTML = '<i class="fi fi-rr-heart"></i> Sauvegarder';
+      btnFavori.style.color = '';
+      btnFavori.style.borderColor = '';
+    }
+  };
+  majFavori();
+
+  btnFavori.addEventListener('click', () => {
+    const liste = getFavoris();
+    if (estFavori) {
+      const idx = liste.indexOf(id);
+      if (idx > -1) liste.splice(idx, 1);
+      estFavori = false;
+    } else {
+      liste.push(id);
+      estFavori = true;
+    }
+    setFavoris(liste);
+    majFavori();
+  });
+
+  /* ============================================================
+     PARTAGER
+     ============================================================ */
+  const btnPartager = document.getElementById('btn-partager');
+  btnPartager.addEventListener('click', () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({
+        title: m.titre + ' — JosDore Réseau',
+        text: m.titre + ' · ' + m.client + ' · ' + m.ville,
+        url: url
+      }).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        btnPartager.innerHTML = '<i class="fi fi-rr-check"></i> Lien copié';
+        setTimeout(() => {
+          btnPartager.innerHTML = '<i class="fi fi-rr-share"></i> Partager';
+        }, 1800);
+      });
+    }
+  });
+
+  /* ============================================================
+     SIGNALER
+     ============================================================ */
+  const btnSignaler = document.getElementById('btn-signaler');
+  if (btnSignaler) {
+    btnSignaler.addEventListener('click', () => {
+      if (confirm('Signaler cette mission ?')) {
+        window.location.href = '/support/signaler.html?type=mission&id=' + encodeURIComponent(id);
+      }
+    });
+  }
+
+  /* ============================================================
+     MISSIONS SIMILAIRES
+     ============================================================ */
+  const similaires = Object.entries(MISSIONS)
+    .filter(([key, val]) => key !== id && (val.specialite === m.specialite || val.ville === m.ville))
+    .slice(0, 3);
+
+  const gridSimilaires = document.getElementById('similaires-grid');
+
+  if (similaires.length === 0) {
+    document.getElementById('carte-similaires').style.display = 'none';
+  } else {
+    gridSimilaires.innerHTML = similaires.map(([key, val]) => `
+      <a href="/app/mission-detail.html?id=${encodeURIComponent(key)}" class="similaire">
+        <div class="similaire__titre">${escapeHtml(val.titre)}</div>
+        <div class="similaire__client">
+          <i class="fi fi-rr-building"></i> ${escapeHtml(val.client)}
+        </div>
+        <div class="similaire__meta">
+          <span><i class="fi fi-rr-marker"></i> ${escapeHtml(val.ville)}</span>
+          <span class="similaire__budget">${escapeHtml(val.budget)}</span>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  function escapeHtml(txt) {
+    return String(txt == null ? '' : txt)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function formatDateRelative(heures) {
+    if (heures < 1) {
+      const min = Math.round(heures * 60);
+      return 'il y a ' + min + ' min';
+    }
+    if (heures < 24) {
+      return 'il y a ' + Math.round(heures) + 'h';
+    }
+    const jours = Math.round(heures / 24);
+    return 'il y a ' + jours + (jours > 1 ? ' jours' : ' jour');
+  }
+
+  /* ============================================================
+     SERVICE WORKER
+     ============================================================ */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Détail mission', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log('Mission chargée : ' + id);
+});
+</script>
+
+</body>
+</html>

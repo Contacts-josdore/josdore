@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mot de passe oublié — JosDore</title>
+<meta name="description" content="Mot de passe oublié ? Indique ton email JosDore et reçois un lien pour en créer un nouveau.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A2540">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE — MOT DE PASSE OUBLIÉ
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--blanc); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: var(--bleu); text-decoration: none; transition: var(--transition); }
+a:hover { text-decoration: underline; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gris-200);
+  height: var(--header-h);
+}
+.header.is-scrolled { box-shadow: var(--ombre-md); }
+.header__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 18px; color: var(--gris-900); text-decoration: none; flex-shrink: 0; }
+.logo:hover { text-decoration: none; }
+.logo__mark { width: 40px; height: 40px; background: var(--nuit); color: var(--or); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; position: relative; flex-shrink: 0; }
+.logo__mark::after { content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--or); border-radius: 50%; }
+.logo__text span { color: var(--or); }
+.logo__suffix { display: block; font-size: 9px; font-weight: 700; color: var(--gris-500); letter-spacing: 2px; text-transform: uppercase; }
+
+.header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.header__lien {
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  text-decoration: none;
+}
+.header__lien:hover { color: var(--bleu); text-decoration: none; }
+.header__lien strong { color: var(--bleu); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; font-family: var(--police-titre); font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md); border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition); white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 10px 24px rgba(37,99,235,0.3); }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 10px 24px rgba(245,158,11,0.35); }
+.btn--ghost { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--block { width: 100%; }
+.btn--lg { padding: 15px 30px; font-size: 15px; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   LAYOUT AUTH
+   ============================================================ */
+.auth-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - var(--header-h));
+}
+
+/* ---------- Colonne gauche — MARQUE ---------- */
+.auth-marque {
+  background: linear-gradient(160deg, var(--nuit) 0%, #143154 60%, #1E3A5F 100%);
+  color: #fff;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.auth-marque::before {
+  content: '';
+  position: absolute; top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.auth-marque::after {
+  content: '';
+  position: absolute; bottom: -150px; left: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(37,99,235,0.22), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.auth-marque__inner {
+  position: relative; z-index: 2;
+  max-width: 440px;
+}
+.auth-marque__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.35);
+  border-radius: var(--rayon-full);
+  color: var(--or);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 24px;
+}
+.auth-marque h2 {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900; line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+.auth-marque h2 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.auth-marque > .auth-marque__inner > p {
+  font-size: 15px;
+  color: #CBD5E1;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.auth-marque__points {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.auth-point {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.auth-point__icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--or);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.auth-point__texte { flex: 1; padding-top: 4px; }
+.auth-point__titre {
+  font-size: 14px; font-weight: 800;
+  color: #fff; margin-bottom: 2px;
+}
+.auth-point__desc {
+  font-size: 13px; color: #94A3B8;
+  line-height: 1.5;
+}
+
+.auth-marque__bas {
+  position: absolute; bottom: 32px; left: 48px; right: 48px;
+  z-index: 2;
+  display: flex; gap: 20px;
+  font-size: 12px; color: #64748B;
+  flex-wrap: wrap;
+}
+.auth-marque__bas a { color: #94A3B8; text-decoration: none; }
+.auth-marque__bas a:hover { color: var(--or); text-decoration: none; }
+
+/* ---------- Colonne droite — FORMULAIRE ---------- */
+.auth-contenu {
+  padding: 60px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gris-50);
+}
+.auth-contenu__inner {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* Icône état */
+.auth-etat-icon {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.auth-contenu__head { margin-bottom: 24px; }
+.auth-contenu__head h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: var(--gris-900);
+}
+.auth-contenu__head p {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.6;
+}
+.auth-contenu__head p strong { color: var(--gris-900); font-weight: 700; }
+
+.auth-alert {
+  display: none;
+  align-items: flex-start; gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--rayon-sm);
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.auth-alert.is-visible { display: flex; }
+.auth-alert i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.auth-alert--erreur {
+  background: #FEF2F2;
+  border: 1px solid rgba(220,38,38,0.2);
+  color: #991B1B;
+}
+.auth-alert--erreur i { color: var(--rouge); }
+.auth-alert--succes {
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  color: #14532D;
+}
+.auth-alert--succes i { color: var(--vert); }
+
+/* Form */
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 800;
+  color: var(--gris-700); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  gap: 8px;
+}
+.form-input-wrap { position: relative; }
+.form-input-wrap > i.fi {
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500);
+  font-size: 18px;
+  pointer-events: none;
+}
+.form-input {
+  width: 100%;
+  padding: 13px 16px 13px 46px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-sm);
+  font-size: 14px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
+}
+.form-input.is-invalide {
+  border-color: var(--rouge);
+  background: #FFFBFB;
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 6px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Info bloc */
+.auth-info {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px;
+  background: rgba(37,99,235,0.06);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: var(--rayon-sm);
+  margin-bottom: 22px;
+  font-size: 12.5px;
+  color: var(--gris-700);
+  line-height: 1.5;
+}
+.auth-info i {
+  color: var(--bleu);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.auth-info strong { color: var(--gris-900); font-weight: 800; }
+
+/* Pied */
+.auth-foot {
+  text-align: center;
+  font-size: 14px;
+  color: var(--gris-500);
+  padding-top: 20px;
+  margin-top: 22px;
+  border-top: 1px solid var(--gris-200);
+}
+.auth-foot a { font-weight: 800; color: var(--bleu); }
+.auth-foot a:hover { text-decoration: underline; }
+
+/* Sécurité */
+.auth-securite {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px;
+  background: #F0FDF4;
+  border: 1px solid rgba(22,163,74,0.2);
+  border-radius: var(--rayon-sm);
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--gris-700);
+  line-height: 1.5;
+}
+.auth-securite i {
+  color: var(--vert);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.auth-securite strong { color: var(--gris-900); font-weight: 800; }
+
+/* État de succès (remplace le formulaire) */
+.auth-succes {
+  display: none;
+}
+.auth-succes.is-visible { display: block; }
+.auth-succes__icon {
+  width: 80px; height: 80px;
+  border-radius: 22px;
+  background: #F0FDF4;
+  border: 2px solid rgba(22,163,74,0.3);
+  color: var(--vert);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.auth-succes h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--gris-900);
+}
+.auth-succes p {
+  font-size: 14.5px;
+  color: var(--gris-700);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.auth-succes__email {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-sm);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--gris-900);
+  font-weight: 700;
+  word-break: break-all;
+}
+.auth-succes__actions {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 24px;
+}
+
+.auth-form-etat {
+  display: block;
+}
+.auth-form-etat.is-cache { display: none; }
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: var(--gris-900);
+  color: #94A3B8;
+  padding: 22px 0;
+  font-size: 13px;
+}
+.footer-mini__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 18px; flex-wrap: wrap; }
+.footer-mini__liens a { color: #94A3B8; text-decoration: none; }
+.footer-mini__liens a:hover { color: var(--or); text-decoration: none; }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #fff; border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 20px 24px; display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cookies__texte { flex: 1; min-width: 280px; font-size: 14px; color: var(--gris-700); line-height: 1.6; }
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookies__btn { padding: 10px 20px; font-family: var(--police-titre); font-size: 13px; font-weight: 700; border-radius: var(--rayon-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
+.cookies__btn--accept { background: var(--bleu); color: #fff; }
+.cookies__btn--accept:hover { background: var(--bleu-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .auth-layout { grid-template-columns: 1fr; }
+  .auth-marque { padding: 40px 32px; min-height: auto; }
+  .auth-marque__bas { position: static; margin-top: 40px; padding: 0; }
+  .auth-marque__points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .auth-contenu { padding: 40px 32px; }
+}
+
+@media (max-width: 640px) {
+  .header__inner { padding: 0 16px; }
+  .header__lien { display: none; }
+  .logo__suffix { display: none; }
+  .auth-marque { padding: 32px 22px; }
+  .auth-marque h2 { font-size: 1.4rem; }
+  .auth-marque__points { grid-template-columns: 1fr; }
+  .auth-contenu { padding: 32px 20px; }
+  .auth-contenu__head h1 { font-size: 1.5rem; }
+  .auth-etat-icon { width: 60px; height: 60px; font-size: 26px; }
+  .auth-succes__icon { width: 68px; height: 68px; font-size: 30px; }
+  .auth-succes h2 { font-size: 1.3rem; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .footer-mini__liens { justify-content: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="logo" aria-label="JosDore — Accueil">
+      <div class="logo__mark">J</div>
+      <div class="logo__text">
+        Jos<span>Dore</span>
+        <span class="logo__suffix">Mon compte</span>
+      </div>
+    </a>
+
+    <div class="header__actions">
+      <span class="header__lien">
+        Tu te souviens ?
+        <a href="connexion.html"><strong>Se connecter</strong></a>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- LAYOUT AUTH                                                  -->
+<!-- ============================================================ -->
+<div class="auth-layout">
+
+  <!-- COLONNE GAUCHE — MARQUE -->
+  <aside class="auth-marque">
+    <div class="auth-marque__inner">
+
+      <div class="auth-marque__badge">
+        <i class="fi fi-rr-key"></i>
+        Récupération de compte
+      </div>
+
+      <h2>Pas de panique,<br><span>on t'aide à revenir.</span></h2>
+
+      <p>
+        Oublier son mot de passe, ça arrive à tout le monde.
+        Indique ton email et on t'envoie un lien sécurisé pour en créer un nouveau.
+      </p>
+
+      <div class="auth-marque__points">
+
+        <div class="auth-point">
+          <div class="auth-point__icon"><i class="fi fi-rr-shield-check"></i></div>
+          <div class="auth-point__texte">
+            <div class="auth-point__titre">Lien sécurisé</div>
+            <div class="auth-point__desc">Le lien expire après 1 heure pour ta sécurité.</div>
+          </div>
+        </div>
+
+        <div class="auth-point">
+          <div class="auth-point__icon"><i class="fi fi-rr-time-quarter-to"></i></div>
+          <div class="auth-point__texte">
+            <div class="auth-point__titre">Rapide et simple</div>
+            <div class="auth-point__desc">Reçois ton lien en moins de 2 minutes.</div>
+          </div>
+        </div>
+
+        <div class="auth-point">
+          <div class="auth-point__icon"><i class="fi fi-rr-lock"></i></div>
+          <div class="auth-point__texte">
+            <div class="auth-point__titre">100% confidentiel</div>
+            <div class="auth-point__desc">Ton email reste privé, on ne le partage jamais.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="auth-marque__bas">
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+  </aside>
+
+  <!-- COLONNE DROITE — FORMULAIRE -->
+  <main class="auth-contenu">
+    <div class="auth-contenu__inner">
+
+      <!-- ================= ÉTAT 1 : FORMULAIRE ================= -->
+      <div class="auth-form-etat" id="etat-formulaire">
+
+        <div class="auth-etat-icon">
+          <i class="fi fi-rr-key"></i>
+        </div>
+
+        <div class="auth-contenu__head">
+          <h1>Mot de passe oublié ?</h1>
+          <p>Indique l'email associé à ton compte JosDore. On t'envoie un lien pour en créer un nouveau.</p>
+        </div>
+
+        <div class="auth-info">
+          <i class="fi fi-rr-info"></i>
+          <div>
+            <strong>Un seul compte</strong> pour josdore.com ET josdore.app.
+            Utilise la même adresse partout.
+          </div>
+        </div>
+
+        <div class="auth-alert auth-alert--erreur" id="alerte-erreur" role="alert">
+          <i class="fi fi-rr-cross-circle"></i>
+          <span id="alerte-erreur-texte">Merci de vérifier ton adresse email.</span>
+        </div>
+
+        <form id="form-reset" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="reset-email">Email</label>
+            <div class="form-input-wrap">
+              <i class="fi fi-rr-envelope" aria-hidden="true"></i>
+              <input
+                class="form-input"
+                type="email"
+                id="reset-email"
+                name="email"
+                placeholder="ton.email@example.com"
+                autocomplete="email"
+                inputmode="email"
+                required
+              >
+            </div>
+            <p class="form-help">
+              <i class="fi fi-rr-info"></i>
+              C'est l'email utilisé pour ton compte JosDore.
+            </p>
+          </div>
+
+          <button type="submit" class="btn btn--or btn--block btn--lg" id="btn-reset">
+            <i class="fi fi-rr-paper-plane"></i>
+            Envoyer le lien de réinitialisation
+          </button>
+
+        </form>
+
+        <div class="auth-securite">
+          <i class="fi fi-rr-lock"></i>
+          <span>
+            Par sécurité, on t'envoie <strong>toujours</strong> un email
+            (même si l'adresse n'existe pas chez nous). Comme ça, personne
+            ne peut deviner qui a un compte JosDore.
+          </span>
+        </div>
+
+        <div class="auth-foot">
+          Tu te souviens finalement ?
+          <a href="connexion.html">Se connecter</a>
+        </div>
+
+      </div>
+
+      <!-- ================= ÉTAT 2 : CONFIRMATION ================= -->
+      <div class="auth-succes" id="etat-succes">
+
+        <div class="auth-succes__icon">
+          <i class="fi fi-rr-envelope"></i>
+        </div>
+
+        <h2>Vérifie ta boîte email</h2>
+
+        <p>
+          Si un compte JosDore est associé à
+          <span class="auth-succes__email" id="email-cible">cette adresse</span>,
+          tu recevras un email contenant un lien pour réinitialiser ton mot de passe.
+        </p>
+
+        <p>
+          <strong>Le lien expire dans 1 heure.</strong> Pense à regarder dans tes
+          spams si tu ne le vois pas dans les 5 prochaines minutes.
+        </p>
+
+        <div class="auth-succes__actions">
+          <a href="connexion.html" class="btn btn--or btn--block btn--lg">
+            <i class="fi fi-rr-sign-in-alt"></i>
+            Retour à la connexion
+          </a>
+          <button type="button" class="btn btn--ghost btn--block" id="btn-renvoyer">
+            <i class="fi fi-rr-refresh"></i>
+            Renvoyer l'email
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore — Tous droits réservés.</div>
+    <div class="footer-mini__liens">
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="legal/mentions.html">Mentions</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore utilise des cookies pour améliorer ton expérience, mesurer
+      l'audience et sécuriser ta session.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Header scroll */
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* Raccourcis */
+  const form = document.getElementById('form-reset');
+  const emailInput = document.getElementById('reset-email');
+  const btnReset = document.getElementById('btn-reset');
+  const alerteErreur = document.getElementById('alerte-erreur');
+  const alerteErreurTexte = document.getElementById('alerte-erreur-texte');
+  const etatFormulaire = document.getElementById('etat-formulaire');
+  const etatSucces = document.getElementById('etat-succes');
+  const emailCible = document.getElementById('email-cible');
+  const btnRenvoyer = document.getElementById('btn-renvoyer');
+
+  /* Afficher une erreur */
+  const afficherErreur = (message) => {
+    alerteErreurTexte.textContent = message;
+    alerteErreur.classList.add('is-visible');
+    if (emailInput) emailInput.classList.add('is-invalide');
+  };
+  const cacherErreur = () => {
+    alerteErreur.classList.remove('is-visible');
+    if (emailInput) emailInput.classList.remove('is-invalide');
+  };
+
+  /* Nettoyage live */
+  if (emailInput) {
+    emailInput.addEventListener('input', cacherErreur);
+  }
+
+  /* Soumission */
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = (emailInput.value || '').trim();
+
+      if (!email) {
+        emailInput.focus();
+        return afficherErreur('Merci de saisir ton adresse email.');
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.focus();
+        return afficherErreur('Cette adresse email semble invalide.');
+      }
+
+      // Simulation : en production, POST /api/password/forgot
+      btnReset.disabled = true;
+      btnReset.innerHTML = '<i class="fi fi-rr-time-quarter-to"></i> Envoi en cours...';
+
+      setTimeout(() => {
+        // Affiche l'email ciblé (tronqué pour la sécurité visuelle)
+        const emailAffiche = email.replace(/^(.{2}).*(@.*)$/, '$1***$2');
+        emailCible.textContent = emailAffiche;
+
+        // Bascule vers l'état succès
+        etatFormulaire.classList.add('is-cache');
+        etatSucces.classList.add('is-visible');
+
+        // Réinitialise le bouton (pour si on revient)
+        btnReset.disabled = false;
+        btnReset.innerHTML = '<i class="fi fi-rr-paper-plane"></i> Envoyer le lien de réinitialisation';
+
+        console.log('[JosDore] Reset password simulé pour :', email);
+      }, 900);
+    });
+  }
+
+  /* Bouton renvoyer */
+  if (btnRenvoyer) {
+    btnRenvoyer.addEventListener('click', () => {
+      // Retour au formulaire avec email pré-rempli
+      etatSucces.classList.remove('is-visible');
+      etatFormulaire.classList.remove('is-cache');
+
+      // Focus sur l'email pour modification
+      setTimeout(() => {
+        if (emailInput) {
+          emailInput.focus();
+          emailInput.select();
+        }
+      }, 100);
+
+      console.log('[JosDore] Renvoi du lien — retour au formulaire.');
+    });
+  }
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Mot de passe oublié', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

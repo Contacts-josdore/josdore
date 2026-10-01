@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JosDore Réseau — Ton travail parle mieux que ton CV</title>
+<meta name="description" content="JosDore Réseau : le réseau social des techniciens d'Afrique. Montre ton savoir-faire, construis ta réputation, trouve des missions.">
+<meta name="theme-color" content="#F59E0B">
+
+<!-- Open Graph -->
+<meta property="og:title" content="JosDore Réseau — Ton travail parle mieux que ton CV">
+<meta property="og:description" content="Le réseau social des techniciens d'Afrique. Portfolio, missions, réputation.">
+<meta property="og:image" content="/assets/images/og/og-app.jpg">
+<meta property="og:url" content="https://app.josdore.com/">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — LANDING APP
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --nuit-clair: #1E3A5F;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+  --ombre-xl: 0 30px 60px rgba(10,37,64,0.20);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --contenu: 1200px;
+  --header-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 16px; line-height: 1.6; color: var(--gris-700); background: var(--blanc); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.15; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+.container { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section--grise { background: var(--gris-50); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gris-200);
+  height: var(--header-h);
+}
+.header.is-scrolled { box-shadow: var(--ombre-md); }
+.header__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  position: relative;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 18px; color: var(--gris-900); flex-shrink: 0; }
+.logo__mark { width: 40px; height: 40px; background: var(--nuit); color: var(--or); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; position: relative; flex-shrink: 0; }
+.logo__mark::after { content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--or); border-radius: 50%; }
+.logo__text span { color: var(--or); }
+.logo__suffix { display: block; font-size: 9px; font-weight: 700; color: var(--gris-500); letter-spacing: 2px; text-transform: uppercase; }
+
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { font-size: 14px; font-weight: 600; color: var(--gris-700); position: relative; }
+.nav a:hover { color: var(--or-fonce); }
+
+.header__actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.menu-btn {
+  display: none; width: 42px; height: 42px;
+  border-radius: var(--rayon-sm); border: 1px solid var(--gris-200);
+  background: #fff; color: var(--gris-900);
+  align-items: center; justify-content: center;
+  font-size: 20px; transition: all var(--transition); flex-shrink: 0;
+}
+.menu-btn:hover { border-color: var(--gris-900); background: var(--gris-50); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px; font-family: var(--police-titre); font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md); border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 12px 28px rgba(37,99,235,0.35); }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 12px 28px rgba(245,158,11,0.4); }
+.btn--outline { background: transparent; color: var(--or-fonce); border-color: var(--or); }
+.btn--outline:hover { background: var(--or); color: var(--nuit); }
+.btn--ghost { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--blanc { background: #fff; color: var(--nuit); }
+.btn--blanc:hover { box-shadow: var(--ombre-lg); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.3); }
+.btn--ghost-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.btn--sm { padding: 9px 18px; font-size: 13px; }
+.btn--lg { padding: 16px 34px; font-size: 15px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  padding: 60px 0 80px;
+  background: linear-gradient(160deg, var(--nuit) 0%, #143154 60%, #1E3A5F 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(37,99,235,0.20), transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+
+.hero__inner {
+  position: relative; z-index: 2;
+  max-width: 1280px; margin: 0 auto; padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Texte hero */
+.hero__texte { max-width: 560px; }
+.hero__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.35);
+  border-radius: var(--rayon-full);
+  color: var(--or);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+.hero__badge i { font-size: 15px; }
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: #CBD5E1;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.hero__actions {
+  display: flex; gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero__stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero__stat {
+  display: flex; flex-direction: column;
+}
+.hero__stat-v {
+  font-family: var(--police-titre);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--or);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero__stat-l {
+  font-size: 12px;
+  color: #94A3B8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mockup téléphone */
+.hero__mockup {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone {
+  width: 300px;
+  height: 620px;
+  background: var(--nuit);
+  border-radius: 44px;
+  padding: 12px;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.45), 0 0 0 8px rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 12px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 24px;
+  background: var(--nuit);
+  border-radius: 0 0 16px 16px;
+  z-index: 10;
+}
+
+.phone__ecran {
+  width: 100%; height: 100%;
+  background: #F8FAFC;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.phone__statut {
+  padding: 16px 22px 8px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; font-weight: 700;
+  color: var(--gris-900);
+  background: #fff;
+}
+.phone__statut i { font-size: 10px; }
+
+.phone__header {
+  padding: 10px 16px;
+  background: #fff;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--gris-100);
+}
+.phone__header-logo { display: flex; align-items: center; gap: 6px; font-weight: 900; font-size: 12px; color: var(--gris-900); }
+.phone__header-mark {
+  width: 22px; height: 22px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 900;
+}
+.phone__header-logo span { color: var(--or); }
+.phone__header-icons { display: flex; gap: 10px; color: var(--gris-500); font-size: 14px; }
+
+.phone__body {
+  flex: 1;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.phone__post {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(10,37,64,0.06);
+}
+.phone__post-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.phone__post-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  font-weight: 900; font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.phone__post-name { font-size: 10px; font-weight: 800; color: var(--gris-900); display: flex; align-items: center; gap: 3px; }
+.phone__post-name i { color: var(--bleu); font-size: 9px; }
+.phone__post-meta { font-size: 8px; color: var(--gris-500); }
+.phone__post-img {
+  width: 100%; aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #1E293B, #334155);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+.phone__post-titre { font-size: 10px; font-weight: 800; margin-bottom: 4px; }
+.phone__post-desc { font-size: 9px; color: var(--gris-500); line-height: 1.4; margin-bottom: 8px; }
+.phone__post-actions {
+  display: flex; gap: 12px;
+  font-size: 9px;
+  color: var(--gris-500);
+  border-top: 1px solid var(--gris-100);
+  padding-top: 6px;
+}
+.phone__post-actions span { display: inline-flex; align-items: center; gap: 3px; }
+.phone__post-actions .liked { color: var(--rouge); }
+
+/* Cartes flottantes */
+.float {
+  position: absolute;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.25);
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--gris-200);
+  animation: float 3s ease-in-out infinite;
+  z-index: 3;
+}
+.float--1 { top: 60px; right: -10px; animation-delay: 0s; }
+.float--2 { bottom: 80px; left: -10px; animation-delay: 1.5s; }
+.float__icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.float__icon--or { background: rgba(245,158,11,0.15); color: var(--or-fonce); }
+.float__icon--bleu { background: rgba(37,99,235,0.15); color: var(--bleu); }
+.float__titre { font-size: 12px; font-weight: 800; color: var(--gris-900); }
+.float__desc { font-size: 11px; color: var(--gris-500); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ============================================================
+   SECTION HEAD
+   ============================================================ */
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+.section-head__eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 800;
+  color: var(--or-fonce);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 14px;
+}
+.section-head p {
+  font-size: 1.05rem;
+  color: var(--gris-500);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   FONCTIONNALITÉS
+   ============================================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 28px 24px;
+  transition: var(--transition);
+}
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ombre-lg);
+  border-color: transparent;
+}
+.feature__icon {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+.feature h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   COMMENT ÇA MARCHE (3 étapes)
+   ============================================================ */
+.etapes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.etape {
+  text-align: center;
+  position: relative;
+}
+.etape__num {
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: #fff;
+  font-family: var(--police-titre);
+  font-size: 26px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 28px rgba(245,158,11,0.3);
+}
+.etape h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.etape p {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.65;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   POUR QUI
+   ============================================================ */
+.pourqui-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.pourqui-carte {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: var(--rayon-lg);
+  padding: 32px 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+.pourqui-carte:hover {
+  border-color: var(--or);
+  box-shadow: var(--ombre-lg);
+}
+.pourqui-carte__icon {
+  width: 72px; height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px;
+}
+.pourqui-carte h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+.pourqui-carte p {
+  font-size: 14px;
+  color: var(--gris-500);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta {
+  background: linear-gradient(135deg, var(--nuit) 0%, #1E293B 100%);
+  color: #fff;
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; top: -50%; left: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(245,158,11,0.15), transparent 60%);
+  pointer-events: none;
+}
+.cta__inner {
+  position: relative; z-index: 2;
+  max-width: 640px; margin: 0 auto;
+}
+.cta h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 16px;
+}
+.cta h2 span {
+  background: linear-gradient(135deg, var(--or), #FBBF24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cta p {
+  color: #CBD5E1;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+.cta__actions {
+  display: flex; gap: 14px;
+  justify-content: center; flex-wrap: wrap;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--gris-900); color: #94A3B8; padding: 64px 0 28px; margin-top: auto; }
+.footer__grid { max-width: 1280px; margin: 0 auto 40px; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 14px; }
+.footer__logo .logo__mark { background: var(--or); color: var(--nuit); }
+.footer__logo .logo__mark::after { background: var(--nuit); }
+.footer__desc { font-size: 14px; line-height: 1.7; max-width: 320px; }
+.footer__desc strong { color: #fff; }
+.footer__titre { color: #fff; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer__liens { display: flex; flex-direction: column; gap: 10px; }
+.footer__liens a, .footer__liens button { font-size: 14px; color: #94A3B8; text-align: left; padding: 0; transition: var(--transition); }
+.footer__liens a:hover, .footer__liens button:hover { color: var(--or); }
+.footer__bas {
+  max-width: 1280px; margin: 0 auto; padding: 24px 24px 0;
+  border-top: 1px solid #1E293B;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px;
+}
+.footer__bas i { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #fff; border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 20px 24px;
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+.cookies.is-open { display: block; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cookies__texte { flex: 1; min-width: 280px; font-size: 14px; color: var(--gris-700); line-height: 1.6; }
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookies__btn { padding: 10px 20px; font-family: var(--police-titre); font-size: 13px; font-weight: 700; border-radius: var(--rayon-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 12px 24px; background: #fff;
+    border-bottom: 1px solid var(--gris-200);
+    box-shadow: var(--ombre-md);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--gris-100); }
+  .nav a:last-child { border-bottom: none; }
+  .menu-btn { display: inline-flex; }
+  .header__actions .btn--ghost { display: none; }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero__texte { max-width: 100%; margin: 0 auto; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__stats { justify-content: center; }
+  .hero__mockup { max-width: 420px; margin: 0 auto; }
+  .float--1, .float--2 { display: none; }
+
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+  .section { padding: 56px 0; }
+  .hero { padding: 40px 0 60px; }
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; }
+  .phone { width: 260px; height: 540px; }
+  .hero__stat-v { font-size: 24px; }
+
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bas { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="app/" class="logo" aria-label="JosDore Réseau — Accueil">
+      <div class="logo__mark">J</div>
+      <div class="logo__text">
+        Jos<span>Dore</span>
+        <span class="logo__suffix">Réseau</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#pour-qui">Pour qui</a>
+      <a href="app/techniciens.html">Techniciens</a>
+      <a href="app/missions.html">Missions</a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="app/connexion.html" class="btn btn--ghost btn--sm">Connexion</a>
+      <a href="app/inscription.html" class="btn btn--or btn--sm">
+        <i class="fi fi-rr-rocket"></i> Rejoindre
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+
+      <!-- Texte -->
+      <div class="hero__texte">
+        <div class="hero__badge">
+          <i class="fi fi-rr-flame"></i>
+          Nouveau · Le réseau des techniciens d'Afrique
+        </div>
+
+        <h1>Ton travail parle<br><span>mieux que ton CV.</span></h1>
+
+        <p>
+          JosDore connecte les techniciens du Bénin et d'Afrique avec les
+          clients et entreprises. Poste tes interventions, construis ton
+          portfolio, gagne en réputation.
+        </p>
+
+        <div class="hero__actions">
+          <a href="app/inscription.html" class="btn btn--or btn--lg">
+            <i class="fi fi-rr-rocket"></i> Créer mon profil gratuit
+          </a>
+          <a href="#decouvrir" class="btn btn--ghost-light btn--lg">
+            <i class="fi fi-rr-search"></i> Découvrir l'app
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-v">100+</div>
+            <div class="hero__stat-l">Interventions</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-v">0</div>
+            <div class="hero__stat-l">Techniciens inscrits</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-v">2</div>
+            <div class="hero__stat-l">Villes couvertes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup téléphone -->
+      <div class="hero__mockup">
+        <div class="phone">
+          <div class="phone__ecran">
+
+            <div class="phone__statut">
+              <span>9:41</span>
+              <span><i class="fi fi-sr-signal-alt-1"></i> <i class="fi fi-sr-battery-full"></i></span>
+            </div>
+
+            <div class="phone__header">
+              <div class="phone__header-logo">
+                <div class="phone__header-mark">J</div>
+                <div>Jos<span>Dore</span></div>
+              </div>
+              <div class="phone__header-icons">
+                <i class="fi fi-rr-bell"></i>
+                <i class="fi fi-rr-comment"></i>
+              </div>
+            </div>
+
+            <div class="phone__body">
+
+              <div class="phone__post">
+                <div class="phone__post-head">
+                  <div class="phone__post-avatar">AD</div>
+                  <div style="flex:1;">
+                    <div class="phone__post-name">Aïcha Dossou <i class="fi fi-sr-badge-check"></i></div>
+                    <div class="phone__post-meta">Réseaux · Cotonou · 2h</div>
+                  </div>
+                </div>
+                <div class="phone__post-img"><i class="fi fi-rr-picture"></i></div>
+                <div class="phone__post-titre">Câblage salle serveur</div>
+                <div class="phone__post-desc">3 jours de boulot, résultat impeccable.</div>
+                <div class="phone__post-actions">
+                  <span class="liked"><i class="fi fi-sr-heart"></i> 0</span>
+                  <span><i class="fi fi-rr-comment"></i> 0</span>
+                  <span><i class="fi fi-rr-share"></i></span>
+                </div>
+              </div>
+
+              <div class="phone__post">
+                <div class="phone__post-head">
+                  <div class="phone__post-avatar" style="background:linear-gradient(135deg,var(--bleu),#7C3AED);">KB</div>
+                  <div style="flex:1;">
+                    <div class="phone__post-name">Karim Bio</div>
+                    <div class="phone__post-meta">Électricien · Porto-Novo · 5h</div>
+                  </div>
+                </div>
+                <div class="phone__post-titre">Installation tableau électrique</div>
+                <div class="phone__post-desc">Mise aux normes complète.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="float float--1">
+          <div class="float__icon float__icon--or"><i class="fi fi-sr-star"></i></div>
+          <div>
+            <div class="float__titre">Réputation</div>
+            <div class="float__desc">Avis clients vérifiés</div>
+          </div>
+        </div>
+
+        <div class="float float--2">
+          <div class="float__icon float__icon--bleu"><i class="fi fi-sr-briefcase"></i></div>
+          <div>
+            <div class="float__titre">Missions</div>
+            <div class="float__desc">Publiées en direct</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="section" id="fonctionnalites">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Fonctionnalités</span>
+        <h2>Tout pour briller dans ton métier</h2>
+        <p>Une plateforme pensée pour les techniciens africains.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-picture"></i></div>
+          <h3>Portfolio automatique</h3>
+          <p>Chaque intervention publiée devient une preuve de ton savoir-faire. Ton CV vivant se construit tout seul.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-star"></i></div>
+          <h3>Réputation vérifiée</h3>
+          <p>Avis clients, étoiles, badges. Ta crédibilité augmente à chaque mission réussie.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-briefcase"></i></div>
+          <h3>Missions en direct</h3>
+          <p>Entreprises et particuliers publient leurs besoins. Tu postules en 1 clic.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-comment"></i></div>
+          <h3>Contact direct</h3>
+          <p>WhatsApp, téléphone, messagerie interne. Le client te contacte directement.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-marker"></i></div>
+          <h3>Visibilité locale</h3>
+          <p>Filtre par ville et spécialité. Les clients près de chez toi te trouvent en quelques secondes.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon"><i class="fi fi-rr-trophy"></i></div>
+          <h3>Badges & mise en avant</h3>
+          <p>Vérifié, Top Technicien, Rapide… Deviens une référence dans ta zone.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="section section--grise" id="comment">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Comment ça marche</span>
+        <h2>3 étapes pour commencer</h2>
+        <p>Rejoins le réseau en moins de 2 minutes.</p>
+      </div>
+
+      <div class="etapes-grid">
+
+        <div class="etape">
+          <div class="etape__num">1</div>
+          <h3>Crée ton profil</h3>
+          <p>Inscription gratuite. Renseigne ton métier, tes compétences, ta ville et ton tarif.</p>
+        </div>
+
+        <div class="etape">
+          <div class="etape__num">2</div>
+          <h3>Poste tes interventions</h3>
+          <p>Chaque mission terminée = 1 photo + 1 description. Ton portfolio grossit tout seul.</p>
+        </div>
+
+        <div class="etape">
+          <div class="etape__num">3</div>
+          <h3>Sois trouvé</h3>
+          <p>Les clients consultent ton profil, voient tes preuves et te contactent en direct.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="section" id="pour-qui">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__eyebrow">Pour qui ?</span>
+        <h2>JosDore Réseau est fait pour toi</h2>
+      </div>
+
+      <div class="pourqui-grid">
+
+        <div class="pourqui-carte">
+          <div class="pourqui-carte__icon"><i class="fi fi-rr-tools"></i></div>
+          <h3>Techniciens</h3>
+          <p>Trouve des missions, montre ton savoir-faire, construis ta réputation. Fini le bouche-à-oreille.</p>
+        </div>
+
+        <div class="pourqui-carte">
+          <div class="pourqui-carte__icon"><i class="fi fi-rr-building"></i></div>
+          <h3>Entreprises</h3>
+          <p>Trouve un technicien fiable en 30 minutes. Vois ses interventions, ses avis, son score de confiance.</p>
+        </div>
+
+        <div class="pourqui-carte">
+          <div class="pourqui-carte__icon"><i class="fi fi-rr-graduation-cap"></i></div>
+          <h3>Étudiants tech</h3>
+          <p>Décroche tes premières missions, construis ton portfolio, fais-toi un nom dans le métier.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta" id="decouvrir">
+    <div class="cta__inner">
+      <h2>Prêt à montrer<br><span>ce que tu sais faire ?</span></h2>
+      <p>Rejoins JosDore Réseau gratuitement. Ton profil se construit à chaque intervention.</p>
+      <div class="cta__actions">
+        <a href="app/inscription.html" class="btn btn--or btn--lg">
+          <i class="fi fi-rr-rocket"></i> Créer mon profil gratuit
+        </a>
+        <a href="app/connexion.html" class="btn btn--blanc btn--lg">
+          J'ai déjà un compte
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__logo">
+        <div class="logo__mark">J</div>
+        <div>Jos<span>Dore</span></div>
+      </div>
+      <p class="footer__desc">
+        JosDore Réseau — Le réseau social des techniciens d'Afrique.<br>
+        <strong>Ton travail parle mieux que ton CV.</strong>
+      </p>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Réseau</h4>
+      <div class="footer__liens">
+        <a href="app/feed.html">Feed</a>
+        <a href="app/techniciens.html">Techniciens</a>
+        <a href="app/missions.html">Missions</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Mon espace</h4>
+      <div class="footer__liens">
+        <a href="app/connexion.html">Connexion</a>
+        <a href="app/inscription.html">Inscription</a>
+        <a href="app/profil.html">Mon profil</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Le groupe</h4>
+      <div class="footer__liens">
+        <a href="/">josdore.com</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal/confidentialite.html">Confidentialité</a>
+        <button type="button" id="revoirCookies">Revoir le consentement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bas">
+    <div>© <span id="annee"></span> JosDore Réseau — Tous droits réservés.</div>
+    <div>Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi, Bénin</div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- BANDEAU COOKIES                                              -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte. Tu peux accepter tous les
+      cookies ou refuser ceux qui ne sont pas essentiels.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Header scroll */
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* Menu burger */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const nav = document.getElementById('nav');
+  if (menuBtn && nav && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = nav.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(ouvert));
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        menuIcon.className = 'fi fi-rr-menu-burger';
+      });
+    });
+  }
+
+  /* Scroll fluide ancres */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (href.length > 1) {
+        const cible = document.querySelector(href);
+        if (cible) {
+          e.preventDefault();
+          const top = cible.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+          history.replaceState(null, '', href);
+        }
+      }
+    });
+  });
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  const btnRevoir = document.getElementById('revoirCookies');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+  if (btnRevoir) btnRevoir.addEventListener('click', () => {
+    try { localStorage.removeItem(CLE); } catch (e) {}
+    ouvrir();
+  });
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+  console.log('%cTon travail parle mieux que ton CV.', 'color: #F59E0B; font-weight: 700;');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erreur serveur (500) — JosDore</title>
+<meta name="description" content="Un problème technique est survenu de notre côté. Notre équipe est prévenue. Réessaie dans quelques instants ou contacte-nous.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A2540">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE — PAGE 500
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+  --rouge-fonce: #B91C1C;
+
+  --pole-communaute: #BE123C;
+  --pole-tech: #2563EB;
+  --pole-commerce: #16A34A;
+  --pole-education: #CA8A04;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 22px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --contenu: 1200px;
+  --header-h: 72px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 16px; line-height: 1.6; color: var(--gris-700); background: var(--blanc); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.15; letter-spacing: -0.02em; }
+::selection { background: var(--rouge); color: #fff; }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+.container { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gris-200);
+  height: var(--header-h);
+}
+.header.is-scrolled { box-shadow: var(--ombre-md); }
+.header__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  position: relative;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 18px; color: var(--gris-900); flex-shrink: 0; }
+.logo__mark { width: 40px; height: 40px; background: var(--nuit); color: var(--or); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; position: relative; flex-shrink: 0; }
+.logo__mark::after { content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--or); border-radius: 50%; }
+.logo__text span { color: var(--or); }
+.logo__suffix { display: block; font-size: 9px; font-weight: 700; color: var(--gris-500); letter-spacing: 2px; text-transform: uppercase; }
+
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a { font-size: 14px; font-weight: 600; color: var(--gris-700); position: relative; }
+.nav a:hover { color: var(--bleu); }
+
+.header__actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+.menu-btn {
+  display: none; width: 42px; height: 42px;
+  border-radius: var(--rayon-sm); border: 1px solid var(--gris-200);
+  background: #fff; color: var(--gris-900);
+  align-items: center; justify-content: center;
+  font-size: 20px; transition: all var(--transition); flex-shrink: 0;
+}
+.menu-btn:hover { border-color: var(--gris-900); background: var(--gris-50); }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 26px; font-family: var(--police-titre); font-size: 14px; font-weight: 700;
+  border-radius: var(--rayon-md); border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 12px 28px rgba(37,99,235,0.35); }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 12px 28px rgba(245,158,11,0.4); }
+.btn--rouge { background: var(--rouge); color: #fff; }
+.btn--rouge:hover { background: var(--rouge-fonce); box-shadow: 0 12px 28px rgba(220,38,38,0.35); }
+.btn--outline { background: transparent; color: var(--bleu); border-color: var(--bleu); }
+.btn--outline:hover { background: var(--bleu); color: #fff; }
+.btn--ghost { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--whatsapp { background: #25D366; color: #fff; }
+.btn--whatsapp:hover { background: #1ebe57; box-shadow: 0 12px 28px rgba(37,211,102,0.35); }
+.btn--sm { padding: 9px 18px; font-size: 13px; }
+.btn--lg { padding: 16px 34px; font-size: 15px; }
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb { background: var(--gris-50); padding: 12px 0; font-size: 13px; border-bottom: 1px solid var(--gris-200); }
+.breadcrumb__inner { max-width: var(--contenu); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--gris-500); }
+.breadcrumb a { color: var(--bleu); font-weight: 600; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb i { font-size: 14px; color: var(--gris-300); }
+
+/* ============================================================
+   BLOC 500
+   ============================================================ */
+.bloc-500 {
+  flex: 1;
+  position: relative;
+  padding: 60px 0 80px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(220,38,38,0.05), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(37,99,235,0.05), transparent 45%),
+    var(--blanc);
+  overflow: hidden;
+}
+
+.bloc-500__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Visuel "500" stylisé */
+.bloc-500__visuel {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+.bloc-500__code {
+  font-family: var(--police-titre);
+  font-size: clamp(6rem, 16vw, 11rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  background: linear-gradient(135deg, var(--nuit) 0%, var(--bleu) 45%, var(--rouge) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+.bloc-500__visuel::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(220,38,38,0.10), transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse500 4s ease-in-out infinite;
+}
+@keyframes pulse500 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
+}
+
+.bloc-500__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: rgba(220,38,38,0.10);
+  color: var(--rouge);
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.bloc-500 h1 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  margin-bottom: 14px;
+}
+.bloc-500 h1 span {
+  background: linear-gradient(135deg, var(--rouge), #EF4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bloc-500 > .bloc-500__inner > p {
+  font-size: 1.05rem;
+  color: var(--gris-500);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+/* Bannière d'information */
+.bloc-500__info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  padding: 16px 20px;
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--rayon-md);
+  text-align: left;
+}
+.bloc-500__info i {
+  color: var(--or-fonce);
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.bloc-500__info p {
+  font-size: 13px;
+  color: var(--gris-700);
+  line-height: 1.6;
+  margin: 0;
+}
+.bloc-500__info strong { color: var(--gris-900); }
+
+/* Actions */
+.bloc-500__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+/* ============================================================
+   ÉTAPES DE RÉSOLUTION
+   ============================================================ */
+.bloc-500__bloc {
+  margin-top: 24px;
+  text-align: left;
+}
+.bloc-500__bloc-titre {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--rouge);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.bloc-500__bloc h2 {
+  text-align: center;
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  margin-bottom: 32px;
+}
+
+.etapes-500 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.etape-500 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  transition: var(--transition);
+}
+.etape-500:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ombre-md);
+  border-color: var(--rouge);
+}
+.etape-500__num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(220,38,38,0.10);
+  color: var(--rouge);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--police-titre);
+  font-size: 16px;
+  font-weight: 900;
+}
+.etape-500 h3 { font-size: 15px; margin-bottom: 4px; }
+.etape-500 p { font-size: 13px; color: var(--gris-500); margin: 0; line-height: 1.55; }
+
+/* ============================================================
+   BLOC SUPPORT
+   ============================================================ */
+.bloc-500__support {
+  margin-top: 48px;
+  padding: 28px 24px;
+  background: var(--gris-50);
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.bloc-500__support h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.bloc-500__support p {
+  font-size: 14px;
+  color: var(--gris-500);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.bloc-500__support-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Code technique discret */
+.bloc-500__code-tech {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 6px 14px;
+  background: var(--gris-100);
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--gris-900); color: #94A3B8; padding: 64px 0 28px; margin-top: auto; }
+.footer__grid { max-width: 1280px; margin: 0 auto 40px; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--police-titre); font-weight: 900; font-size: 20px; color: #fff; margin-bottom: 14px; }
+.footer__logo .logo__mark { background: var(--or); color: var(--nuit); }
+.footer__logo .logo__mark::after { background: var(--nuit); }
+.footer__desc { font-size: 14px; line-height: 1.7; max-width: 320px; }
+.footer__desc strong { color: #fff; }
+.footer__titre { color: #fff; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.footer__liens { display: flex; flex-direction: column; gap: 10px; }
+.footer__liens a, .footer__liens button { font-size: 14px; color: #94A3B8; text-align: left; padding: 0; transition: var(--transition); }
+.footer__liens a:hover, .footer__liens button:hover { color: var(--or); }
+.footer__bas {
+  max-width: 1280px; margin: 0 auto; padding: 24px 24px 0;
+  border-top: 1px solid #1E293B;
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px;
+}
+.footer__bas i { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: #fff; border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 20px 24px; display: none;
+  animation: slideUp 0.3s ease;
+}
+.cookies.is-open { display: block; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cookies__texte { flex: 1; min-width: 280px; font-size: 14px; color: var(--gris-700); line-height: 1.6; }
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cookies__btn { padding: 10px 20px; font-family: var(--police-titre); font-size: 13px; font-weight: 700; border-radius: var(--rayon-md); border: 2px solid transparent; cursor: pointer; transition: var(--transition); }
+.cookies__btn--accept { background: var(--bleu); color: #fff; }
+.cookies__btn--accept:hover { background: var(--bleu-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 12px 24px; background: #fff;
+    border-bottom: 1px solid var(--gris-200);
+    box-shadow: var(--ombre-md);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 14px 0; border-bottom: 1px solid var(--gris-100); }
+  .nav a:last-child { border-bottom: none; }
+  .menu-btn { display: inline-flex; }
+  .header__actions .btn--ghost { display: none; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+  .bloc-500 { padding: 40px 0 60px; }
+  .bloc-500__visuel::before { width: 200px; height: 200px; }
+  .bloc-500__actions { flex-direction: column; }
+  .bloc-500__actions .btn { width: 100%; }
+  .bloc-500__support-actions { flex-direction: column; }
+  .bloc-500__support-actions .btn { width: 100%; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bas { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                       -->
+<!-- ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="logo" aria-label="JosDore — Accueil">
+      <div class="logo__mark">J</div>
+      <div class="logo__text">
+        Jos<span>Dore</span>
+        <span class="logo__suffix">Group</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="pages/communaute/">Communauté</a>
+      <a href="pages/tech/">Tech</a>
+      <a href="pages/commerce/">Commerce</a>
+      <a href="pages/education/">Éducation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="connexion.html" class="btn btn--ghost btn--sm">Connexion</a>
+      <a href="inscription.html" class="btn btn--primary btn--sm">
+        <i class="fi fi-rr-user-add"></i> Créer un compte
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- BREADCRUMB                                                   -->
+<!-- ============================================================ -->
+<nav class="breadcrumb" aria-label="Fil d'ariane">
+  <div class="breadcrumb__inner">
+    <a href="/">Accueil</a>
+    <i class="fi fi-rr-angle-small-right"></i>
+    <span>Erreur serveur</span>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- BLOC 500                                                     -->
+<!-- ============================================================ -->
+<main class="bloc-500">
+  <div class="bloc-500__inner">
+
+    <!-- Visuel "500" -->
+    <div class="bloc-500__visuel">
+      <div class="bloc-500__code" aria-hidden="true">500</div>
+    </div>
+
+    <div class="bloc-500__icon" aria-hidden="true">
+      <i class="fi fi-rr-settings-sliders"></i>
+    </div>
+
+    <h1>Un souci <span>de notre côté</span>.</h1>
+    <p>
+      Une erreur technique est survenue sur nos serveurs. Ce n'est pas de ta
+      faute — notre équipe est déjà prévenue et travaille à la résoudre.
+    </p>
+
+    <!-- Bannière info -->
+    <div class="bloc-500__info" role="status">
+      <i class="fi fi-rr-info" aria-hidden="true"></i>
+      <p>
+        <strong>Pas d'inquiétude.</strong>
+        Ta session est conservée. Réessaie dans quelques instants ou
+        préviens-nous si le problème persiste.
+      </p>
+    </div>
+
+    <!-- Actions principales -->
+    <div class="bloc-500__actions">
+      <button type="button" class="btn btn--rouge btn--lg" onclick="window.location.reload()">
+        <i class="fi fi-rr-refresh"></i> Réessayer maintenant
+      </button>
+      <a href="/" class="btn btn--or btn--lg">
+        <i class="fi fi-rr-home"></i> Retour à l'accueil
+      </a>
+      <a href="https://wa.me/2290128621407?text=Bonjour%2C%20j%27ai%20rencontr%C3%A9%20une%20erreur%20500%20sur%20le%20site%20JosDore"
+         target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg">
+        <i class="fi fi-brands-whatsapp"></i> Signaler
+      </a>
+    </div>
+
+    <!-- Étapes de résolution -->
+    <div class="bloc-500__bloc">
+      <div class="bloc-500__bloc-titre">Que faire ?</div>
+      <h2>3 choses à essayer</h2>
+
+      <div class="etapes-500">
+
+        <div class="etape-500">
+          <div class="etape-500__num">1</div>
+          <h3>Rafraîchis la page</h3>
+          <p>Une simple actualisation règle souvent le problème (F5 ou le bouton ci-dessus).</p>
+        </div>
+
+        <div class="etape-500">
+          <div class="etape-500__num">2</div>
+          <h3>Attends 2 minutes</h3>
+          <p>Nos serveurs se remettent parfois tout seuls. Patiente un instant puis reviens.</p>
+        </div>
+
+        <div class="etape-500">
+          <div class="etape-500__num">3</div>
+          <h3>Préviens-nous</h3>
+          <p>Si le problème persiste, écris-nous sur WhatsApp. On règle ça rapidement.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bloc support -->
+    <div class="bloc-500__support">
+      <h3>Besoin d'aide immédiate ?</h3>
+      <p>
+        Notre équipe technique est joignable du lundi au samedi, de 8h à 20h.
+        Explique-nous ce que tu faisais quand l'erreur est survenue —
+        ça nous aide à corriger plus vite.
+      </p>
+      <div class="bloc-500__support-actions">
+        <a href="https://wa.me/2290128621407?text=Bonjour%2C%20j%27ai%20rencontr%C3%A9%20une%20erreur%20500"
+           target="_blank" rel="noopener" class="btn btn--whatsapp">
+          <i class="fi fi-brands-whatsapp"></i> WhatsApp
+        </a>
+        <a href="mailto:contact@josdore.app?subject=Erreur%20500%20sur%20le%20site%20JosDore" class="btn btn--outline">
+          <i class="fi fi-rr-envelope"></i> contact@josdore.app
+        </a>
+      </div>
+    </div>
+
+    <!-- Code d'erreur technique -->
+    <div class="bloc-500__code-tech" aria-label="Code d'erreur technique">
+      ERR 500 · INTERNAL SERVER ERROR
+    </div>
+
+  </div>
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__logo">
+        <div class="logo__mark">J</div>
+        <div>Jos<span>Dore</span></div>
+      </div>
+      <p class="footer__desc">
+        Écosystème technologique et éducatif africain à 4 pôles et 10 activités.<br>
+        <strong>Apprendre. Travailler. Évoluer.</strong>
+      </p>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Nos pôles</h4>
+      <div class="footer__liens">
+        <a href="pages/communaute/">Communauté</a>
+        <a href="pages/tech/">Tech</a>
+        <a href="pages/commerce/">Commerce</a>
+        <a href="pages/education/">Éducation</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Le groupe</h4>
+      <div class="footer__liens">
+        <a href="a-propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+        <a href="blog/">Blog</a>
+        <a href="support/">Aide</a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="footer__titre">Légal</h4>
+      <div class="footer__liens">
+        <a href="legal/confidentialite.html">Confidentialité</a>
+        <a href="legal/cgu.html">CGU</a>
+        <a href="legal/mentions.html">Mentions</a>
+        <button type="button" id="revoirCookies">Revoir le consentement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bas">
+    <div>© <span id="annee"></span> JosDore — Tous droits réservés.</div>
+    <div>Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi, Bénin</div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- BANDEAU COOKIES                                              -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore utilise des cookies pour améliorer ton expérience, mesurer
+      l'audience et personnaliser le contenu. Tu peux accepter tous les cookies
+      ou refuser ceux qui ne sont pas essentiels.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Header scroll */
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  /* Menu burger */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const nav = document.getElementById('nav');
+  if (menuBtn && nav && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = nav.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(ouvert));
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuIcon.className = 'fi fi-rr-menu-burger';
+      });
+    });
+  }
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  const btnRevoir = document.getElementById('revoirCookies');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+  if (btnRevoir) btnRevoir.addEventListener('click', () => {
+    try { localStorage.removeItem(CLE); } catch (e) {}
+    ouvrir();
+  });
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore — 500', 'background: linear-gradient(135deg, #0A2540, #DC2626); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fil d'actualité — JosDore Réseau</title>
+<meta name="description" content="Le fil d'actualité des techniciens JosDore : interventions, actualités, partages.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F59E0B">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo/favicon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+
+<style>
+/* ============================================================
+   JOSDORE RÉSEAU — FEED
+   ============================================================ */
+
+:root {
+  --nuit: #0A2540;
+  --bleu: #2563EB;
+  --bleu-fonce: #1D4ED8;
+  --or: #F59E0B;
+  --or-fonce: #D97706;
+  --vert: #16A34A;
+  --rouge: #DC2626;
+
+  --gris-900: #0F172A;
+  --gris-700: #334155;
+  --gris-500: #64748B;
+  --gris-300: #CBD5E1;
+  --gris-200: #E2E8F0;
+  --gris-100: #F1F5F9;
+  --gris-50: #F8FAFC;
+  --blanc: #FFFFFF;
+
+  --police-titre: 'Poppins', sans-serif;
+  --police-texte: 'Inter', sans-serif;
+
+  --ombre-sm: 0 1px 3px rgba(10,37,64,0.08);
+  --ombre-md: 0 4px 16px rgba(10,37,64,0.10);
+  --ombre-lg: 0 12px 32px rgba(10,37,64,0.12);
+
+  --rayon-sm: 8px;
+  --rayon-md: 14px;
+  --rayon-lg: 20px;
+  --rayon-full: 999px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+  --sidebar-w: 250px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--police-texte); font-size: 15px; line-height: 1.6; color: var(--gris-700); background: var(--gris-50); -webkit-font-smoothing: antialiased; overflow-x: hidden; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--police-titre); color: var(--gris-900); line-height: 1.2; letter-spacing: -0.02em; }
+::selection { background: var(--or); color: var(--nuit); }
+[class*="fi fi-"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* ============================================================
+   HEADER APP
+   ============================================================ */
+.app-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--gris-200);
+  display: flex; align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+.app-header__menu {
+  width: 40px; height: 40px;
+  border-radius: var(--rayon-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 20px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.app-header__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.app-header__logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 900; font-size: 16px;
+  color: var(--gris-900);
+  flex-shrink: 0;
+}
+.app-header__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--nuit); color: var(--or);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900;
+  position: relative; flex-shrink: 0;
+}
+.app-header__logo-mark::after {
+  content: '';
+  position: absolute; top: 5px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--or); border-radius: 50%;
+}
+.app-header__logo-text span { color: var(--or); }
+.app-header__logo-suffix {
+  display: block;
+  font-size: 8px; font-weight: 700;
+  color: var(--gris-500);
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.app-header__search {
+  flex: 1; max-width: 400px;
+  position: relative;
+  display: none;
+}
+.app-header__search i {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--gris-500); font-size: 15px; pointer-events: none;
+}
+.app-header__search input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  background: var(--gris-100);
+  border: 1.5px solid transparent;
+  border-radius: var(--rayon-full);
+  font-size: 13px;
+  color: var(--gris-900);
+  font-family: inherit;
+  transition: var(--transition);
+}
+.app-header__search input:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+}
+
+.app-header__actions {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.app-header__icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-700);
+  font-size: 18px;
+  transition: var(--transition);
+  position: relative;
+}
+.app-header__icon:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-header__badge {
+  position: absolute; top: 5px; right: 5px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background: var(--rouge);
+  color: #fff;
+  border-radius: var(--rayon-full);
+  font-size: 9px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  font-family: var(--police-titre);
+}
+.app-header__avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--gris-200);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.app-sidebar {
+  position: fixed;
+  top: var(--header-h); bottom: 0; left: 0;
+  width: var(--sidebar-w);
+  background: #fff;
+  border-right: 1px solid var(--gris-200);
+  padding: 16px 12px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.app-sidebar.is-open { transform: translateX(0); }
+
+.app-sidebar__profil {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 16px;
+  border-bottom: 1px solid var(--gris-100);
+  margin-bottom: 12px;
+}
+.app-sidebar__profil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.app-sidebar__profil-nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+}
+.app-sidebar__profil-nom i { color: var(--bleu); font-size: 13px; }
+.app-sidebar__profil-role { font-size: 11px; color: var(--gris-500); font-weight: 600; }
+
+.app-sidebar__titre {
+  font-size: 10px; font-weight: 800;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 12px 12px 6px;
+}
+
+.app-sidebar__lien {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--rayon-sm);
+  font-size: 14px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.app-sidebar__lien i { font-size: 17px; color: var(--gris-500); flex-shrink: 0; }
+.app-sidebar__lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.app-sidebar__lien:hover i { color: var(--gris-900); }
+.app-sidebar__lien.is-active {
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+}
+.app-sidebar__lien.is-active i { color: var(--or-fonce); }
+.app-sidebar__lien-badge {
+  margin-left: auto;
+  padding: 2px 7px;
+  background: var(--or);
+  color: var(--nuit);
+  border-radius: var(--rayon-full);
+  font-size: 10px; font-weight: 900;
+}
+.app-sidebar__sep {
+  height: 1px; background: var(--gris-100);
+  margin: 10px 12px;
+}
+.app-sidebar__lien--danger { color: var(--rouge); }
+.app-sidebar__lien--danger i { color: var(--rouge); }
+.app-sidebar__lien--danger:hover { background: rgba(220,38,38,0.08); }
+
+.app-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,37,64,0.45);
+  z-index: 50;
+  display: none;
+}
+.app-overlay.is-open { display: block; }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.app-main {
+  padding: calc(var(--header-h) + 16px) 16px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Layout 3 colonnes */
+.feed-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.feed-col-gauche,
+.feed-col-droite { display: none; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px;
+  font-family: var(--police-titre);
+  font-size: 13px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); text-decoration: none; }
+.btn--or { background: var(--or); color: var(--nuit); }
+.btn--or:hover { background: var(--or-fonce); box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.btn--primary { background: var(--bleu); color: #fff; }
+.btn--primary:hover { background: var(--bleu-fonce); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.btn--ghost { background: #fff; color: var(--gris-700); border-color: var(--gris-200); }
+.btn--ghost:hover { border-color: var(--gris-900); background: var(--gris-50); }
+.btn--sm { padding: 8px 16px; font-size: 12px; }
+.btn--lg { padding: 14px 28px; font-size: 14px; }
+.btn--block { width: 100%; }
+
+/* ============================================================
+   COMPOSER
+   ============================================================ */
+.composer {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.composer__ligne {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.composer__avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+}
+.composer__zone {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--gris-100);
+  border-radius: var(--rayon-full);
+  color: var(--gris-500);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: inherit;
+}
+.composer__zone:hover { background: var(--gris-200); color: var(--gris-700); }
+.composer__actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gris-100);
+}
+.composer__action {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 8px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  transition: var(--transition);
+}
+.composer__action:hover { background: var(--gris-100); }
+.composer__action i { font-size: 17px; }
+.composer__action--photo i { color: var(--vert); }
+.composer__action--tag i { color: var(--bleu); }
+.composer__action--event i { color: var(--or-fonce); }
+
+/* ============================================================
+   FILTRES
+   ============================================================ */
+.feed-filtres {
+  display: flex; gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0;
+  margin-bottom: 16px;
+  scrollbar-width: none;
+}
+.feed-filtres::-webkit-scrollbar { display: none; }
+.feed-filtre {
+  flex-shrink: 0;
+  padding: 9px 18px;
+  background: #fff;
+  border: 1.5px solid var(--gris-200);
+  border-radius: var(--rayon-full);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-700);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+}
+.feed-filtre:hover { border-color: var(--or); color: var(--or-fonce); }
+.feed-filtre.is-active {
+  background: var(--or);
+  color: var(--nuit);
+  border-color: var(--or);
+}
+.feed-filtre i { font-size: 15px; }
+
+/* ============================================================
+   POST
+   ============================================================ */
+.post {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.post:hover { box-shadow: var(--ombre-sm); }
+
+.post--demo { position: relative; }
+.post--demo::before {
+  content: 'Exemple de démo';
+  position: absolute;
+  top: 8px; right: 8px;
+  background: rgba(245,158,11,0.95);
+  color: var(--nuit);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--rayon-full);
+  z-index: 3;
+  font-family: var(--police-titre);
+}
+
+.post__head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 16px 12px;
+}
+.post__avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+  flex-shrink: 0;
+  color: #fff;
+}
+.post__avatar--1 { background: linear-gradient(135deg, var(--or), var(--or-fonce)); color: var(--nuit); }
+.post__avatar--2 { background: linear-gradient(135deg, var(--bleu), #7C3AED); }
+.post__avatar--3 { background: linear-gradient(135deg, var(--vert), #059669); }
+.post__user { flex: 1; min-width: 0; }
+.post__nom {
+  font-size: 14px; font-weight: 800;
+  color: var(--gris-900);
+  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 2px;
+}
+.post__nom i { color: var(--bleu); font-size: 13px; }
+.post__meta {
+  font-size: 12px; color: var(--gris-500);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.post__meta i { font-size: 11px; }
+.post__menu {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gris-500);
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.post__menu:hover { background: var(--gris-100); color: var(--gris-900); }
+
+.post__body {
+  padding: 0 16px 12px;
+}
+.post__titre {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.post__desc {
+  font-size: 14px;
+  color: var(--gris-700);
+  line-height: 1.6;
+}
+
+.post__image {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #1E293B, #334155);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 64px;
+  margin: 0 16px 12px;
+  border-radius: var(--rayon-md);
+  position: relative;
+  overflow: hidden;
+}
+.post__image::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(245,158,11,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.post__tags {
+  padding: 0 16px 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.post__tag {
+  font-size: 12px; font-weight: 700;
+  color: var(--bleu);
+  background: rgba(37,99,235,0.08);
+  padding: 3px 10px;
+  border-radius: var(--rayon-full);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.post__tag:hover { background: rgba(37,99,235,0.16); }
+
+.post__stats {
+  padding: 0 16px 10px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 12px; color: var(--gris-500);
+}
+.post__stats-likes {
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.post__stats-likes i {
+  color: var(--rouge);
+  font-size: 13px;
+}
+.post__stats-sep { flex: 1; }
+
+.post__actions {
+  display: flex;
+  padding: 8px 8px;
+  border-top: 1px solid var(--gris-100);
+  gap: 2px;
+}
+.post__action {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 8px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px; font-weight: 700;
+  color: var(--gris-500);
+  transition: var(--transition);
+}
+.post__action:hover { background: var(--gris-100); color: var(--gris-900); }
+.post__action i { font-size: 16px; }
+.post__action.is-liked { color: var(--rouge); }
+.post__action.is-liked i {
+  color: var(--rouge);
+  animation: pop 0.35s ease;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* ============================================================
+   SIDE CARDS
+   ============================================================ */
+.side-card {
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.side-card__head {
+  font-size: 13px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.side-card__head i { color: var(--or-fonce); font-size: 16px; }
+
+.side-profil {
+  text-align: center;
+  margin-bottom: 4px;
+}
+.side-profil__avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--or), var(--or-fonce));
+  color: var(--nuit);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 24px;
+  margin: 0 auto 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(245,158,11,0.25);
+}
+.side-profil__nom {
+  font-size: 15px; font-weight: 900;
+  color: var(--gris-900);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  margin-bottom: 4px;
+}
+.side-profil__nom i { color: var(--bleu); font-size: 14px; }
+.side-profil__role {
+  font-size: 12px; color: var(--gris-500);
+  margin-bottom: 12px;
+}
+.side-profil__stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--gris-100);
+}
+.side-stat__v {
+  font-family: var(--police-titre);
+  font-size: 18px; font-weight: 900;
+  color: var(--or-fonce);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.side-stat__l {
+  font-size: 10px; font-weight: 700;
+  color: var(--gris-500);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.side-liens { display: flex; flex-direction: column; gap: 2px; }
+.side-lien {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px;
+  border-radius: var(--rayon-sm);
+  font-size: 13px; font-weight: 600;
+  color: var(--gris-700);
+  transition: var(--transition);
+}
+.side-lien:hover { background: var(--gris-100); color: var(--gris-900); }
+.side-lien i {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Suggestions */
+.suggestion {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-100);
+}
+.suggestion:last-child { border-bottom: none; padding-bottom: 0; }
+.suggestion__avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 12px;
+  flex-shrink: 0;
+  color: #fff;
+}
+.suggestion__avatar--1 { background: linear-gradient(135deg, var(--bleu), #7C3AED); }
+.suggestion__avatar--2 { background: linear-gradient(135deg, var(--vert), #059669); }
+.suggestion__avatar--3 { background: linear-gradient(135deg, var(--or), var(--or-fonce)); color: var(--nuit); }
+.suggestion__info { flex: 1; min-width: 0; }
+.suggestion__nom {
+  font-size: 13px; font-weight: 800;
+  color: var(--gris-900);
+  margin-bottom: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.suggestion__role {
+  font-size: 11px; color: var(--gris-500);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.suggestion__btn {
+  padding: 6px 12px;
+  background: rgba(245,158,11,0.12);
+  color: var(--or-fonce);
+  border-radius: var(--rayon-full);
+  font-size: 11px; font-weight: 800;
+  transition: var(--transition);
+  flex-shrink: 0;
+  font-family: inherit;
+}
+.suggestion__btn:hover { background: var(--or); color: var(--nuit); }
+
+/* ============================================================
+   ÉTAT VIDE
+   ============================================================ */
+.vide {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--rayon-lg);
+}
+.vide__icone {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--gris-100);
+  color: var(--gris-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 14px;
+}
+.vide__titre {
+  font-size: 15px; font-weight: 800;
+  color: var(--gris-700);
+  margin-bottom: 6px;
+}
+.vide__texte {
+  font-size: 13px;
+  color: var(--gris-500);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  max-width: 320px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ============================================================
+   FOOTER MINI
+   ============================================================ */
+.footer-mini {
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  padding: 18px 20px;
+  font-size: 12px;
+  color: var(--gris-500);
+  margin-top: 20px;
+}
+.footer-mini__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-mini__liens { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer-mini__liens a { color: var(--gris-500); }
+.footer-mini__liens a:hover { color: var(--or-fonce); }
+.footer-mini i.fi-sr-heart { color: var(--rouge); }
+
+/* ============================================================
+   COOKIES
+   ============================================================ */
+.cookies {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid var(--gris-200);
+  box-shadow: 0 -8px 32px rgba(10,37,64,0.12);
+  padding: 18px 20px;
+  display: none;
+}
+.cookies.is-open { display: block; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.cookies__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.cookies__texte {
+  flex: 1; min-width: 260px;
+  font-size: 13px; color: var(--gris-700); line-height: 1.6;
+}
+.cookies__texte strong { color: var(--gris-900); }
+.cookies__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cookies__btn {
+  padding: 9px 18px;
+  font-family: var(--police-titre);
+  font-size: 12px; font-weight: 700;
+  border-radius: var(--rayon-md);
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--transition);
+}
+.cookies__btn--accept { background: var(--or); color: var(--nuit); }
+.cookies__btn--accept:hover { background: var(--or-fonce); }
+.cookies__btn--refuse { background: transparent; color: var(--gris-700); border-color: var(--gris-200); }
+.cookies__btn--refuse:hover { border-color: var(--gris-900); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 768px) {
+  .app-header { padding: 0 24px; }
+  .app-header__search { display: block; }
+  .app-main { padding: calc(var(--header-h) + 24px) 24px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .app-sidebar { transform: translateX(0); }
+  .app-overlay { display: none !important; }
+  .app-header__menu { display: none; }
+
+  .app-main {
+    padding-left: calc(var(--sidebar-w) + 24px);
+    padding-right: 24px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .feed-layout {
+    grid-template-columns: 240px 1fr 280px;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .feed-col-gauche { display: block; }
+  .feed-col-droite { display: block; }
+
+  .feed-col-gauche,
+  .feed-col-droite {
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+    align-self: start;
+    max-height: calc(100vh - var(--header-h) - 48px);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .composer__actions { grid-template-columns: 1fr 1fr 1fr; }
+  .composer__action span { display: none; }
+  .composer__action { justify-content: center; }
+  .footer-mini__inner { flex-direction: column; text-align: center; }
+  .cookies__actions { width: 100%; }
+  .cookies__btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER APP                                                   -->
+<!-- ============================================================ -->
+<header class="app-header">
+  <button class="app-header__menu" id="menuBtn" aria-label="Ouvrir le menu">
+    <i class="fi fi-rr-menu-burger" id="menuIcon"></i>
+  </button>
+
+  <a href="app/" class="app-header__logo" aria-label="JosDore Réseau — Accueil">
+    <div class="app-header__logo-mark">J</div>
+    <div>
+      Jos<span>Dore</span>
+      <span class="app-header__logo-suffix">Réseau</span>
+    </div>
+  </a>
+
+  <div class="app-header__search">
+    <i class="fi fi-rr-search" aria-hidden="true"></i>
+    <input type="search" placeholder="Rechercher une intervention, un tag…" aria-label="Recherche">
+  </div>
+
+  <div class="app-header__actions">
+    <a href="app/notifications.html" class="app-header__icon" aria-label="Notifications">
+      <i class="fi fi-rr-bell"></i>
+      <span class="app-header__badge">3</span>
+    </a>
+    <a href="app/messages.html" class="app-header__icon" aria-label="Messages">
+      <i class="fi fi-rr-comment"></i>
+      <span class="app-header__badge">5</span>
+    </a>
+    <a href="app/profil.html" class="app-header__avatar" aria-label="Mon profil">KA</a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- OVERLAY                                                      -->
+<!-- ============================================================ -->
+<div class="app-overlay" id="overlay"></div>
+
+<!-- ============================================================ -->
+<!-- SIDEBAR                                                      -->
+<!-- ============================================================ -->
+<aside class="app-sidebar" id="sidebar">
+
+  <div class="app-sidebar__profil">
+    <div class="app-sidebar__profil-avatar">KA</div>
+    <div>
+      <div class="app-sidebar__profil-nom">
+        Koffi Adande
+        <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+      </div>
+      <div class="app-sidebar__profil-role">Technicien · Calavi</div>
+    </div>
+  </div>
+
+  <div class="app-sidebar__titre">Navigation</div>
+  <a href="app/feed.html" class="app-sidebar__lien is-active">
+    <i class="fi fi-rr-home"></i> Accueil
+  </a>
+  <a href="app/dashboard.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-apps"></i> Tableau de bord
+  </a>
+  <a href="app/missions.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-target"></i> Missions
+    <span class="app-sidebar__lien-badge">4</span>
+  </a>
+  <a href="app/messages.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-comment"></i> Messages
+    <span class="app-sidebar__lien-badge">5</span>
+  </a>
+  <a href="app/notifications.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-bell"></i> Notifications
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon activité</div>
+  <a href="app/publier.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-plus"></i> Publier
+  </a>
+  <a href="app/agenda.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-calendar"></i> Agenda
+  </a>
+  <a href="app/comptabilite.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-coins"></i> Comptabilité
+  </a>
+  <a href="app/techniciens.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-users"></i> Annuaire
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <div class="app-sidebar__titre">Mon compte</div>
+  <a href="app/profil.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-user"></i> Mon profil
+  </a>
+  <a href="app/parametres.html" class="app-sidebar__lien">
+    <i class="fi fi-rr-settings"></i> Paramètres
+  </a>
+
+  <div class="app-sidebar__sep"></div>
+  <a href="connexion.html" class="app-sidebar__lien app-sidebar__lien--danger">
+    <i class="fi fi-rr-exit"></i> Déconnexion
+  </a>
+
+</aside>
+
+<!-- ============================================================ -->
+<!-- MAIN                                                         -->
+<!-- ============================================================ -->
+<main class="app-main">
+
+  <div class="feed-layout">
+
+    <!-- ============================================ -->
+    <!-- COLONNE GAUCHE                               -->
+    <!-- ============================================ -->
+    <aside class="feed-col-gauche">
+
+      <!-- Profil résumé -->
+      <div class="side-card">
+        <div class="side-profil">
+          <div class="side-profil__avatar">KA</div>
+          <div class="side-profil__nom">
+            Koffi Adande
+            <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+          </div>
+          <div class="side-profil__role">Technicien · Abomey-Calavi</div>
+        </div>
+
+        <div class="side-profil__stats">
+          <div>
+            <div class="side-stat__v">0</div>
+            <div class="side-stat__l">Posts</div>
+          </div>
+          <div>
+            <div class="side-stat__v">0</div>
+            <div class="side-stat__l">Abonnés</div>
+          </div>
+          <div>
+            <div class="side-stat__v">0</div>
+            <div class="side-stat__l">Suivis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liens rapides -->
+      <div class="side-card">
+        <div class="side-card__head">
+          <i class="fi fi-rr-apps"></i> Navigation
+        </div>
+        <div class="side-liens">
+          <a href="app/dashboard.html" class="side-lien">
+            <i class="fi fi-rr-apps"></i> Mon tableau de bord
+          </a>
+          <a href="app/publier.html" class="side-lien">
+            <i class="fi fi-rr-plus"></i> Publier une intervention
+          </a>
+          <a href="app/missions.html" class="side-lien">
+            <i class="fi fi-rr-target"></i> Missions disponibles
+          </a>
+          <a href="app/techniciens.html" class="side-lien">
+            <i class="fi fi-rr-users"></i> Trouver un technicien
+          </a>
+          <a href="app/messages.html" class="side-lien">
+            <i class="fi fi-rr-comment"></i> Mes messages
+          </a>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ============================================ -->
+    <!-- FEED CENTRAL                                 -->
+    <!-- ============================================ -->
+    <div class="feed-col-central">
+
+      <!-- Composer -->
+      <div class="composer">
+        <div class="composer__ligne">
+          <div class="composer__avatar">KA</div>
+          <button class="composer__zone" id="composerZone" type="button">
+            Quoi de neuf ? Publie ton intervention…
+          </button>
+        </div>
+        <div class="composer__actions">
+          <a href="app/publier.html" class="composer__action composer__action--photo">
+            <i class="fi fi-rr-camera"></i>
+            <span>Photo</span>
+          </a>
+          <a href="app/publier.html" class="composer__action composer__action--tag">
+            <i class="fi fi-rr-tag"></i>
+            <span>Tag</span>
+          </a>
+          <a href="app/publier.html" class="composer__action composer__action--event">
+            <i class="fi fi-rr-calendar"></i>
+            <span>Événement</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Filtres -->
+      <div class="feed-filtres">
+        <button class="feed-filtre is-active" data-filtre="tous" type="button">
+          <i class="fi fi-rr-apps"></i> Tous
+        </button>
+        <button class="feed-filtre" data-filtre="zone" type="button">
+          <i class="fi fi-rr-marker"></i> Ma zone
+        </button>
+        <button class="feed-filtre" data-filtre="specialite" type="button">
+          <i class="fi fi-rr-tools"></i> Ma spécialité
+        </button>
+        <button class="feed-filtre" data-filtre="tendances" type="button">
+          <i class="fi fi-rr-flame"></i> Tendances
+        </button>
+        <button class="feed-filtre" data-filtre="verifies" type="button">
+          <i class="fi fi-rr-shield-check"></i> Vérifiés
+        </button>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- POST 1 — Démo                                -->
+      <!-- ============================================ -->
+      <article class="post post--demo" data-zone="cotonou" data-specialite="reseaux" data-verifie="true">
+        <div class="post__head">
+          <div class="post__avatar post__avatar--1">AD</div>
+          <div class="post__user">
+            <div class="post__nom">
+              Aïcha Dossou
+              <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+            </div>
+            <div class="post__meta">
+              <i class="fi fi-rr-marker"></i> Cotonou
+              <span>·</span>
+              <i class="fi fi-rr-time-past"></i> il y a 2h
+            </div>
+          </div>
+          <button class="post__menu" aria-label="Options" type="button">
+            <i class="fi fi-rr-menu-dots-vertical"></i>
+          </button>
+        </div>
+
+        <div class="post__body">
+          <div class="post__titre">Câblage salle serveur terminé</div>
+          <p class="post__desc">
+            Remplacement complet du câblage réseau d'une salle serveur
+            pour une PME de Cotonou. 3 jours de travail, résultat propre
+            et organisé. Le client est reparti avec une infra aux normes.
+          </p>
+        </div>
+
+        <div class="post__image">
+          <i class="fi fi-rr-picture" aria-hidden="true"></i>
+        </div>
+
+        <div class="post__tags">
+          <span class="post__tag">#Réseaux</span>
+          <span class="post__tag">#Cotonou</span>
+          <span class="post__tag">#Intervention</span>
+          <span class="post__tag">#Câblage</span>
+        </div>
+
+        <div class="post__stats">
+          <span class="post__stats-likes">
+            <i class="fi fi-sr-heart"></i> 0
+          </span>
+          <span class="post__stats-sep"></span>
+          <span>0 commentaire</span>
+        </div>
+
+        <div class="post__actions">
+          <button class="post__action" data-action="like" type="button">
+            <i class="fi fi-rr-heart"></i> J'aime
+          </button>
+          <button class="post__action" data-action="comment" type="button">
+            <i class="fi fi-rr-comment"></i> Commenter
+          </button>
+          <button class="post__action" data-action="share" type="button">
+            <i class="fi fi-rr-share"></i> Partager
+          </button>
+        </div>
+      </article>
+
+      <!-- ============================================ -->
+      <!-- POST 2 — Démo                                -->
+      <!-- ============================================ -->
+      <article class="post post--demo" data-zone="calavi" data-specialite="hardware" data-verifie="false">
+        <div class="post__head">
+          <div class="post__avatar post__avatar--2">MB</div>
+          <div class="post__user">
+            <div class="post__nom">Moussa Bio</div>
+            <div class="post__meta">
+              <i class="fi fi-rr-marker"></i> Abomey-Calavi
+              <span>·</span>
+              <i class="fi fi-rr-time-past"></i> il y a 5h
+            </div>
+          </div>
+          <button class="post__menu" aria-label="Options" type="button">
+            <i class="fi fi-rr-menu-dots-vertical"></i>
+          </button>
+        </div>
+
+        <div class="post__body">
+          <div class="post__titre">Récupération de données réussie</div>
+          <p class="post__desc">
+            Disque dur qui ne montait plus. Analyse, remplacement de la
+            carte électronique, récupération : 95% des fichiers sauvés.
+            Le client a retrouvé ses photos et documents importants.
+          </p>
+        </div>
+
+        <div class="post__tags">
+          <span class="post__tag">#Hardware</span>
+          <span class="post__tag">#Récupération</span>
+          <span class="post__tag">#Data</span>
+        </div>
+
+        <div class="post__stats">
+          <span class="post__stats-likes">
+            <i class="fi fi-sr-heart"></i> 0
+          </span>
+          <span class="post__stats-sep"></span>
+          <span>0 commentaire</span>
+        </div>
+
+        <div class="post__actions">
+          <button class="post__action" data-action="like" type="button">
+            <i class="fi fi-rr-heart"></i> J'aime
+          </button>
+          <button class="post__action" data-action="comment" type="button">
+            <i class="fi fi-rr-comment"></i> Commenter
+          </button>
+          <button class="post__action" data-action="share" type="button">
+            <i class="fi fi-rr-share"></i> Partager
+          </button>
+        </div>
+      </article>
+
+      <!-- ============================================ -->
+      <!-- POST 3 — Démo                                -->
+      <!-- ============================================ -->
+      <article class="post post--demo" data-zone="cotonou" data-specialite="web" data-verifie="true">
+        <div class="post__head">
+          <div class="post__avatar post__avatar--3">FS</div>
+          <div class="post__user">
+            <div class="post__nom">
+              Fatou Soglo
+              <i class="fi fi-sr-badge-check" aria-label="Vérifié"></i>
+            </div>
+            <div class="post__meta">
+              <i class="fi fi-rr-marker"></i> Cotonou
+              <span>·</span>
+              <i class="fi fi-rr-time-past"></i> il y a 1j
+            </div>
+          </div>
+          <button class="post__menu" aria-label="Options" type="button">
+            <i class="fi fi-rr-menu-dots-vertical"></i>
+          </button>
+        </div>
+
+        <div class="post__body">
+          <div class="post__titre">Nouveau site livré pour une PME</div>
+          <p class="post__desc">
+            Site vitrine livré pour une petite entreprise de Cotonou.
+            Design moderne, responsive, rapide. Formation du client
+            incluse pour qu'il puisse mettre à jour le contenu lui-même.
+          </p>
+        </div>
+
+        <div class="post__image">
+          <i class="fi fi-rr-picture" aria-hidden="true"></i>
+        </div>
+
+        <div class="post__tags">
+          <span class="post__tag">#Web</span>
+          <span class="post__tag">#Dev</span>
+          <span class="post__tag">#Livraison</span>
+          <span class="post__tag">#Formation</span>
+        </div>
+
+        <div class="post__stats">
+          <span class="post__stats-likes">
+            <i class="fi fi-sr-heart"></i> 0
+          </span>
+          <span class="post__stats-sep"></span>
+          <span>0 commentaire</span>
+        </div>
+
+        <div class="post__actions">
+          <button class="post__action" data-action="like" type="button">
+            <i class="fi fi-rr-heart"></i> J'aime
+          </button>
+          <button class="post__action" data-action="comment" type="button">
+            <i class="fi fi-rr-comment"></i> Commenter
+          </button>
+          <button class="post__action" data-action="share" type="button">
+            <i class="fi fi-rr-share"></i> Partager
+          </button>
+        </div>
+      </article>
+
+      <!-- ============================================ -->
+      <!-- ÉTAT VIDE                                    -->
+      <!-- ============================================ -->
+      <div class="vide" id="feed-vide" style="display:none;">
+        <div class="vide__icone"><i class="fi fi-rr-inbox"></i></div>
+        <div class="vide__titre">Aucune publication ici</div>
+        <p class="vide__texte">
+          Essaie un autre filtre ou publie ta première intervention.
+        </p>
+        <a href="app/publier.html" class="btn btn--or btn--sm">
+          <i class="fi fi-rr-plus"></i> Publier une intervention
+        </a>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- MESSAGE INFO démo                            -->
+      <!-- ============================================ -->
+      <div style="padding:16px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.25);border-radius:var(--rayon-lg);text-align:center;">
+        <i class="fi fi-rr-info" style="color:var(--or-fonce);font-size:20px;display:block;margin-bottom:8px;"></i>
+        <p style="font-size:13px;color:var(--gris-700);line-height:1.6;margin:0;">
+          <strong>Les publications ci-dessus sont des exemples de démo.</strong><br>
+          Elles seront remplacées par les vraies interventions de la communauté
+          dès l'ouverture publique de l'app.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- COLONNE DROITE                               -->
+    <!-- ============================================ -->
+    <aside class="feed-col-droite">
+
+      <!-- Suggestions -->
+      <div class="side-card">
+        <div class="side-card__head">
+          <i class="fi fi-rr-user-plus"></i> Techniciens à suivre
+        </div>
+
+        <div class="suggestion">
+          <div class="suggestion__avatar suggestion__avatar--1">AD</div>
+          <div class="suggestion__info">
+            <div class="suggestion__nom">Aïcha Dossou</div>
+            <div class="suggestion__role">Réseaux · Cotonou</div>
+          </div>
+          <button class="suggestion__btn" type="button">Suivre</button>
+        </div>
+
+        <div class="suggestion">
+          <div class="suggestion__avatar suggestion__avatar--2">MB</div>
+          <div class="suggestion__info">
+            <div class="suggestion__nom">Moussa Bio</div>
+            <div class="suggestion__role">Hardware · Calavi</div>
+          </div>
+          <button class="suggestion__btn" type="button">Suivre</button>
+        </div>
+
+        <div class="suggestion">
+          <div class="suggestion__avatar suggestion__avatar--3">FS</div>
+          <div class="suggestion__info">
+            <div class="suggestion__nom">Fatou Soglo</div>
+            <div class="suggestion__role">Web · Cotonou</div>
+          </div>
+          <button class="suggestion__btn" type="button">Suivre</button>
+        </div>
+
+        <a href="app/techniciens.html" style="display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:12px;color:var(--or-fonce);font-weight:800;">
+          Voir tous les techniciens <i class="fi fi-rr-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Tags populaires -->
+      <div class="side-card">
+        <div class="side-card__head">
+          <i class="fi fi-rr-hash"></i> Tags populaires
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="post__tag">#Réseaux</span>
+          <span class="post__tag">#Intervention</span>
+          <span class="post__tag">#Hardware</span>
+          <span class="post__tag">#Web</span>
+          <span class="post__tag">#Data</span>
+          <span class="post__tag">#Cotonou</span>
+          <span class="post__tag">#Calavi</span>
+          <span class="post__tag">#Formation</span>
+        </div>
+      </div>
+
+      <!-- Astuce -->
+      <div class="side-card">
+        <div class="side-card__head">
+          <i class="fi fi-rr-bulb"></i> Astuce du jour
+        </div>
+        <p style="font-size:13px;color:var(--gris-700);line-height:1.6;margin:0;">
+          Publie <strong>une photo + une description courte</strong> de chaque
+          intervention. Ça prend 30 secondes et ton portfolio se construit
+          tout seul.
+        </p>
+      </div>
+
+    </aside>
+
+  </div>
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER MINI                                                  -->
+<!-- ============================================================ -->
+<footer class="footer-mini">
+  <div class="footer-mini__inner">
+    <div>© <span id="annee"></span> JosDore Réseau — App en développement</div>
+    <div class="footer-mini__liens">
+      <a href="/">josdore.com</a>
+      <a href="legal/confidentialite.html">Confidentialité</a>
+      <a href="legal/cgu.html">CGU</a>
+      <a href="support/">Aide</a>
+    </div>
+    <div>
+      Fait avec <i class="fi fi-sr-heart" aria-label="amour"></i> à Abomey-Calavi
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- COOKIES                                                      -->
+<!-- ============================================================ -->
+<div class="cookies" id="cookies" role="dialog" aria-label="Consentement cookies">
+  <div class="cookies__inner">
+    <div class="cookies__texte">
+      <strong>Nous respectons ta vie privée.</strong>
+      JosDore Réseau utilise des cookies pour améliorer ton expérience,
+      mesurer l'audience et sécuriser ton compte.
+    </div>
+    <div class="cookies__actions">
+      <button type="button" class="cookies__btn cookies__btn--refuse" id="cookiesRefuse">Refuser</button>
+      <button type="button" class="cookies__btn cookies__btn--accept" id="cookiesAccept">Tout accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Année */
+  const annee = document.getElementById('annee');
+  if (annee) annee.textContent = new Date().getFullYear();
+
+  /* Sidebar mobile */
+  const menuBtn = document.getElementById('menuBtn');
+  const menuIcon = document.getElementById('menuIcon');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  if (menuBtn && sidebar && overlay && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const ouvert = sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open', ouvert);
+      menuIcon.className = ouvert ? 'fi fi-rr-cross-small' : 'fi fi-rr-menu-burger';
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      menuIcon.className = 'fi fi-rr-menu-burger';
+    });
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          sidebar.classList.remove('is-open');
+          overlay.classList.remove('is-open');
+          menuIcon.className = 'fi fi-rr-menu-burger';
+        }
+      });
+    });
+  }
+
+  /* Composer */
+  const composerZone = document.getElementById('composerZone');
+  if (composerZone) {
+    composerZone.addEventListener('click', () => {
+      window.location.href = '/app/publier.html';
+    });
+  }
+
+  /* Filtres */
+  const filtres = document.querySelectorAll('.feed-filtre');
+  const posts = document.querySelectorAll('.post');
+  const feedVide = document.getElementById('feed-vide');
+
+  filtres.forEach(filtre => {
+    filtre.addEventListener('click', () => {
+      filtres.forEach(f => f.classList.remove('is-active'));
+      filtre.classList.add('is-active');
+      const cle = filtre.dataset.filtre;
+      let visibles = 0;
+
+      posts.forEach(post => {
+        let match = true;
+        if (cle === 'zone') {
+          match = post.dataset.zone === 'cotonou' || post.dataset.zone === 'calavi';
+        } else if (cle === 'specialite') {
+          match = post.dataset.specialite === 'reseaux';
+        } else if (cle === 'verifies') {
+          match = post.dataset.verifie === 'true';
+        }
+        post.style.display = match ? '' : 'none';
+        if (match) visibles++;
+      });
+
+      if (feedVide) {
+        feedVide.style.display = visibles === 0 ? 'block' : 'none';
+      }
+    });
+  });
+
+  /* Actions post */
+  document.querySelectorAll('.post__action').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const action = btn.dataset.action;
+
+      if (action === 'like') {
+        const wasLiked = btn.classList.contains('is-liked');
+        btn.classList.toggle('is-liked');
+        btn.innerHTML = wasLiked
+          ? '<i class="fi fi-rr-heart"></i> J\'aime'
+          : '<i class="fi fi-sr-heart"></i> J\'aime';
+      } else if (action === 'comment') {
+        alert('Commentaires : fonctionnalité à venir.');
+      } else if (action === 'share') {
+        const url = window.location.href;
+        if (navigator.share) {
+          navigator.share({ title: 'JosDore Réseau', url }).catch(() => {});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            btn.innerHTML = '<i class="fi fi-rr-check"></i> Copié';
+            setTimeout(() => {
+              btn.innerHTML = '<i class="fi fi-rr-share"></i> Partager';
+            }, 1800);
+          });
+        }
+      }
+    });
+  });
+
+  /* Boutons Suivre */
+  document.querySelectorAll('.suggestion__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const suivi = btn.textContent.trim() === 'Suivi';
+      btn.textContent = suivi ? 'Suivre' : 'Suivi';
+      btn.style.background = suivi ? '' : 'rgba(22,163,74,0.12)';
+      btn.style.color = suivi ? '' : 'var(--vert)';
+    });
+  });
+
+  /* Cookies */
+  const cookies = document.getElementById('cookies');
+  const CLE = 'josdore_cookies_choix';
+  const ouvrir = () => cookies && cookies.classList.add('is-open');
+  const fermer = () => cookies && cookies.classList.remove('is-open');
+  const sauvegarder = (choix) => {
+    try { localStorage.setItem(CLE, choix); } catch (e) {}
+    fermer();
+  };
+
+  let choix = null;
+  try { choix = localStorage.getItem(CLE); } catch (e) {}
+  if (!choix) setTimeout(ouvrir, 800);
+
+  const btnAccept = document.getElementById('cookiesAccept');
+  const btnRefuse = document.getElementById('cookiesRefuse');
+  if (btnAccept) btnAccept.addEventListener('click', () => sauvegarder('accepte'));
+  if (btnRefuse) btnRefuse.addEventListener('click', () => sauvegarder('refuse'));
+
+  /* Service Worker */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[JosDore] SW enregistré :', reg.scope))
+        .catch((err) => console.warn('[JosDore] SW non enregistré :', err));
+    });
+  }
+
+  console.log('%cJosDore Réseau — Feed', 'background: linear-gradient(135deg, #0A2540, #F59E0B); color: white; padding: 6px 16px; border-radius: 8px; font-weight: 900;');
+});
+</script>
+
+</body>
+</html>
